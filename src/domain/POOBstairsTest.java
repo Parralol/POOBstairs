@@ -15,19 +15,19 @@ public class POOBstairsTest {
     private Jugador j4;
     private Tablero tablero;
 
-    private Dice dado;
+    private POOBstairs prueba;
 
     /*
      * constructor para la clase de testeo
      */
     public POOBstairsTest() {
+
         j1 = new Humano(1);
         j2 = new Humano(2);
         j3 = new Humano(3);
         j4 = new Humano(4);
 
-        dado = new Dice(0);
-
+        prueba = new POOBstairs();
     }
 
     /**
