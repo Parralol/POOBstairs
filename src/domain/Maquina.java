@@ -1,8 +1,14 @@
 package domain;
 
+/**
+ * Clase Maquina
+ *
+ * @author Santiago Parra / Juan Vizcaino
+ * @version v1.0
+ */
 public class Maquina extends Jugador {
 
-    public Maquina(boolean humano, int turno) {
-        super(humano, turno);
+    public Maquina(int turno) {
+        super(false, turno);
     }
 }

@@ -3,7 +3,10 @@ package domain;
 import java.awt.Color;
 
 /**
- * cuerpo para la clase Jugador
+ * Clase Jugador
+ *
+ * @author Santiago Parra / Juan Vizcaino
+ * @version v1.0
  */
 public abstract class Jugador {
 
@@ -17,11 +20,17 @@ public abstract class Jugador {
      * constructor para Jugador
      */
     public Jugador(boolean humano, int turno) {
-        ficha = new Ficha();
+        int[] pos = { 0, 0 };
+        ficha = new Ficha(color, pos);
         this.humano = humano;
         this.turno = turno;
     }
 
+    // METODOS PARA ALTERAR DATOS
+    public void movFicha(int[] pos) {
+        ficha.changePos(pos);
+
+    }
     // METODOS PARA ASIGNAR DATOS
 
     /**
@@ -80,13 +89,24 @@ public abstract class Jugador {
         return nombre;
     }
 
+    // DATOS DE FICHAS
+
     /**
-     * retorna la ficha del jugador
+     * retorna el color de la ficha
      * 
      * @return
      */
-    public Ficha getFichas() {
-        return ficha;
+    public Color getColorFicha() {
+        return ficha.getColor();
+    }
+
+    /**
+     * retorna la posicion de la ficha
+     * 
+     * @return
+     */
+    public int[] getPosFicha() {
+        return ficha.getPos();
     }
 
 }
