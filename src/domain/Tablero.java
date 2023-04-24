@@ -29,7 +29,13 @@ public class Tablero {
      * @param pos
      */
     public void jugar(Ficha ficha, int[] pos) {
-
+        for (Casilla a : casillas) {
+            if (a.getColor() == ficha.getColor()) {
+                a.removeFicha();
+            }
+        }
+        int a = Integer.parseInt(pos[0] + "" + pos[1]);
+        casillas.get(a).setFicha(ficha);
     }
     // METODOS PARA RETORNAR DATOS
 

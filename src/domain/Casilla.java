@@ -9,8 +9,9 @@ import java.awt.Color;
  * @version v1.0
  */
 public abstract class Casilla {
-    public int[] pos;
-    public Color color;
+    private int[] pos;
+    private Color color;
+    private Ficha ficha;
 
     /**
      * Constructor para la clase casilla
@@ -21,5 +22,43 @@ public abstract class Casilla {
     public Casilla(int[] pos) {
         color = Color.WHITE;
         this.pos = pos;
+    }
+
+    /**
+     * retorna el color de la casilla
+     * 
+     * @return
+     */
+    public Color getColor() {
+        return color;
+    }
+
+    /**
+     * retorna la posicion de la casilla
+     * 
+     * @return
+     */
+    public int[] getPos() {
+        return pos;
+    }
+
+    /**
+     * retorna la ficha almacenada en la casilla
+     * 
+     * @return
+     */
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
+
+    /**
+     * remueve la ficha de la casilla
+     */
+    public void removeFicha() {
+        ficha = null;
     }
 }

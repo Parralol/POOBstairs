@@ -29,8 +29,8 @@ public abstract class Jugador {
     // METODOS PARA ALTERAR DATOS
     public void movFicha(int[] pos) {
         ficha.changePos(pos);
-
     }
+
     // METODOS PARA ASIGNAR DATOS
 
     /**
@@ -109,4 +109,12 @@ public abstract class Jugador {
         return ficha.getPos();
     }
 
+    /**
+     * retorna la ficha del jugador
+     * 
+     * @return
+     */
+    public Ficha getFicha() {
+        return ficha;
+    }
 }

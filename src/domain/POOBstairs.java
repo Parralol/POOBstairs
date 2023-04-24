@@ -43,13 +43,14 @@ public class POOBstairs {
     public void jugar(int numero) {
         int[] pos = jugadores.get(turno).getPosFicha();
         if (pos[1] + numero > 10) {
-            int xd = pos[1];
+            int xd = pos[1] + numero;
             int guarda = xd % 10;
             pos[0] = pos[0] + 1;
             pos[1] = guarda;
-
         }
         jugadores.get(turno).movFicha(pos);
+        tablero.jugar(jugadores.get(turno).getFicha(), pos);
+
     }
     // METODOS PARA RETORNAR DATOS
 
