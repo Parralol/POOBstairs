@@ -38,6 +38,9 @@ public class POOBstairs {
                 can = false;
             }
         }
+        if (a.getName() == null) {
+            throw new POOBstairsException(POOBstairsException.JUGADOR_DEBE_TENER_NOMBRE);
+        }
         if (can) {
             jugadores.add(a);
         } else {

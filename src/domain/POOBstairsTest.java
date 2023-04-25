@@ -60,6 +60,9 @@ public class POOBstairsTest {
         }
     }
 
+    /**
+     * Prueba que verifica que no permita el mismo color
+     */
     @Test
     public void shouldNotAllowSameColor() {
         Jugador fallo = new Humano(5);
