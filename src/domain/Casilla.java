@@ -51,6 +51,11 @@ public abstract class Casilla {
         return ficha;
     }
 
+    /**
+     * coloca la ficha
+     * 
+     * @param ficha
+     */
     public void setFicha(Ficha ficha) {
         this.ficha = ficha;
     }
@@ -61,4 +66,5 @@ public abstract class Casilla {
     public void removeFicha() {
         ficha = null;
     }
+
 }

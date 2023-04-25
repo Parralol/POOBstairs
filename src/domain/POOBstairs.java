@@ -22,7 +22,7 @@ public class POOBstairs {
         jugadores = new ArrayList<Jugador>();
         dado = new Dice(0);
         tablero = new Tablero();
-        turno = 0;
+        turno = 1;
         njugadas = 0;
     }
 
@@ -41,16 +41,16 @@ public class POOBstairs {
      * @param numero
      */
     public void jugar(int numero) {
-        int[] pos = jugadores.get(turno).getPosFicha();
+        int[] pos = jugadores.get(turno - 1).getPosFicha();
         if (pos[1] + numero > 10) {
             int xd = pos[1] + numero;
             int guarda = xd % 10;
             pos[0] = pos[0] + 1;
             pos[1] = guarda;
         }
-        jugadores.get(turno).movFicha(pos);
-        tablero.jugar(jugadores.get(turno).getFicha(), pos);
-
+        jugadores.get(turno - 1).movFicha(pos);
+        tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
+        increaseTurno();
     }
     // METODOS PARA RETORNAR DATOS
 
@@ -60,7 +60,7 @@ public class POOBstairs {
      * @return
      */
     public String getNombreJugadorEnTurno() {
-        return jugadores.get(turno).getName();
+        return jugadores.get(turno - 1).getName();
     }
 
     /**
@@ -91,4 +91,15 @@ public class POOBstairs {
         return dado.getNumOfTheDice();
     }
 
+    public Jugador getJugadorEnTurnoPasado() {
+        return jugadores.get(turno - 2);
+    }
+    // METODOS PRIVADOS
+
+    private void increaseTurno() {
+        if (turno > jugadores.size())
+            turno = 1;
+        else
+            turno++;
+    }
 }

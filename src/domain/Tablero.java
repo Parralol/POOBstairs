@@ -35,6 +35,7 @@ public class Tablero {
             }
         }
         int a = Integer.parseInt(pos[0] + "" + pos[1]);
+        ficha.changePos(pos);
         casillas.get(a).setFicha(ficha);
     }
     // METODOS PARA RETORNAR DATOS
