@@ -31,8 +31,19 @@ public class POOBstairs {
      * 
      * @param a
      */
-    public void addJugador(Jugador a) {
-        jugadores.add(a);
+    public void addJugador(Jugador a) throws POOBstairsException {
+        boolean can = true;
+        for (Jugador b : jugadores) {
+            if (a.getColor() == b.getColor()) {
+                can = false;
+            }
+        }
+        if (can) {
+            jugadores.add(a);
+        } else {
+            throw new POOBstairsException(POOBstairsException.NO_PUEDE_TENER_MISMO_COLOR);
+
+        }
     }
 
     /**

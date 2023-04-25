@@ -19,7 +19,6 @@ public class POOBstairsTest {
     private Jugador j2;
     private Jugador j3;
     private Jugador j4;
-    private Tablero tablero;
 
     private POOBstairs prueba;
 
@@ -35,9 +34,12 @@ public class POOBstairsTest {
         j2.setName("VizcaGod");
         j2.setColor(Color.BLUE);
         j3 = new Humano(3);
+        j3.setName("xd");
+        j3.setColor(Color.GREEN);
         j4 = new Humano(4);
+        j4.setName(null);
+        j4.setColor(Color.ORANGE);
 
-        tablero = new Tablero();
         prueba = new POOBstairs();
     }
 
@@ -48,24 +50,39 @@ public class POOBstairsTest {
      */
     @Before
     public void setUp() {
+        int[] pos = { 0, 9 };
+        j1.movFicha(pos);
+        try {
+            prueba.addJugador(j1);
+            prueba.addJugador(j2);
+        } catch (POOBstairsException e) {
+            assertFalse(true);
+        }
     }
 
     @Test
     public void shouldNotAllowSameColor() {
-
+        Jugador fallo = new Humano(5);
+        fallo.setColor(Color.ORANGE);
+        try {
+            prueba.addJugador(j4);
+            prueba.addJugador(fallo);
+            assertTrue(false);
+        } catch (POOBstairsException e) {
+            assertTrue(e.getMessage(), true);
+        }
     }
 
+    /**
+     * prueba que verifica que la ficha se mueve correctamente.
+     */
     @Test
     public void shouldMoveCorrectly() {
-        int[] pos = { 0, 9 };
         int[] posf = { 1, 5 };
-        j1.movFicha(pos);
-        prueba.addJugador(j1);
-        prueba.addJugador(j2);
         prueba.jugar(6);
-        if (prueba.getNombreJugadorEnTurno() == "VizcaGod" && prueba.getTurnoActual() == 2
-                && prueba.getJugadorEnTurnoPasado().getPosFicha() == posf) {
-            assertTrue(true);
+        if (prueba.getNombreJugadorEnTurno().equals("VizcaGod") && prueba.getTurnoActual() == 2
+                && prueba.getJugadorEnTurnoPasado().getPosFicha().equals(posf)) {
+            assertTrue(false);
         } else {
             assertFalse(prueba.getNombreJugadorEnTurno() + "-" + prueba.getTurnoActual() + "<--turno"
                     + Arrays.toString(prueba.getJugadorEnTurnoPasado().getPosFicha()) + "<-- posicion ficha", false);
