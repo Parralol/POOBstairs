@@ -1,14 +1,15 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * clase POOBstairs.
+ * clase POOBStairs.
  *
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public class POOBstairs {
+public class POOBStairs {
     private Dice dado;
     private ArrayList<Jugador> jugadores;
     private Tablero tablero;
@@ -16,9 +17,9 @@ public class POOBstairs {
     private int njugadas;
 
     /**
-     * constructor para la clase POOBstairs
+     * constructor para la clase POOBStairs
      */
-    public POOBstairs() {
+    public POOBStairs() {
         jugadores = new ArrayList<Jugador>();
         dado = new Dice(0);
         tablero = new Tablero();
@@ -31,7 +32,7 @@ public class POOBstairs {
      * 
      * @param a
      */
-    public void addJugador(Jugador a) throws POOBstairsException {
+    public void addJugador(Jugador a) throws POOBStairsException {
         boolean can = true;
         for (Jugador b : jugadores) {
             if (a.getColor() == b.getColor()) {
@@ -39,12 +40,12 @@ public class POOBstairs {
             }
         }
         if (a.getName() == null) {
-            throw new POOBstairsException(POOBstairsException.JUGADOR_DEBE_TENER_NOMBRE);
+            throw new POOBStairsException(POOBStairsException.JUGADOR_DEBE_TENER_NOMBRE);
         }
         if (can) {
             jugadores.add(a);
         } else {
-            throw new POOBstairsException(POOBstairsException.NO_PUEDE_TENER_MISMO_COLOR);
+            throw new POOBStairsException(POOBStairsException.NO_PUEDE_TENER_MISMO_COLOR);
 
         }
     }
@@ -115,5 +116,25 @@ public class POOBstairs {
             turno = 1;
         else
             turno++;
+    }
+
+    public int getAllTurns() {
+        return turno = jugadores.size();
+    }
+
+    public List<Object> getFichas() {
+        List<Object> fichas = new ArrayList<Object>();
+        for (Jugador jugador : jugadores) {
+            fichas.add(jugador.getFicha());
+        }
+        return fichas;
+    }
+
+    public void changeTurn() {
+        if (turno == jugadores.size()) {
+            turno = 1;
+        } else {
+            turno++;
+        }
     }
 }

@@ -9,23 +9,23 @@ import java.util.Arrays;
 import org.junit.*;
 
 /**
- * The test class POOBstairsTest
+ * The test class POOBStairsTest
  *
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public class POOBstairsTest {
+public class POOBStairsTest {
     private Jugador j1;
     private Jugador j2;
     private Jugador j3;
     private Jugador j4;
 
-    private POOBstairs prueba;
+    private POOBStairs prueba;
 
     /*
      * constructor para la clase de testeo
      */
-    public POOBstairsTest() {
+    public POOBStairsTest() {
 
         j1 = new Humano(1);
         j1.setName("Parralol");
@@ -40,7 +40,7 @@ public class POOBstairsTest {
         j4.setName(null);
         j4.setColor(Color.ORANGE);
 
-        prueba = new POOBstairs();
+        prueba = new POOBStairs();
     }
 
     /**
@@ -55,7 +55,7 @@ public class POOBstairsTest {
         try {
             prueba.addJugador(j1);
             prueba.addJugador(j2);
-        } catch (POOBstairsException e) {
+        } catch (POOBStairsException e) {
             assertFalse(true);
         }
     }
@@ -71,7 +71,7 @@ public class POOBstairsTest {
             prueba.addJugador(j4);
             prueba.addJugador(fallo);
             assertTrue(false);
-        } catch (POOBstairsException e) {
+        } catch (POOBStairsException e) {
             assertTrue(e.getMessage(), true);
         }
     }
@@ -94,9 +94,9 @@ public class POOBstairsTest {
 
     /**
      * Tears down the test fixture.
-     *
      * Called after every test case method.
      */
+
     @After
     public void tearDown() {
     }
