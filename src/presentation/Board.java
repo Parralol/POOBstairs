@@ -5,6 +5,7 @@ import domain.POOBStairs;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -12,6 +13,9 @@ import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -35,6 +39,7 @@ public class Board extends javax.swing.JFrame {
     private JPanel gameBoard;
     private JFileChooser choose;
     private JFileChooser chooseSave;
+    private ArrayList<Color> colores = new ArrayList<Color>();
 
 
 
@@ -100,14 +105,23 @@ public class Board extends javax.swing.JFrame {
         gameBoard = new JPanel(new GridLayout(10, 10));
         gameBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         gameBoard.isFontSet();
+        colores.add(new Color(152, 255, 152)); // Verde menta
+        colores.add(new Color(77, 166, 255)); // Azul bonito
+        colores.add(new Color(250, 113, 113)); // Rojo
+        colores.add(Color.ORANGE);
+        colores.add(Color.YELLOW);
+        colores.add(new Color(208, 86, 211)); // Magenta
+
+        int n = 0;
+        //Random random = new Random();
         Border border = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 1), BorderFactory.createEmptyBorder(5, 5, 5, 5));
         int numerator = boardSquares.length * boardSquares[0].length;
+
         for (int i = 0; i < boardSquares[0].length; i++) {
             for (int j = boardSquares.length - 1; j >= 0; j--) {
-                int r = (int) (Math.random() * 256);
-                int g = (int) (Math.random() * 256);
-                int b = (int) (Math.random() * 256);
-                Color background = new Color(r, g, b);
+                //Color colorAleatorio = colores.get(random.nextInt(colores.size()));
+                //Color background = colorAleatorio;
+                Color background = colores.get(n);
                 JLabel label = new JLabel();
                 label.setHorizontalAlignment(SwingConstants.RIGHT);
                 label.setVerticalAlignment(SwingConstants.TOP);
@@ -117,6 +131,10 @@ public class Board extends javax.swing.JFrame {
                 label.setText(String.valueOf(numerator - i * boardSquares.length - j));
                 boardSquares[j][i] = label;
                 gameBoard.add(boardSquares[j][i]);
+                n++;
+                if (n == colores.size()) {
+                    n = 0;
+                }
             }
         }
         add(gameBoard);

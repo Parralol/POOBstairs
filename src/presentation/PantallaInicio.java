@@ -34,14 +34,12 @@ public class PantallaInicio extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 new Jugadores();
-                JOptionPane.showMessageDialog(null, "Iniciar juego");
             }
         });
 
         btnCargarJuego.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "En construcción...");
-                JOptionPane.showMessageDialog(null, "Cargar juego");
             }
         });
 
