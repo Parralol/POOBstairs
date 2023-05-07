@@ -105,12 +105,12 @@ public class Board extends javax.swing.JFrame {
         gameBoard = new JPanel(new GridLayout(10, 10));
         gameBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         gameBoard.isFontSet();
-        colores.add(new Color(152, 255, 152)); // Verde menta
-        colores.add(new Color(77, 166, 255)); // Azul bonito
-        colores.add(new Color(250, 113, 113)); // Rojo
-        colores.add(Color.ORANGE);
-        colores.add(Color.YELLOW);
-        colores.add(new Color(208, 86, 211)); // Magenta
+        colores.add(new Color(125, 91, 166)); //
+        colores.add(new Color(146, 185, 189)); // Beige
+        colores.add(new Color(172, 252, 217)); // Rojo
+        colores.add(new Color(242, 247, 158)); // Magenta
+        colores.add(new Color(232, 236, 103)); // Amarillo
+        colores.add(new Color(252, 100, 113)); // Blanco
 
         int n = 0;
         //Random random = new Random();

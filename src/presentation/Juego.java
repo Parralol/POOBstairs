@@ -74,7 +74,7 @@ public class Juego extends JFrame implements ActionListener {
         l1.setBounds(480, 130, 100, 30);
         l2 = new JLabel();
         l2.setBounds(470, 5, 100, 20);
-        l3 = new JLabel("Turn of player 1");
+        l3 = new JLabel("Turno de Jugador");
         l3.setBounds(240, 20, 120, 20);
         l4 = new JLabel();
         l4.setBounds(210, 60, 180, 20);
@@ -114,16 +114,19 @@ public class Juego extends JFrame implements ActionListener {
         }
     }
 
+    public int checkTurn() {
+        int chance = (turn+1)%num;
+        l3.setText("Turn of player "+(chance+1));   // Displays which player has to roll the dice.
+        return turn%num;
+    }
+
     public void actionPerformed(ActionEvent e) {
 
-        //  When the dice is rolled we get the dicevalue and update the playerpositions accordingly and increment the turn counter by 1.
         if (e.getSource() == botonDado) {
             int valorDado = dado.getNumOfTheDice();
             turn++;
         }
 
-
-        // The replay button kills all the previous windows sets the turn counter to zero and creates a new play box for a fresh game.
         if (e.getSource() == replay) {
             dispose();
             turn = 0;

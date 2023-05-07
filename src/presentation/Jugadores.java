@@ -15,10 +15,10 @@ public class Jugadores extends JFrame implements ActionListener {
         nums = new String[]{"2", "3", "4"};
         numeroJugadores = new JComboBox<>(nums);
         numeroJugadores.addActionListener(this);
-        mensajeJugadores = new JLabel("Select number of Jugadores : ");
+        mensajeJugadores = new JLabel("Selecciona el número de Jugadores: ");
         add(mensajeJugadores);
         add(numeroJugadores);
-        setSize(200, 150);
+        setSize(250, 150);
         setLayout(new FlowLayout());
         setVisible(true);
         setLocationRelativeTo(null);
