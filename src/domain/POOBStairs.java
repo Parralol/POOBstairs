@@ -55,6 +55,7 @@ public class POOBStairs {
      * @param numero
      */
     public void jugar(int numero) {
+        System.out.println(numero);
         int[] pos = jugadores.get(turno - 1).getPosFicha();
         if (pos[1] + numero > 10) {
             int xd = pos[1] + numero;
@@ -111,7 +112,7 @@ public class POOBStairs {
     // METODOS PRIVADOS
 
     private void increaseTurno() {
-        if (turno > jugadores.size())
+        if (turno >= jugadores.size())
             turno = 1;
         else
             turno++;
@@ -137,5 +138,9 @@ public class POOBStairs {
         } else {
             turno++;
         }
+    }
+
+    public ArrayList<Jugador> getJugadores() {
+        return jugadores;
     }
 }

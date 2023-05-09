@@ -49,6 +49,7 @@ public abstract class Jugador {
      */
     public void setColor(Color color) {
         this.color = color;
+        ficha = new Ficha(color, ficha.getPos());
     }
 
     // METODOS PARA OBTENER DATOS

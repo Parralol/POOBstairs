@@ -1,5 +1,6 @@
 package presentation;
 
+import domain.Jugador;
 import domain.POOBStairs;
 
 import javax.swing.*;
@@ -55,7 +56,6 @@ public class Board extends javax.swing.JFrame {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize.width / 2, screenSize.height / 2);
         setLocationRelativeTo(null);
-        juego = new POOBStairs();
 
     }
 
@@ -114,9 +114,24 @@ public class Board extends javax.swing.JFrame {
                 JLabel label = new JLabel();
                 label.setHorizontalAlignment(SwingConstants.RIGHT);
                 label.setVerticalAlignment(SwingConstants.TOP);
-                juego.getFichas(i, j);
                 label.setOpaque(true);
                 label.setBackground(background);
+                if (juego.getFichas(i, j) != null) {
+                    ImageIcon image = null;
+                    if (juego.getFichas(i, j).getColor() == Color.YELLOW) {
+                        image = new ImageIcon("src/resources/Ficha-Amarilla.png");
+                    }
+                    if (juego.getFichas(i, j).getColor() == Color.BLUE) {
+                        image = new ImageIcon("src/resources/Ficha-Azul.png");
+                    }
+                    if (juego.getFichas(i, j).getColor() == Color.PINK) {
+                        image = new ImageIcon("src/resources/Ficha-Morada.png");
+                    }
+                    if (juego.getFichas(i, j).getColor() == Color.RED) {
+                        image = new ImageIcon("src/resources/Ficha-Roja.png");
+                    }
+                    label.setIcon(image);
+                }
                 label.setBorder(border);
                 label.setText(String.valueOf(numerator - i * boardSquares.length - j));
                 boardSquares[j][i] = label;

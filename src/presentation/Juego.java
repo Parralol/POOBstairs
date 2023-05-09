@@ -61,7 +61,7 @@ public class Juego extends JFrame implements ActionListener {
         }
         int y = 20;
         for (int i = 0; i < num; i++) {
-            playerList[i] = new JLabel("Jugador" + Integer.toString(i + 1));
+            playerList[i] = new JLabel(juego.getJugadores().get(i).getName());
             playerList[i].setBounds(20, y, 80, 20);
             add(playerList[i]);
             y += 30;
@@ -125,7 +125,7 @@ public class Juego extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == botonDado) {
-            juego.rollDice();
+            juego.jugar(juego.rollDice());
             b.dispose();
             b = new Board(juego);
 
