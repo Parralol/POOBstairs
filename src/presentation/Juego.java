@@ -1,6 +1,6 @@
 package presentation;
 
-import domain.Dice;
+import domain.POOBStairs;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,14 +11,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-
 public class Juego extends JFrame implements ActionListener {
-    private Board b = new Board();
+    private Board b;
+    private POOBStairs juego;
+
     private int num;
     private static int turn = 0;
     private static int[] playerPos = new int[Jugadores.numero];
-    //objetos para la pantalla de juego
-    private Dice dado;
+    // objetos para la pantalla de juego
     private JButton botonDado, replay;
     private JLabel l1, l2, l3, l4;
     private JLabel[] playerList = new JLabel[Jugadores.numero];
@@ -33,7 +33,7 @@ public class Juego extends JFrame implements ActionListener {
                 Random random = new Random();
                 int randomNumberTop = random.nextInt(51) + 50;
                 int randomNumberBot = random.nextInt(50);
-                //la llave es la base de la escalera y el valor es la cima
+                // la llave es la base de la escalera y el valor es la cima
                 put(randomNumberBot, randomNumberTop);
             }
         }
@@ -46,13 +46,15 @@ public class Juego extends JFrame implements ActionListener {
                 Random random = new Random();
                 int randomNumberTop = random.nextInt(51) + 50;
                 int randomNumberBot = random.nextInt(50);
-                //la llave es la base de la escalera y el valor es la cima
+                // la llave es la base de la escalera y el valor es la cima
                 put(randomNumberBot, randomNumberTop);
             }
         }
     };
 
-    Juego() {
+    Juego(POOBStairs juego) {
+        b = new Board(juego);
+        this.juego = juego;
         int num = Jugadores.numero;
         for (int i = 0; i < num; i++) {
             playerPos[i] = 0;
@@ -115,22 +117,25 @@ public class Juego extends JFrame implements ActionListener {
     }
 
     public int checkTurn() {
-        int chance = (turn+1)%num;
-        l3.setText("Turn of player "+(chance+1));   // Displays which player has to roll the dice.
-        return turn%num;
+        int chance = (turn + 1) % num;
+        l3.setText("Turn of player " + (chance + 1)); // Displays which player has to roll the dice.
+        return turn % num;
     }
 
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == botonDado) {
-            int valorDado = dado.getNumOfTheDice();
+            juego.rollDice();
+            b.dispose();
+            b = new Board(juego);
+
             turn++;
         }
 
         if (e.getSource() == replay) {
             dispose();
             turn = 0;
-            new Juego();
+            new Juego(juego);
         }
     }
 

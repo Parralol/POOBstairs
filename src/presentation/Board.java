@@ -14,9 +14,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 
 /**
  * The type POOBStairs gui.
@@ -24,14 +21,11 @@ import java.util.Random;
 public class Board extends javax.swing.JFrame {
 
     private POOBStairs juego;
-
-    private final JPanel gui = new JPanel(new BorderLayout(3, 3));
     private JLabel[][] boardSquares = new JLabel[10][10];
 
     // ATRIBUTOS GRAFICOS
     private JMenuBar menuB;
     private JMenu opciones;
-    private JMenu edit;
     private JMenuItem nuevo;
     private JMenuItem abrir;
     private JMenuItem salvar;
@@ -41,13 +35,11 @@ public class Board extends javax.swing.JFrame {
     private JFileChooser chooseSave;
     private ArrayList<Color> colores = new ArrayList<Color>();
 
-
-
-
     /**
      * Instantiates a new Conecta 4 gui.
      */
-    public Board() {
+    public Board(POOBStairs juego) {
+        this.juego = juego;
         setTitle("POOBStairs");
         prepareElements();
         prepareElementsMenu();
@@ -55,7 +47,6 @@ public class Board extends javax.swing.JFrame {
         prepareElementsBoard();
         setVisible(true);
     }
-
 
     /**
      * Prepare elements.
@@ -76,13 +67,11 @@ public class Board extends javax.swing.JFrame {
         prepareActionsMenu();
     }
 
-
     /**
      * Prepare elements menu.
      */
     private void prepareElementsMenu() {
         menuB = new JMenuBar();
-        edit = new JMenu("Editar");
         opciones = new JMenu("Opciones");
 
         nuevo = new JMenuItem("Nuevo");
@@ -95,7 +84,6 @@ public class Board extends javax.swing.JFrame {
         opciones.add(salvar);
         opciones.add(salir);
         menuB.add(opciones);
-
 
         setJMenuBar(menuB);
     }
@@ -113,18 +101,20 @@ public class Board extends javax.swing.JFrame {
         colores.add(new Color(252, 100, 113)); // Blanco
 
         int n = 0;
-        //Random random = new Random();
-        Border border = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 1), BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        // Random random = new Random();
+        Border border = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 1),
+                BorderFactory.createEmptyBorder(5, 5, 5, 5));
         int numerator = boardSquares.length * boardSquares[0].length;
 
         for (int i = 0; i < boardSquares[0].length; i++) {
             for (int j = boardSquares.length - 1; j >= 0; j--) {
-                //Color colorAleatorio = colores.get(random.nextInt(colores.size()));
-                //Color background = colorAleatorio;
+                // Color colorAleatorio = colores.get(random.nextInt(colores.size()));
+                // Color background = colorAleatorio;
                 Color background = colores.get(n);
                 JLabel label = new JLabel();
                 label.setHorizontalAlignment(SwingConstants.RIGHT);
                 label.setVerticalAlignment(SwingConstants.TOP);
+                juego.getFichas(i, j);
                 label.setOpaque(true);
                 label.setBackground(background);
                 label.setBorder(border);
@@ -140,6 +130,7 @@ public class Board extends javax.swing.JFrame {
         add(gameBoard);
 
     }
+
     /**
      * Prepare actions menu.
      */
@@ -174,13 +165,15 @@ public class Board extends javax.swing.JFrame {
      * Crea un dialogo para confirmar el reinicio del juego.
      */
     private void newAction() {
-        int n = JOptionPane.showConfirmDialog(this, "¿Desea iniciar un nuevo juego?", "Nuevo Juego", JOptionPane.YES_NO_OPTION);
+        int n = JOptionPane.showConfirmDialog(this, "¿Desea iniciar un nuevo juego?", "Nuevo Juego",
+                JOptionPane.YES_NO_OPTION);
         if (n == JOptionPane.YES_OPTION) {
             juego = new POOBStairs();
             prepareElementsBoard();
             repaint();
         }
     }
+
     /**
      * Accion que genera un mensaje de confirmacion para cerrar ka ventana.
      */
@@ -191,7 +184,6 @@ public class Board extends javax.swing.JFrame {
             System.exit(0);
         }
     }
-
 
     /**
      * Accion que define el comportamiento al cerrar el juego.
@@ -208,7 +200,6 @@ public class Board extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Accion que abre un archivo.
@@ -232,7 +223,6 @@ public class Board extends javax.swing.JFrame {
         }
     }
 
-
     /**
      * Accion que guarda un archivo.
      */
@@ -242,7 +232,6 @@ public class Board extends javax.swing.JFrame {
         chooseSave.showSaveDialog(null);
     }
 
-
     /**
      * Change turn.
      */
@@ -250,10 +239,4 @@ public class Board extends javax.swing.JFrame {
         juego.changeTurn();
     }
 
-
-
-
-
-
 }
-

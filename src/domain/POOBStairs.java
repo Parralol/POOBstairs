@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * clase POOBStairs.
@@ -122,12 +121,14 @@ public class POOBStairs {
         return turno = jugadores.size();
     }
 
-    public List<Object> getFichas() {
-        List<Object> fichas = new ArrayList<Object>();
+    public Ficha getFichas(int x, int y) {
+        Ficha res = null;
         for (Jugador jugador : jugadores) {
-            fichas.add(jugador.getFicha());
+            if (jugador.getFicha().getPos()[0] == x && jugador.getFicha().getPos()[1] == y) {
+                res = jugador.getFicha();
+            }
         }
-        return fichas;
+        return res;
     }
 
     public void changeTurn() {
