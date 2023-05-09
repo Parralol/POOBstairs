@@ -117,6 +117,7 @@ public class Board extends javax.swing.JFrame {
                 label.setOpaque(true);
                 label.setBackground(background);
                 if (juego.getFichas(i, j) != null) {
+                    // System.out.println(i + "----" + j);
                     ImageIcon image = null;
                     if (juego.getFichas(i, j).getColor() == Color.YELLOW) {
                         image = new ImageIcon("src/resources/Ficha-Amarilla.png");

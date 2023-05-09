@@ -1,5 +1,6 @@
 package presentation;
 
+import domain.Jugador;
 import domain.POOBStairs;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -125,18 +127,24 @@ public class Juego extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == botonDado) {
-            juego.jugar(juego.rollDice());
-            b.dispose();
-            b = new Board(juego);
-
+            jugar();
             turn++;
         }
 
-        if (e.getSource() == replay) {
-            dispose();
-            turn = 0;
-            new Juego(juego);
-        }
+        // if (e.getSource() == replay) {
+        // dispose();
+        // turn = 0;
+        // new Juego(juego);
+        // }
+        b.dispose();
+        b = null;
+        b = new Board(juego);
     }
 
+    private void jugar() {
+        this.juego.jugar(juego.rollDice());
+        for (Jugador a : juego.getJugadores()) {
+            // System.out.println(Arrays.toString(a.getFicha().getPos()));
+        }
+    }
 }

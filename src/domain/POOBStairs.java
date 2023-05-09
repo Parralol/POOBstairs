@@ -55,13 +55,16 @@ public class POOBStairs {
      * @param numero
      */
     public void jugar(int numero) {
-        System.out.println(numero);
+        // System.out.println(numero);
+        // System.out.println(turno - 1);
         int[] pos = jugadores.get(turno - 1).getPosFicha();
         if (pos[1] + numero > 10) {
             int xd = pos[1] + numero;
             int guarda = xd % 10;
             pos[0] = pos[0] + 1;
             pos[1] = guarda;
+        } else {
+            pos[1] += numero;
         }
         jugadores.get(turno - 1).movFicha(pos);
         tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);

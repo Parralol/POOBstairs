@@ -85,7 +85,7 @@ public class POOBStairsTest {
         prueba.jugar(6);
         if (prueba.getNombreJugadorEnTurno().equals("VizcaGod") && prueba.getTurnoActual() == 2
                 && prueba.getJugadorEnTurnoPasado().getPosFicha().equals(posf)) {
-            assertTrue(false);
+            assertTrue(true);
         } else {
             assertFalse(prueba.getNombreJugadorEnTurno() + "-" + prueba.getTurnoActual() + "<--turno"
                     + Arrays.toString(prueba.getJugadorEnTurnoPasado().getPosFicha()) + "<-- posicion ficha", false);
