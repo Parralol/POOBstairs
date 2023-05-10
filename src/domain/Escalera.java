@@ -19,12 +19,12 @@ public class Escalera extends Casilla {
         super(pos);
     }
 
-    public int[] action() {
-        return ref;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setRef(int[] x) {
-        ref = x;
+    public int[] action() {
+        return null;
     }
 
     public int getId() {

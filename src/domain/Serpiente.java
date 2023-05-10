@@ -23,8 +23,8 @@ public class Serpiente extends Casilla {
         return ref;
     }
 
-    public void setRef(int[] x) {
-        ref = x;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {

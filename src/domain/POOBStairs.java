@@ -54,7 +54,7 @@ public class POOBStairs {
      * 
      * @param numero
      */
-    public void jugar(int numero) {
+    public void jugar(int numero) throws POOBStairsException {
         // System.out.println(numero);
         // System.out.println(turno - 1);
         int[] pos = jugadores.get(turno - 1).getPosFicha();

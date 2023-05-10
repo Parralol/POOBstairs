@@ -1,7 +1,6 @@
 package domain;
 
 import java.awt.Color;
-import java.lang.invoke.LambdaMetafactory;
 
 /**
  * Clase Casilla

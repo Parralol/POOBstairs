@@ -12,6 +12,7 @@ public class POOBStairsException extends Exception {
     static String NO_PUEDE_TENER_MISMO_COLOR = "Error en los colores, no pueden existir dos iguales";
     static String JUGADOR_DEBE_TENER_NOMBRE = "El jugador debe de poseer nombre";
     static String dEBE_EXISTIR_2JUGADORES = "No puedes colocar 0 jugadores";
+    static String GANADOR = "Ha ganado!";
 
     public POOBStairsException(String message) {
         super(message);
