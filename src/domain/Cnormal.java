@@ -16,4 +16,8 @@ public class Cnormal extends Casilla {
     public Cnormal(int[] pos) {
         super(pos);
     }
+
+    public int[] action() {
+        return null;
+    }
 }
