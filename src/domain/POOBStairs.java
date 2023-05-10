@@ -66,8 +66,12 @@ public class POOBStairs {
         } else {
             pos[1] += numero;
         }
-        jugadores.get(turno - 1).movFicha(pos);
-        tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
+        try {
+            jugadores.get(turno - 1).movFicha(pos);
+            tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
+        } catch (Exception e) {
+            throw new POOBStairsException(getNombreJugadorEnTurno() + " " + POOBStairsException.GANADOR);
+        }
         increaseTurno();
     }
     // METODOS PARA RETORNAR DATOS

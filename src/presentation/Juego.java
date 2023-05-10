@@ -1,6 +1,5 @@
 package presentation;
 
-import domain.Jugador;
 import domain.POOBStairs;
 
 import javax.swing.*;
@@ -8,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -149,8 +147,9 @@ public class Juego extends JFrame implements ActionListener {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        for (Jugador a : juego.getJugadores()) {
-            // System.out.println(Arrays.toString(a.getFicha().getPos()));
-        }
+
+        // for (Jugador a : juego.getJugadores()) {
+        // System.out.println(Arrays.toString(a.getFicha().getPos()));
+        // }
     }
 }

@@ -1,6 +1,5 @@
 package presentation;
 
-import domain.Jugador;
 import domain.POOBStairs;
 
 import javax.swing.*;
