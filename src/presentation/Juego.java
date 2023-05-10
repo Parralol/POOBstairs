@@ -142,7 +142,9 @@ public class Juego extends JFrame implements ActionListener {
     }
 
     private void jugar() {
-        this.juego.jugar(juego.rollDice());
+        int b = juego.rollDice();
+        System.out.println(b);
+        this.juego.jugar(b);
         for (Jugador a : juego.getJugadores()) {
             // System.out.println(Arrays.toString(a.getFicha().getPos()));
         }
