@@ -15,11 +15,19 @@ public abstract class Jugador {
     private Color color;
     private boolean humano;
     private Ficha ficha;
+    private int numEscaleras;
+    private int numSerpientes;
+    private int numCasEsp;
+    private int casMax;
 
     /**
      * constructor para Jugador
      */
     public Jugador(boolean humano, int turno) {
+        numEscaleras = 0;
+        numSerpientes = 0;
+        numCasEsp = 0;
+        casMax = 0;
         int[] pos = { 0, 0 };
         ficha = new Ficha(color, pos);
         this.humano = humano;
@@ -52,6 +60,24 @@ public abstract class Jugador {
         ficha = new Ficha(color, ficha.getPos());
     }
 
+    public void increaseMaxCas(int x, int y) {
+        if (x > ficha.getPos()[0] && y > ficha.getPos()[1]) {
+            int a = Integer.parseInt(x + "" + y);
+            casMax = a;
+        }
+    }
+
+    public void increaseSerp() {
+        numSerpientes++;
+    }
+
+    public void increaseEsc() {
+        numEscaleras++;
+    }
+
+    public void increaseCasEsp() {
+        numCasEsp++;
+    }
     // METODOS PARA OBTENER DATOS
 
     /**
@@ -117,5 +143,21 @@ public abstract class Jugador {
      */
     public Ficha getFicha() {
         return ficha;
+    }
+
+    public int getNumEsc() {
+        return numEscaleras;
+    }
+
+    public int getNumSer() {
+        return numSerpientes;
+    }
+
+    public int getNumCasEsp() {
+        return numCasEsp;
+    }
+
+    public int getMaxCas() {
+        return casMax;
     }
 }

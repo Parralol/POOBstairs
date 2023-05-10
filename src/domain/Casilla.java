@@ -1,6 +1,7 @@
 package domain;
 
 import java.awt.Color;
+import java.lang.invoke.LambdaMetafactory;
 
 /**
  * Clase Casilla
@@ -66,5 +67,7 @@ public abstract class Casilla {
     public void removeFicha() {
         ficha = null;
     }
+
+    public abstract int[] action();
 
 }
