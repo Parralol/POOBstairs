@@ -86,6 +86,15 @@ public class POOBStairs {
     }
 
     /**
+     * returna TRUE si es humano, de lo contrario false
+     * 
+     * @return
+     */
+    public boolean JugadorEnTurnoEsHumano() {
+        return jugadores.get(turno - 1).isItHuman();
+    }
+
+    /**
      * retorna el turno actual
      * 
      * @return

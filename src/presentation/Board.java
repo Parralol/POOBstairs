@@ -1,5 +1,7 @@
 package presentation;
 
+import domain.Jugador;
+import domain.Casilla;
 import domain.POOBStairs;
 
 import javax.swing.*;
@@ -14,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * The type POOBStairs gui.
@@ -21,7 +24,9 @@ import java.util.ArrayList;
 public class Board extends javax.swing.JFrame {
 
     private POOBStairs juego;
-    private JLabel[][] boardSquares = new JLabel[10][10];
+    private Casilla[][] tablero;
+    private HashMap<Integer, Casilla> casillas;
+    private static final int size = 10;
 
     // ATRIBUTOS GRAFICOS
     private JMenuBar menuB;
@@ -34,12 +39,13 @@ public class Board extends javax.swing.JFrame {
     private JFileChooser choose;
     private JFileChooser chooseSave;
     private ArrayList<Color> colores = new ArrayList<Color>();
-
+    ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
     /**
      * Instantiates a new Conecta 4 gui.
      */
     public Board(POOBStairs juego) {
         this.juego = juego;
+        setIconImage(ico.getImage());
         setTitle("POOBStairs");
         prepareElements();
         prepareElementsMenu();
@@ -70,6 +76,7 @@ public class Board extends javax.swing.JFrame {
      * Prepare elements menu.
      */
     private void prepareElementsMenu() {
+
         menuB = new JMenuBar();
         opciones = new JMenu("Opciones");
 
@@ -89,6 +96,8 @@ public class Board extends javax.swing.JFrame {
 
     private void prepareElementsBoard() {
 
+
+        JLabel[][] boardSquares = new JLabel[size][size];
         gameBoard = new JPanel(new GridLayout(10, 10));
         gameBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         gameBoard.isFontSet();

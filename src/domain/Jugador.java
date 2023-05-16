@@ -10,11 +10,11 @@ import java.awt.Color;
  */
 public abstract class Jugador {
 
-    private String nombre;
+    protected String nombre;
     private int turno;
-    private Color color;
+    protected Color color;
     private boolean humano;
-    private Ficha ficha;
+    protected Ficha ficha;
     private int numEscaleras;
     private int numSerpientes;
     private int numCasEsp;

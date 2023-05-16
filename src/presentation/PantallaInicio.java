@@ -6,7 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PantallaInicio extends JFrame {
+    ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
     public PantallaInicio() {
+
+        setIconImage(ico.getImage());
         setTitle("Pantalla de Inicio");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 200);
@@ -44,7 +47,19 @@ public class PantallaInicio extends JFrame {
 
         btnReglas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ver reglas");
+                JOptionPane.showMessageDialog(null, "Escaleras y serpientes es un juego de mesa que consiste\n" +
+                        "en desplazarse por un tablero con el fin de ser el primero en\n" +
+                        "llegar a la casilla final. \n" +
+                        "En este juego participan dos o más personas en un tablero\n" +
+                        "dividido en casillas numeradas que contiene escaleras\n" +
+                        "(permiten llegar más rápido a la meta) y serpientes (hacen\n" +
+                        "que el jugador retroceda). \n" +
+                        "Los movimientos se determinan con un dado lanzado por los\n" +
+                        "jugadores en su turno correspondiente.\n" +
+                        "Es un antiguo juego indio diseñado para dar algunas\n" +
+                        "lecciones de moral, donde el progreso de un jugador en el\n" +
+                        "tablero representa una vida influida por virtudes —las\n" +
+                        "escaleras— y por vicios —las serpientes—.");
             }
         });
 

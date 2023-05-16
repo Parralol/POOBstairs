@@ -17,8 +17,11 @@ public class Jugadores extends JFrame implements ActionListener {
     private JComboBox<String> numeroJugadores; // JComboBox is used for creating dropdown of player count.
     private JLabel mensajeJugadores;
     private final String[] nums;
+    ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
 
     Jugadores() {
+
+        setIconImage(ico.getImage());
         juego = new POOBStairs();
         nums = new String[] { "2", "3", "4" };
         numeroJugadores = new JComboBox<>(nums);
