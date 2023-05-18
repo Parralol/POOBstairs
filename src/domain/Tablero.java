@@ -31,7 +31,7 @@ public class Tablero {
      * @param pos
      * @throws POOBStairsException
      */
-    public void jugar(Ficha ficha, int[] pos) throws POOBStairsException {
+    public int[] jugar(Ficha ficha, int[] pos) throws POOBStairsException {
         int b = 0;
         for (Casilla a : casillas) {
             if (a.getColor() == ficha.getColor()) {
@@ -59,8 +59,14 @@ public class Tablero {
             int[] ay = { un, dos };
             pos = ay;
         }
-        ficha.changePos(pos);
-        casillas.get(b).setFicha(ficha);
+        if (isItSerOrEsc(casillas.get(b))) {
+            playSerOrEsc(casillas.get(b), b, ficha);
+            return pos;
+        } else {
+            ficha.changePos(pos);
+            casillas.get(b).setFicha(ficha);
+            return pos;
+        }
     }
     // METODOS PARA RETORNAR DATOS
 
@@ -163,4 +169,34 @@ public class Tablero {
         return res;
     }
 
+    private boolean isItSerOrEsc(Casilla a) {
+        boolean res = false;
+        String clase = a.getClass().getName();
+        if (clase == "Serpiente" || clase == "Escalera")
+            res = true;
+        return res;
+    }
+
+    private int[] playSerOrEsc(Casilla b, int prev, Ficha r) {
+        int[] xd = null;
+        int id = b.getId();
+        for (Casilla a : casillas) {
+            if (id == a.getId() && prev < convert(a.getPos())) {
+                xd = a.getPos();
+                r.changePos(xd);
+                a.setFicha(r);
+            }
+        }
+        return xd;
+    }
+
+    private int convert(int[] xd) {
+        int b = 9165160;
+        if (xd[1] != 10) {
+            b = Integer.parseInt(xd[0] + "" + xd[1]);
+        } else {
+            b = Integer.parseInt(xd[0] + "" + 0);
+        }
+        return b;
+    }
 }

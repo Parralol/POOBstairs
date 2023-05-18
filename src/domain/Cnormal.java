@@ -20,4 +20,8 @@ public class Cnormal extends Casilla {
     public int[] action() {
         return null;
     }
+
+    public int getId() {
+        return -1;
+    }
 }

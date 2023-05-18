@@ -69,4 +69,6 @@ public abstract class Casilla {
 
     public abstract int[] action();
 
+    public abstract int getId();
+
 }
