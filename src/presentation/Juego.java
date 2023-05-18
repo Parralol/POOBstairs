@@ -52,6 +52,8 @@ public class Juego extends JFrame implements ActionListener {
         }
     };
 
+    ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
+
     Juego(POOBStairs juego) {
         b = new Board(juego);
         this.juego = juego;
@@ -88,6 +90,7 @@ public class Juego extends JFrame implements ActionListener {
         add(l2);
         add(l3);
         add(l4);
+        setIconImage(ico.getImage());
         setSize(600, 200);
         setLayout(null);
         setVisible(true);
