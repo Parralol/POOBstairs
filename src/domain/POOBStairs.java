@@ -67,8 +67,8 @@ public class POOBStairs {
             pos[1] += numero;
         }
         try {
+            pos = tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
             jugadores.get(turno - 1).movFicha(pos);
-            tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
         } catch (Exception e) {
             throw new POOBStairsException(getNombreJugadorEnTurno() + " " + POOBStairsException.GANADOR);
         }
