@@ -21,7 +21,10 @@ public abstract class Jugador {
     private int casMax;
 
     /**
-     * constructor para Jugador
+     * constructor para la clase abstracta Jugador
+     * 
+     * @param humano
+     * @param turno
      */
     public Jugador(boolean humano, int turno) {
         numEscaleras = 0;
@@ -67,14 +70,23 @@ public abstract class Jugador {
         }
     }
 
+    /**
+     * incrementa el numero de casillas serpiente en las que ha caido
+     */
     public void increaseSerp() {
         numSerpientes++;
     }
 
+    /**
+     * incrementa el numero de casillas Escalera en las que ha caido
+     */
     public void increaseEsc() {
         numEscaleras++;
     }
 
+    /**
+     * incrementa el numero de casillas casillas especiales en las que ha caido
+     */
     public void increaseCasEsp() {
         numCasEsp++;
     }
@@ -145,18 +157,38 @@ public abstract class Jugador {
         return ficha;
     }
 
+    /**
+     * retorna el numero de casillas tipo escaleras en las que el jugador ha caido
+     * 
+     * @return
+     */
     public int getNumEsc() {
         return numEscaleras;
     }
 
+    /**
+     * retorna el numero de casillas tipo Serpiente en las que el jugador ha caido
+     * 
+     * @return
+     */
     public int getNumSer() {
         return numSerpientes;
     }
 
+    /**
+     * retorna el numero de casillas tipo especiales en las que el jugador ha caido
+     * 
+     * @return
+     */
     public int getNumCasEsp() {
         return numCasEsp;
     }
 
+    /**
+     * retorna el numero de casillas en las que el jugador ha caido
+     * 
+     * @return
+     */
     public int getMaxCas() {
         return casMax;
     }

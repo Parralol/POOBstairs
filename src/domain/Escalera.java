@@ -19,6 +19,11 @@ public class Escalera extends Casilla {
         super(pos);
     }
 
+    /**
+     * define el Id de la casilla
+     * 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
@@ -27,6 +32,9 @@ public class Escalera extends Casilla {
         return null;
     }
 
+    /**
+     * retorna el id de la casilla
+     */
     public int getId() {
         return id;
     }

@@ -67,8 +67,18 @@ public abstract class Casilla {
         ficha = null;
     }
 
+    /**
+     * define una accion y retorna un int[] en caso de ser necesario
+     * 
+     * @return
+     */
     public abstract int[] action();
 
+    /**
+     * retorna el id de la casilla, si es normal o otro tipo retornara -1
+     * 
+     * @return
+     */
     public abstract int getId();
 
 }

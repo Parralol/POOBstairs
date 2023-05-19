@@ -10,6 +10,11 @@ import java.awt.Color;
  */
 public class Maquina extends Jugador {
 
+    /**
+     * constructor para la clase maquina
+     * 
+     * @param turno
+     */
     public Maquina(int turno) {
         super(false, turno);
     }

@@ -23,10 +23,18 @@ public class Serpiente extends Casilla {
         return ref;
     }
 
+    /**
+     * define el id de la casilla
+     * 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * retorna el id de la casilla
+     */
     public int getId() {
         return id;
     }

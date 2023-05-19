@@ -123,14 +123,31 @@ public class POOBStairs {
         return dado.getNumOfTheDice();
     }
 
+    /**
+     * obtiene al jugador en el turno pasado
+     * 
+     * @return
+     */
     public Jugador getJugadorEnTurnoPasado() {
         return jugadores.get(turno - 2);
     }
 
+    /**
+     * Retorna todos los turnos en total
+     * 
+     * @return
+     */
     public int getAllTurns() {
         return turno = jugadores.size();
     }
 
+    /**
+     * Retorna todas las fichas del juego
+     * 
+     * @param x
+     * @param y
+     * @return
+     */
     public Ficha getFichas(int x, int y) {
         Ficha res = null;
         for (Jugador jugador : jugadores) {
@@ -141,6 +158,9 @@ public class POOBStairs {
         return res;
     }
 
+    /**
+     * cambia el turno del juego
+     */
     public void changeTurn() {
         if (turno == jugadores.size()) {
             turno = 1;
@@ -149,12 +169,20 @@ public class POOBStairs {
         }
     }
 
+    /**
+     * retorna un ArrayList<Jugador> de todos los jugadores
+     * 
+     * @return
+     */
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
 
     // METODOS PRIVADOS
 
+    /**
+     * incrementa el turno
+     */
     private void increaseTurno() {
         if (turno >= jugadores.size())
             turno = 1;

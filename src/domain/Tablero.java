@@ -145,6 +145,13 @@ public class Tablero {
         }
     }
 
+    /**
+     * genera una pos al azar
+     * 
+     * @param x
+     * @param y
+     * @return
+     */
     private int[] generateRandom(int x, int y) {
         Random xd = new Random();
         while (true) {
@@ -159,6 +166,12 @@ public class Tablero {
 
     }
 
+    /**
+     * valida que exista la casilla
+     * 
+     * @param pos
+     * @return
+     */
     private boolean validateCas(int[] pos) {
         boolean res = true;
         for (Casilla a : casillas) {
@@ -169,6 +182,12 @@ public class Tablero {
         return res;
     }
 
+    /**
+     * verifica si es serpiente o escalera
+     * 
+     * @param a
+     * @return
+     */
     private boolean isItSerOrEsc(Casilla a) {
         boolean res = false;
         String clase = a.getClass().getName();
@@ -177,6 +196,14 @@ public class Tablero {
         return res;
     }
 
+    /**
+     * juega la casilla si es serpiente o escalera
+     * 
+     * @param b
+     * @param prev
+     * @param r
+     * @return
+     */
     private int[] playSerOrEsc(Casilla b, int prev, Ficha r) {
         int[] xd = null;
         int id = b.getId();
@@ -199,6 +226,12 @@ public class Tablero {
         return xd;
     }
 
+    /**
+     * convierte un numero a entero
+     * 
+     * @param xd
+     * @return
+     */
     private int convert(int[] xd) {
         int b = 9165160;
         if (xd[1] != 10) {
