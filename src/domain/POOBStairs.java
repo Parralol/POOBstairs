@@ -74,6 +74,7 @@ public class POOBStairs {
         }
         increaseTurno();
     }
+
     // METODOS PARA RETORNAR DATOS
 
     /**
@@ -125,14 +126,6 @@ public class POOBStairs {
     public Jugador getJugadorEnTurnoPasado() {
         return jugadores.get(turno - 2);
     }
-    // METODOS PRIVADOS
-
-    private void increaseTurno() {
-        if (turno >= jugadores.size())
-            turno = 1;
-        else
-            turno++;
-    }
 
     public int getAllTurns() {
         return turno = jugadores.size();
@@ -159,4 +152,14 @@ public class POOBStairs {
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
+
+    // METODOS PRIVADOS
+
+    private void increaseTurno() {
+        if (turno >= jugadores.size())
+            turno = 1;
+        else
+            turno++;
+    }
+
 }

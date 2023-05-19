@@ -181,10 +181,19 @@ public class Tablero {
         int[] xd = null;
         int id = b.getId();
         for (Casilla a : casillas) {
-            if (id == a.getId() && prev < convert(a.getPos())) {
-                xd = a.getPos();
-                r.changePos(xd);
-                a.setFicha(r);
+            if (b.getClass().getName() == "Serpiente") {
+                if (id == a.getId() && prev < convert(a.getPos())) {
+                    xd = a.getPos();
+                    r.changePos(xd);
+                    a.setFicha(r);
+                }
+            }
+            if (b.getClass().getName() == "Escalera") {
+                if (id == a.getId() && prev > convert(a.getPos())) {
+                    xd = a.getPos();
+                    r.changePos(xd);
+                    a.setFicha(r);
+                }
             }
         }
         return xd;
