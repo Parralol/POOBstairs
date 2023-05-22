@@ -241,4 +241,9 @@ public class Tablero {
         }
         return b;
     }
+
+    public String getType(int x, int y) {
+        //ToDO: retornar el tipo de ficha para el GUI
+        return null;
+    }
 }

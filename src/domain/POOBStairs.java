@@ -157,6 +157,11 @@ public class POOBStairs {
         return res;
     }
 
+    public Tablero getCasillas(int x, int y) {
+        //ToDo: implementar este método
+        return null;
+    }
+
     /**
      * cambia el turno del juego
      */

@@ -120,6 +120,8 @@ public class Board extends javax.swing.JFrame {
                 // Color background = colorAleatorio;
                 Color background = colores.get(n);
                 JLabel label = new JLabel();
+                JLabel tipoCasilla = new JLabel();
+
                 label.setHorizontalAlignment(SwingConstants.RIGHT);
                 label.setVerticalAlignment(SwingConstants.TOP);
                 label.setOpaque(true);
@@ -140,6 +142,15 @@ public class Board extends javax.swing.JFrame {
                         image = new ImageIcon("src/resources/Ficha-Roja.png");
                     }
                     label.setIcon(image);
+                }
+                if (juego.getCasillas(i, j) != null){
+                    if (juego.getCasillas(i, j).getType(i,j) == "escalera"){
+                        tipoCasilla.setText("Escalera");
+                    } else if (juego.getCasillas(i, j).getType(i,j) == "serpiente"){
+                        tipoCasilla.setText("Serpiente");
+                    } else if (juego.getCasillas(i, j).getType(i,j) == "normal"){
+                        tipoCasilla.setText("");
+                    }
                 }
                 label.setBorder(border);
                 if (i % 2 == 0) {
