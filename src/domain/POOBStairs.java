@@ -45,7 +45,6 @@ public class POOBStairs {
             jugadores.add(a);
         } else {
             throw new POOBStairsException(POOBStairsException.NO_PUEDE_TENER_MISMO_COLOR);
-
         }
     }
 

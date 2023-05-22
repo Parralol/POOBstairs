@@ -115,7 +115,7 @@ public class Board extends javax.swing.JFrame {
         int numerator = boardSquares.length * boardSquares[0].length;
 
         for (int i = 0; i < boardSquares[0].length; i++) {
-            for (int j = boardSquares.length - 1; j >= 0; j--) {
+            for (int j = 0; j < boardSquares.length; j++) {
                 // Color colorAleatorio = colores.get(random.nextInt(colores.size()));
                 // Color background = colorAleatorio;
                 Color background = colores.get(n);
@@ -142,7 +142,11 @@ public class Board extends javax.swing.JFrame {
                     label.setIcon(image);
                 }
                 label.setBorder(border);
-                label.setText(String.valueOf(numerator - i * boardSquares.length - j));
+                if (i % 2 == 0) {
+                    label.setText(String.valueOf(i * boardSquares.length + j +1));
+                } else {
+                    label.setText(String.valueOf(i * boardSquares.length + (boardSquares[0].length - j))) ;
+                }
                 boardSquares[j][i] = label;
                 gameBoard.add(boardSquares[j][i]);
                 n++;

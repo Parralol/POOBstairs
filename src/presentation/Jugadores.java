@@ -20,7 +20,7 @@ public class Jugadores extends JFrame implements ActionListener {
     ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
 
     Jugadores() {
-
+        this.setTitle("Jugadores");
         setIconImage(ico.getImage());
         juego = new POOBStairs();
         nums = new String[] { "2", "3", "4" };

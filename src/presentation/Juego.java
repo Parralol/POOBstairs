@@ -2,11 +2,18 @@ package presentation;
 
 import domain.POOBStairs;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -55,6 +62,7 @@ public class Juego extends JFrame implements ActionListener {
     ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
 
     Juego(POOBStairs juego) {
+        this.setTitle("Control de Juego");
         b = new Board(juego);
         this.juego = juego;
         int num = Jugadores.numero;
@@ -71,6 +79,15 @@ public class Juego extends JFrame implements ActionListener {
 
         botonDado = new JButton();
         botonDado.setBounds(450, 30, 100, 100);
+        try {
+            Image dInicial = ImageIO.read(new File("src/resources/dadob1.png")).getScaledInstance(100,
+                    100, Image.SCALE_DEFAULT);
+            botonDado.setIcon(new ImageIcon(dInicial));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         replay = new JButton("RE-PLAY");
         replay.setBounds(340, 30, 100, 100);
         replay.setVisible(false);
@@ -82,6 +99,9 @@ public class Juego extends JFrame implements ActionListener {
         l3.setBounds(240, 20, 120, 20);
         l4 = new JLabel();
         l4.setBounds(210, 60, 180, 20);
+
+
+
         botonDado.addActionListener(this);
         replay.addActionListener(this);
         add(botonDado);
@@ -129,6 +149,35 @@ public class Juego extends JFrame implements ActionListener {
 
         if (e.getSource() == botonDado) {
             jugar();
+
+            try {
+
+                Image dado1 = ImageIO.read(new File("src/resources/dadob1.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
+                Image dado2 = ImageIO.read(new File("src/resources/dadob2.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
+                Image dado3 = ImageIO.read(new File("src/resources/dadob3.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
+                Image dado4 = ImageIO.read(new File("src/resources/dadob4.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
+                Image dado5 = ImageIO.read(new File("src/resources/dadob5.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
+                Image dado6 = ImageIO.read(new File("src/resources/dadob6.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
+
+                int b = juego.rollDice();
+                if (b == 0) {
+                    botonDado.setIcon(new ImageIcon(dado1));
+                } else if (b == 1) {
+                    botonDado.setIcon(new ImageIcon(dado2));
+                } else if (b == 2) {
+                    botonDado.setIcon(new ImageIcon(dado3));
+                } else if (b == 3) {
+                    botonDado.setIcon(new ImageIcon(dado4));
+                } else if (b == 4) {
+                    botonDado.setIcon(new ImageIcon(dado5));
+                } else if (b == 5) {
+                    botonDado.setIcon(new ImageIcon(dado6));
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+
             turn++;
         }
 
@@ -154,5 +203,10 @@ public class Juego extends JFrame implements ActionListener {
         // for (Jugador a : juego.getJugadores()) {
         // System.out.println(Arrays.toString(a.getFicha().getPos()));
         // }
+    }
+
+    public static void main (String[] args) throws IOException {
+        ImageIcon a;
+        a = new ImageIcon("resources/dadob1.png");
     }
 }

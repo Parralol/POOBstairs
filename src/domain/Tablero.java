@@ -85,8 +85,8 @@ public class Tablero {
      * genera las casillas del tablero
      */
     private void generateCasillasNormal() {
-        Random x = new Random();
         int id = 0;
+        Random x = new Random();
         for (int i = 0; i <= 10; i++) {
             for (int j = 0; j <= 10; j++) {
 
