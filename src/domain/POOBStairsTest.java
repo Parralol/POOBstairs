@@ -97,6 +97,19 @@ public class POOBStairsTest {
         }
     }
 
+    @Test
+    public void shouldCreateEscaySer() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+
+                if (prueba.getCasillas(j, i).getClass().getSimpleName() == "Escalera") {
+                    assertTrue(prueba.getCasillas(j, i).getClass().getName(), false);
+                }
+            }
+        }
+        assertFalse(true);
+    }
+
     /**
      * Tears down the test fixture.
      * Called after every test case method.

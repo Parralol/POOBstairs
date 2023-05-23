@@ -98,59 +98,69 @@ public class Tablero {
     private void generateCasillasNormal() {
         int id = 0;
         Random x = new Random();
+        int[] inic = { 0, 0 };
+        int[] fin = { 9, 9 };
         for (int i = 0; i <= 10; i++) {
             for (int j = 0; j <= 10; j++) {
-
                 int[] pos = { i, j };
                 if (validateCas(pos)) {
                     int p = x.nextInt(200);
+                    System.out.println(p);
                     // Casillas
-                    if (p <= 130) {
-                        if (p <= 70) {
-                            casillas.add(new Cnormal(pos));
-                        }
-                        if (p >= 70 && p <= 80) {
-                            // saltarina n
-                            casillas.add(new Cnormal(pos));
-                        }
-                        if (p >= 80 && p <= 90) {
-                            // saltarina inversa n
-                            casillas.add(new Cnormal(pos));
-                        }
-                        if (p >= 90 && p <= 100) {
-                            // Mortal
-                            casillas.add(new Cnormal(pos));
-                        }
-                        if (p >= 100 && p <= 110) {
-                            // avance
-                            casillas.add(new Cnormal(pos));
-                        }
-                        if (p >= 110 && p <= 120) {
-                            // retroceso
-                            casillas.add(new Cnormal(pos));
-                        }
-                        if (p >= 120 && p <= 130) {
-                            // preguntona
-                            casillas.add(new Cnormal(pos));
-                        }
+                    if (!pos.equals(inic) || !pos.equals(fin)) {
+                        if (p <= 130) {
+                            if (p <= 70) {
+                                casillas.add(new Cnormal(pos));
+                            }
+                            if (p >= 70 && p <= 80) {
+                                // saltarina n
+                                casillas.add(new Cnormal(pos));
+                            }
+                            if (p >= 80 && p <= 90) {
+                                // saltarina inversa n
+                                casillas.add(new Cnormal(pos));
+                            }
+                            if (p >= 90 && p <= 100) {
+                                // Mortal
+                                casillas.add(new Cnormal(pos));
+                            }
+                            if (p >= 100 && p <= 110) {
+                                // avance
+                                casillas.add(new Cnormal(pos));
+                            }
+                            if (p >= 110 && p <= 120) {
+                                // retroceso
+                                casillas.add(new Cnormal(pos));
+                            }
+                            if (p >= 120 && p <= 130) {
+                                // preguntona
+                                casillas.add(new Cnormal(pos));
+                            }
 
-                    } else { // serpientes y escaleras
-                        if (p >= 131 && p <= 170) {
-                            Serpiente xd = new Serpiente(pos);
-                            xd.setId(id);
-                            Serpiente xd2 = new Serpiente(generateRandom(pos[0], pos[1]));
-                            xd2.setId(id);
-                            casillas.add(xd);
-                            casillas.add(xd2);
-                            id++;
-                        } else {
-                            Escalera xd = new Escalera(pos);
-                            Escalera xd2 = new Escalera(generateRandom(pos[0], pos[1]));
-                            casillas.add(xd);
-                            casillas.add(xd2);
+                        } else { // serpientes y escaleras
+                            if (p >= 131 && p <= 170) {
+                                Serpiente xd = new Serpiente(pos);
+                                xd.setId(id);
+                                System.out.println(id + "-----1");
+                                Serpiente xd2 = new Serpiente(generateRandom(pos[0], pos[1]));
+                                xd2.setId(id);
+                                System.out.println(id + "-----1");
+                                casillas.add(xd);
+                                casillas.add(xd2);
+                                System.out.println("aqui");
+                                id++;
+                            } else {
+                                Escalera xd = new Escalera(pos);
+                                Escalera xd2 = new Escalera(generateRandom(pos[0], pos[1]));
+                                xd.setId(id);
+                                xd2.setId(id);
+                                casillas.add(xd);
+                                casillas.add(xd2);
+                                id++;
+                            }
+
                         }
                     }
-
                 }
             }
         }

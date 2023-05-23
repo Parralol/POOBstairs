@@ -2,7 +2,10 @@ package presentation;
 
 import domain.Jugador;
 import domain.Casilla;
+import domain.Cnormal;
+import domain.Escalera;
 import domain.POOBStairs;
+import domain.Serpiente;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -98,6 +101,7 @@ public class Board extends javax.swing.JFrame {
     private void prepareElementsBoard() {
 
         JLabel[][] boardSquares = new JLabel[size][size];
+        JLabel[][] boardSquares2 = new JLabel[size][size];
         gameBoard = new JPanel(new GridLayout(10, 10));
         gameBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         gameBoard.isFontSet();
@@ -121,9 +125,11 @@ public class Board extends javax.swing.JFrame {
                 Color background = colores.get(n);
                 JLabel label = new JLabel();
                 JLabel tipoCasilla = new JLabel();
-
+                String prueba = "";
                 label.setHorizontalAlignment(SwingConstants.RIGHT);
                 label.setVerticalAlignment(SwingConstants.TOP);
+                tipoCasilla.setHorizontalAlignment(SwingConstants.RIGHT);
+                tipoCasilla.setVerticalAlignment(SwingConstants.BOTTOM);
                 label.setOpaque(true);
                 label.setBackground(background);
                 if (juego.getFichas(i, j) != null) {
@@ -144,22 +150,26 @@ public class Board extends javax.swing.JFrame {
                     label.setIcon(image);
                 }
                 if (juego.getCasillas(i, j) != null) {
-                    if (juego.getCasillas(i, j).getClass().getName() == "Escalera") {
-                        tipoCasilla.setText("Escalera" + " " + juego.getCasillas(i, j).getId());
-                    } else if (juego.getCasillas(i, j).getClass().getName() == "Serpiente") {
-                        tipoCasilla.setText("Serpiente" + " " + juego.getCasillas(i, j).getId());
-                    } else if (juego.getCasillas(i, j).getClass().getName() == "Cnormal") {
+
+                    if (juego.getCasillas(i, j) instanceof Escalera) {
+                        prueba = "\n Escalera" + " - " + juego.getCasillas(i, j).getId();
+                    } else if (juego.getCasillas(i, j) instanceof Serpiente) {
+                        prueba = "\n Serpiente" + " - " + juego.getCasillas(i, j).getId();
+                    } else if (juego.getCasillas(i, j) instanceof Cnormal) {
                         tipoCasilla.setText("");
                     }
                 }
                 label.setBorder(border);
+                tipoCasilla.setBorder(border);
                 if (i % 2 == 0) {
-                    label.setText(String.valueOf(i * boardSquares.length + j + 1));
+                    label.setText(String.valueOf(i * boardSquares.length + j + 1) + prueba);
                 } else {
                     label.setText(String.valueOf(i * boardSquares.length + (boardSquares[0].length - j)));
                 }
                 boardSquares[j][i] = label;
+                boardSquares2[j][i] = tipoCasilla;
                 gameBoard.add(boardSquares[j][i]);
+                // gameBoard.add(boardSquares2[j][i]);
                 n++;
                 if (n == colores.size()) {
                     n = 0;
