@@ -79,6 +79,17 @@ public class Tablero {
         return casillas;
     }
 
+    public Casilla getCasilla(int x, int y) {
+        Casilla res = null;
+        int[] guard = { x, y };
+        for (Casilla a : casillas) {
+            if (Arrays.equals(a.getPos(), guard)) {
+                res = a;
+            }
+        }
+        return res;
+
+    }
     // METODOS PRIVADOS
 
     /**
@@ -243,7 +254,7 @@ public class Tablero {
     }
 
     public String getType(int x, int y) {
-        //ToDO: retornar el tipo de ficha para el GUI
+        // ToDO: retornar el tipo de ficha para el GUI
         return null;
     }
 }

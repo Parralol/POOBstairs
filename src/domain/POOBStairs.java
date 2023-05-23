@@ -141,7 +141,7 @@ public class POOBStairs {
     }
 
     /**
-     * Retorna todas las fichas del juego
+     * Retorna la ficha del juego
      * 
      * @param x
      * @param y
@@ -157,9 +157,15 @@ public class POOBStairs {
         return res;
     }
 
-    public Tablero getCasillas(int x, int y) {
-        //ToDo: implementar este método
-        return null;
+    /**
+     * retorna una casilla en especifico
+     * 
+     * @param x
+     * @param y
+     * @return
+     */
+    public Casilla getCasillas(int x, int y) {
+        return tablero.getCasilla(x, y);
     }
 
     /**
