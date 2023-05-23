@@ -40,6 +40,7 @@ public class Board extends javax.swing.JFrame {
     private JFileChooser chooseSave;
     private ArrayList<Color> colores = new ArrayList<Color>();
     ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
+
     /**
      * Instantiates a new Conecta 4 gui.
      */
@@ -96,7 +97,6 @@ public class Board extends javax.swing.JFrame {
 
     private void prepareElementsBoard() {
 
-
         JLabel[][] boardSquares = new JLabel[size][size];
         gameBoard = new JPanel(new GridLayout(10, 10));
         gameBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -143,20 +143,20 @@ public class Board extends javax.swing.JFrame {
                     }
                     label.setIcon(image);
                 }
-                if (juego.getCasillas(i, j) != null){
-                    if (juego.getCasillas(i, j).getType(i,j) == "escalera"){
-                        tipoCasilla.setText("Escalera");
-                    } else if (juego.getCasillas(i, j).getType(i,j) == "serpiente"){
-                        tipoCasilla.setText("Serpiente");
-                    } else if (juego.getCasillas(i, j).getType(i,j) == "normal"){
+                if (juego.getCasillas(i, j) != null) {
+                    if (juego.getCasillas(i, j).getClass().getName() == "Escalera") {
+                        tipoCasilla.setText("Escalera" + " " + juego.getCasillas(i, j).getId());
+                    } else if (juego.getCasillas(i, j).getClass().getName() == "Serpiente") {
+                        tipoCasilla.setText("Serpiente" + " " + juego.getCasillas(i, j).getId());
+                    } else if (juego.getCasillas(i, j).getClass().getName() == "Cnormal") {
                         tipoCasilla.setText("");
                     }
                 }
                 label.setBorder(border);
                 if (i % 2 == 0) {
-                    label.setText(String.valueOf(i * boardSquares.length + j +1));
+                    label.setText(String.valueOf(i * boardSquares.length + j + 1));
                 } else {
-                    label.setText(String.valueOf(i * boardSquares.length + (boardSquares[0].length - j))) ;
+                    label.setText(String.valueOf(i * boardSquares.length + (boardSquares[0].length - j)));
                 }
                 boardSquares[j][i] = label;
                 gameBoard.add(boardSquares[j][i]);
