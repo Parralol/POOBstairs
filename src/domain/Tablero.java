@@ -105,7 +105,7 @@ public class Tablero {
                 int[] pos = { i, j };
                 if (validateCas(pos)) {
                     int p = x.nextInt(200);
-                    System.out.println(p);
+                    // System.out.println(p);
                     // Casillas
                     if (!pos.equals(inic) || !pos.equals(fin)) {
                         if (p <= 130) {
@@ -141,13 +141,10 @@ public class Tablero {
                             if (p >= 131 && p <= 170) {
                                 Serpiente xd = new Serpiente(pos);
                                 xd.setId(id);
-                                System.out.println(id + "-----1");
                                 Serpiente xd2 = new Serpiente(generateRandom(pos[0], pos[1]));
                                 xd2.setId(id);
-                                System.out.println(id + "-----1");
                                 casillas.add(xd);
                                 casillas.add(xd2);
-                                System.out.println("aqui");
                                 id++;
                             } else {
                                 Escalera xd = new Escalera(pos);
@@ -161,6 +158,8 @@ public class Tablero {
 
                         }
                     }
+                } else {
+                    System.out.println("existe");
                 }
             }
         }
