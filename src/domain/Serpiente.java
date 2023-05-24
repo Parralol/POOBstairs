@@ -8,7 +8,7 @@ package domain;
  */
 public class Serpiente extends Casilla {
     public int id;
-    public int[] ref;
+    private String[] posible = { "Normal", "Debil", "Super", "Dual" };
 
     /**
      * constructor para la casilla tipo serpiente
@@ -20,7 +20,7 @@ public class Serpiente extends Casilla {
     }
 
     public int[] action() {
-        return ref;
+        return null;
     }
 
     /**

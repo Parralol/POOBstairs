@@ -7,8 +7,8 @@ package domain;
  * @version v1.0
  */
 public class Escalera extends Casilla {
-    public int id;
-    public int[] ref;
+    private int id;
+    private String[] posible = { "Normal", "Debil", "Super", "Dual" };
 
     /**
      * Constructor para la casilla tipo escalera

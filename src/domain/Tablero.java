@@ -261,9 +261,4 @@ public class Tablero {
         }
         return b;
     }
-
-    private int[] getMayorPos(Casilla a) {
-        int[] res = null;
-        return res;
-    }
 }

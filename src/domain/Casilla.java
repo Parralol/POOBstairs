@@ -39,6 +39,7 @@ public abstract class Casilla {
      * @return
      */
     public int[] getPos() {
+        action();
         return pos;
     }
 
