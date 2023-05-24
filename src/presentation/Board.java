@@ -1,7 +1,5 @@
 package presentation;
 
-import domain.Jugador;
-import domain.Casilla;
 import domain.Cnormal;
 import domain.Escalera;
 import domain.POOBStairs;
@@ -19,7 +17,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * The type POOBStairs gui.
@@ -27,8 +24,6 @@ import java.util.HashMap;
 public class Board extends javax.swing.JFrame {
 
     private POOBStairs juego;
-    private Casilla[][] tablero;
-    private HashMap<Integer, Casilla> casillas;
     private static final int size = 10;
 
     // ATRIBUTOS GRAFICOS
@@ -116,8 +111,6 @@ public class Board extends javax.swing.JFrame {
         // Random random = new Random();
         Border border = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        int numerator = boardSquares.length * boardSquares[0].length;
-
         for (int i = 0; i < boardSquares[0].length; i++) {
             for (int j = 0; j < boardSquares.length; j++) {
                 // Color colorAleatorio = colores.get(random.nextInt(colores.size()));
