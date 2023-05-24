@@ -87,7 +87,6 @@ public class Juego extends JFrame implements ActionListener {
             e.printStackTrace();
         }
 
-
         replay = new JButton("RE-PLAY");
         replay.setBounds(340, 30, 100, 100);
         replay.setVisible(false);
@@ -99,8 +98,6 @@ public class Juego extends JFrame implements ActionListener {
         l3.setBounds(240, 20, 120, 20);
         l4 = new JLabel();
         l4.setBounds(210, 60, 180, 20);
-
-
 
         botonDado.addActionListener(this);
         replay.addActionListener(this);
@@ -152,12 +149,18 @@ public class Juego extends JFrame implements ActionListener {
 
             try {
 
-                Image dado1 = ImageIO.read(new File("src/resources/dadob1.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
-                Image dado2 = ImageIO.read(new File("src/resources/dadob2.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
-                Image dado3 = ImageIO.read(new File("src/resources/dadob3.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
-                Image dado4 = ImageIO.read(new File("src/resources/dadob4.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
-                Image dado5 = ImageIO.read(new File("src/resources/dadob5.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
-                Image dado6 = ImageIO.read(new File("src/resources/dadob6.png")).getScaledInstance(100,100, Image.SCALE_DEFAULT);
+                Image dado1 = ImageIO.read(new File("src/resources/dadob1.png")).getScaledInstance(100, 100,
+                        Image.SCALE_DEFAULT);
+                Image dado2 = ImageIO.read(new File("src/resources/dadob2.png")).getScaledInstance(100, 100,
+                        Image.SCALE_DEFAULT);
+                Image dado3 = ImageIO.read(new File("src/resources/dadob3.png")).getScaledInstance(100, 100,
+                        Image.SCALE_DEFAULT);
+                Image dado4 = ImageIO.read(new File("src/resources/dadob4.png")).getScaledInstance(100, 100,
+                        Image.SCALE_DEFAULT);
+                Image dado5 = ImageIO.read(new File("src/resources/dadob5.png")).getScaledInstance(100, 100,
+                        Image.SCALE_DEFAULT);
+                Image dado6 = ImageIO.read(new File("src/resources/dadob6.png")).getScaledInstance(100, 100,
+                        Image.SCALE_DEFAULT);
 
                 int b = juego.rollDice();
                 if (b == 0) {
@@ -176,7 +179,6 @@ public class Juego extends JFrame implements ActionListener {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
 
             turn++;
         }
@@ -205,7 +207,7 @@ public class Juego extends JFrame implements ActionListener {
         // }
     }
 
-    public static void main (String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         ImageIcon a;
         a = new ImageIcon("resources/dadob1.png");
     }

@@ -60,7 +60,7 @@ public class Tablero {
             pos = ay;
         }
         if (isItSerOrEsc(casillas.get(b))) {
-            playSerOrEsc(casillas.get(b), b, ficha);
+            pos = playSerOrEsc(casillas.get(b), b, ficha);
             return pos;
         } else {
             ficha.changePos(pos);
@@ -175,8 +175,8 @@ public class Tablero {
     private int[] generateRandom(int x, int y) {
         Random xd = new Random();
         while (true) {
-            int f = x + (xd.nextInt(10) * (xd.nextBoolean() ? 1 : -1));
-            int l = y + (xd.nextInt(10) * (xd.nextBoolean() ? 1 : -1));
+            int f = x + (xd.nextInt(9) * (xd.nextBoolean() ? 1 : -1));
+            int l = y + (xd.nextInt(9) * (xd.nextBoolean() ? 1 : -1));
             if (f < 10 && f > 1 && l < 10 && l > 1) {
                 int[] res = { f, l };
                 return res;
@@ -262,8 +262,8 @@ public class Tablero {
         return b;
     }
 
-    public String getType(int x, int y) {
-        // ToDO: retornar el tipo de ficha para el GUI
-        return null;
+    private int[] getMayorPos(Casilla a) {
+        int[] res = null;
+        return res;
     }
 }
