@@ -149,7 +149,7 @@ public class Board extends javax.swing.JFrame {
                     } else if (juego.getCasillas(i, j) instanceof Serpiente) {
                         prueba = "\n Serpiente" + " - " + juego.getCasillas(i, j).getId();
                     } else if (juego.getCasillas(i, j) instanceof Cnormal) {
-                        tipoCasilla.setText("");
+                        tipoCasilla.setText(juego.getCasillas(i, j).getClass().getSimpleName());
                     }
                 }
                 label.setBorder(border);
