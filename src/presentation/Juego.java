@@ -59,9 +59,19 @@ public class Juego extends JFrame implements ActionListener {
     ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
 
     Juego(POOBStairs juego) {
-        this.setTitle("Control de Juego");
+
+
         b = new Board(juego);
         this.juego = juego;
+
+        JLabel backgroundLabel = new JLabel(new ImageIcon("src/resources/R.png"));
+        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+        JPanel contentPane = (JPanel) getContentPane();
+        contentPane.setOpaque(false);
+
+        contentPane.add(backgroundLabel);
+
+        this.setTitle("Control de Juego");
         int num = Jugadores.numero;
         for (int i = 0; i < num; i++) {
             playerPos[i] = 0;
@@ -91,8 +101,8 @@ public class Juego extends JFrame implements ActionListener {
         l1.setBounds(380, 130, 100, 30);
         l2 = new JLabel();
         l2.setBounds(470, 5, 100, 20);
-        l3 = new JLabel("Turno de Jugador");
-        l3.setBounds(140, 20, 120, 20);
+        l3 = new JLabel("Comienza el juego\n Buena suerte y diviertete.");
+        l3.setBounds(140, 20, 120, 50);
         l4 = new JLabel();
         l4.setBounds(210, 60, 180, 20);
 
@@ -114,12 +124,11 @@ public class Juego extends JFrame implements ActionListener {
         int posX = screenBounds.x + screenBounds.width - width;
         int posY = screenBounds.y + screenBounds.height / 3;
 
+
         setBounds(posX, posY, width, height);
         setIconImage(ico.getImage());
-        //setSize(600, 200);
         setLayout(null);
         setVisible(true);
-        //setLocation(650, 300);
         closeAction();
     }
 
@@ -144,15 +153,16 @@ public class Juego extends JFrame implements ActionListener {
         }
     }
 
-    public int checkTurn() {
+    public void checkTurn() {
         int chance = (turn + 1) % num;
-        l3.setText("Turn of player " + (chance + 1)); // Displays which player has to roll the dice.
-        return turn % num;
+        l3.setText("Turn of " + (juego.getJugadores().get(chance).getName())); // Displays which player has to roll the dice.
+        l3.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == botonDado) {
+            l3.setText("Turno de " + juego.getJugadores().get(turn % Jugadores.numero).getName());
             jugar();
 
             try {
@@ -187,15 +197,10 @@ public class Juego extends JFrame implements ActionListener {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
             turn++;
         }
 
-        // if (e.getSource() == replay) {
-        // dispose();
-        // turn = 0;
-        // new Juego(juego);
-        // }
+
         b.dispose();
         b = null;
         b = new Board(juego);
@@ -210,9 +215,6 @@ public class Juego extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
-        // for (Jugador a : juego.getJugadores()) {
-        // System.out.println(Arrays.toString(a.getFicha().getPos()));
-        // }
     }
 
 }

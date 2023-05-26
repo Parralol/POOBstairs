@@ -133,6 +133,9 @@ public class Board extends javax.swing.JFrame {
                 JLabel label = new JLabel();
                 JLabel tipoCasilla = new JLabel();
                 String prueba = "";
+
+                ImageIcon ladderT = null;
+
                 label.setHorizontalAlignment(SwingConstants.RIGHT);
                 label.setVerticalAlignment(SwingConstants.TOP);
                 tipoCasilla.setHorizontalAlignment(SwingConstants.RIGHT);

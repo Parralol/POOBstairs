@@ -1,13 +1,24 @@
 package presentation;
 
+import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class PantallaInicio extends JFrame {
-    ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
+    ImageIcon ico = new ImageIcon("Ficha-Roja.png");
+    Image backgroundImage;
+
     public PantallaInicio() {
+        try {
+            backgroundImage = ImageIO.read(new File("src/resources/Sponge1.png")).getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         setIconImage(ico.getImage());
         setTitle("Pantalla de Inicio");
@@ -15,10 +26,30 @@ public class PantallaInicio extends JFrame {
         setSize(300, 200);
         setLocationRelativeTo(null);
 
+        JPanel contentPane = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage, 0, 0, this);
+            }
+        };
+        contentPane.setLayout(new BorderLayout());
+
         JButton btnIniciar = new JButton("Iniciar");
         JButton btnCargarJuego = new JButton("Cargar Juego");
         JButton btnReglas = new JButton("Reglas");
         JButton btnSalir = new JButton("Salir");
+
+        //cancion
+        try {
+            File audioFile = new File("src/resources/THEBEST.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
+            ex.printStackTrace();
+        }
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(4, 1, 10, 10));
@@ -29,7 +60,8 @@ public class PantallaInicio extends JFrame {
         panel.add(btnReglas);
         panel.add(btnSalir);
 
-        add(panel);
+        contentPane.add(panel, BorderLayout.SOUTH);
+        setContentPane(contentPane);
         setVisible(true);
 
         btnIniciar.addActionListener(new ActionListener() {
