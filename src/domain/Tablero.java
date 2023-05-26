@@ -66,7 +66,7 @@ public class Tablero {
         }
         if (isItSerOrEsc(casillas.get(b))) {
             pos = playSerOrEsc(casillas.get(b), b, ficha);
-            System.out.println(Arrays.toString(pos));
+            // System.out.println(Arrays.toString(pos));
             return pos;
         } else {
             ficha.changePos(pos);
