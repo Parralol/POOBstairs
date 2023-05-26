@@ -57,9 +57,21 @@ public class Board extends javax.swing.JFrame {
      * Prepare elements.
      */
     public void prepareElements() {
+        /**
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize.width / 2, screenSize.height / 2);
         setLocationRelativeTo(null);
+        **/
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle screenBounds = ge.getMaximumWindowBounds();
+
+
+        int x = screenBounds.x;
+        int y = screenBounds.y;
+        float width = (float) (screenBounds.width / 1.5);
+        int height = screenBounds.height;
+        setBounds(x, y, (int) width, height);
+        setVisible(true);
 
     }
 
@@ -111,6 +123,8 @@ public class Board extends javax.swing.JFrame {
         // Random random = new Random();
         Border border = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        int numerator = boardSquares.length * boardSquares[0].length;
+
         for (int i = 0; i < boardSquares[0].length; i++) {
             for (int j = 0; j < boardSquares.length; j++) {
                 // Color colorAleatorio = colores.get(random.nextInt(colores.size()));

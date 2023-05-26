@@ -1,6 +1,7 @@
 package presentation;
 
 import domain.POOBStairs;
+import domain.POOBStairsException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -74,7 +75,7 @@ public class Juego extends JFrame implements ActionListener {
         }
 
         botonDado = new JButton();
-        botonDado.setBounds(450, 30, 100, 100);
+        botonDado.setBounds(350, 30, 100, 100);
         try {
             Image dInicial = ImageIO.read(new File("src/resources/dadob1.png")).getScaledInstance(100,
                     100, Image.SCALE_DEFAULT);
@@ -87,11 +88,11 @@ public class Juego extends JFrame implements ActionListener {
         replay.setBounds(340, 30, 100, 100);
         replay.setVisible(false);
         l1 = new JLabel("ROLL");
-        l1.setBounds(480, 130, 100, 30);
+        l1.setBounds(380, 130, 100, 30);
         l2 = new JLabel();
         l2.setBounds(470, 5, 100, 20);
         l3 = new JLabel("Turno de Jugador");
-        l3.setBounds(240, 20, 120, 20);
+        l3.setBounds(140, 20, 120, 20);
         l4 = new JLabel();
         l4.setBounds(210, 60, 180, 20);
 
@@ -103,11 +104,22 @@ public class Juego extends JFrame implements ActionListener {
         add(l2);
         add(l3);
         add(l4);
+
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle screenBounds = ge.getMaximumWindowBounds();
+
+        int width = 500;
+        int height = 200;
+        int posX = screenBounds.x + screenBounds.width - width;
+        int posY = screenBounds.y + screenBounds.height / 3;
+
+        setBounds(posX, posY, width, height);
         setIconImage(ico.getImage());
-        setSize(600, 200);
+        //setSize(600, 200);
         setLayout(null);
         setVisible(true);
-        setLocation(650, 300);
+        //setLocation(650, 300);
         closeAction();
     }
 
@@ -194,7 +206,7 @@ public class Juego extends JFrame implements ActionListener {
         // System.out.println(b);
         try {
             this.juego.jugar(b);
-        } catch (Exception e) {
+        } catch (POOBStairsException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 

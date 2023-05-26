@@ -47,9 +47,11 @@ public class Tablero {
             b = Integer.parseInt(pos[0] + "" + 0);
         }
 
-        // System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
-        // System.out.println(casillas.size() + "longitud casillas");
+        System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
+        System.out.println(casillas.size() + "longitud casillas");
         if (b == 99) {
+            System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
+            System.out.println(casillas.size() + "longitud casillas");
             throw new POOBStairsException(POOBStairsException.GANADOR);
         }
         if (b > 100) {
