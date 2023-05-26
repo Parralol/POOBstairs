@@ -1,6 +1,7 @@
 package presentation;
 
 import domain.POOBStairs;
+import domain.POOBStairsException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -194,7 +195,7 @@ public class Juego extends JFrame implements ActionListener {
         // System.out.println(b);
         try {
             this.juego.jugar(b);
-        } catch (Exception e) {
+        } catch (POOBStairsException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 

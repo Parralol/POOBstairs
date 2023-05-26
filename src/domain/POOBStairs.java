@@ -66,11 +66,12 @@ public class POOBStairs {
             pos[1] += numero;
         }
         try {
-            pos = tablero.jugar(jugadores.get(turno - -1).getFicha(), pos);
+            pos = tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
             System.out.println(pos.toString());
             jugadores.get(turno - 1).movFicha(pos);
-        } catch (Exception e) {
+        } catch (POOBStairsException e) {
             throw new POOBStairsException(getNombreJugadorEnTurno() + " " + POOBStairsException.GANADOR);
+
         }
         increaseTurno();
     }
