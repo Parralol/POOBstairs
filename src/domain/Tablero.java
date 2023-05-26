@@ -35,6 +35,7 @@ public class Tablero {
      */
     public int[] jugar(Ficha ficha, int[] pos) throws POOBStairsException {
         int b = 0;
+        // printId();
         for (Casilla a : casillas) {
             if (a.getColor() == ficha.getColor()) {
                 a.removeFicha();
@@ -47,11 +48,11 @@ public class Tablero {
             b = Integer.parseInt(pos[0] + "" + 0);
         }
 
-        System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
-        System.out.println(casillas.size() + "longitud casillas");
+        // System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
+        // System.out.println(casillas.size() + "longitud casillas");
         if (b == 99) {
-            System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
-            System.out.println(casillas.size() + "longitud casillas");
+            // System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
+            // System.out.println(casillas.size() + "longitud casillas");
             throw new POOBStairsException(POOBStairsException.GANADOR);
         }
         if (b > 100) {
@@ -65,7 +66,7 @@ public class Tablero {
         }
         if (isItSerOrEsc(casillas.get(b))) {
             pos = playSerOrEsc(casillas.get(b), b, ficha);
-            // System.out.println(pos);
+            // System.out.println(Arrays.toString(pos));
             return pos;
         } else {
             ficha.changePos(pos);
@@ -84,6 +85,13 @@ public class Tablero {
         return casillas;
     }
 
+    /**
+     * retorna una casilla en especifico dada su coordenada x,y
+     * 
+     * @param x
+     * @param y
+     * @return Casilla
+     */
     public Casilla getCasilla(int x, int y) {
         Casilla res = null;
         int[] guard = { x, y };
@@ -220,6 +228,12 @@ public class Tablero {
         return res;
     }
 
+    /**
+     * valida si se encuentran casillas especiales
+     * 
+     * @param pos
+     * @return
+     */
     private boolean validateCasEsp(int[] pos) {
         boolean res = true;
         for (Casilla a : serpEsc) {
@@ -254,21 +268,29 @@ public class Tablero {
     private int[] playSerOrEsc(Casilla b, int prev, Ficha r) {
         int[] xd = null;
         int id = b.getId();
+        // System.out.println("esc" + " -- " + b.getId());
         for (Casilla a : casillas) {
             if (b instanceof Serpiente) {
-                if (id == a.getId() && prev < convert(a.getPos())) {
-                    xd = a.getPos();
-                    r.changePos(xd);
-                    a.setFicha(r);
-                }
-            }
-            if (b instanceof Escalera) {
                 if (id == a.getId() && prev > convert(a.getPos())) {
                     xd = a.getPos();
                     r.changePos(xd);
                     a.setFicha(r);
+                    // System.out.println(Arrays.toString(xd) + "---> ser id:" + a.getId());
                 }
             }
+            if (b instanceof Escalera) {
+                if (id == a.getId() && prev < convert(a.getPos())) {
+                    xd = a.getPos();
+                    r.changePos(xd);
+                    a.setFicha(r);
+                    // System.out.println(Arrays.toString(xd) + "---> esc id:" + a.getId());
+                }
+            }
+        }
+        // System.out.println(Arrays.toString(xd));
+        if (b instanceof Serpiente || b instanceof Escalera) {
+            int[] res = { b.getPos()[0], b.getPos()[1] + 5 };
+            xd = res;
         }
         return xd;
     }
@@ -289,17 +311,36 @@ public class Tablero {
         return b;
     }
 
+    /**
+     * fusiona las casillas
+     * 
+     * @param a
+     */
     private void fuss(ArrayList<Casilla> a) {
         fussion(a);
     }
 
+    /**
+     * proceso mas complejo de fusion
+     * 
+     * @param a
+     */
     private void fussion(ArrayList<Casilla> a) {
-        for (int i = 0; i < casillas.size(); i++) {
+        for (int i = 0; i < casillas.size() - 10; i++) {
             for (int j = 0; j < a.size(); j++) {
+                if (i == 0) {
+                    // System.out.println(a.get(j).getId() + "---> POS" +
+                    // Arrays.toString(a.get(j).getPos()));
+                }
+                if (j == 0) {
+                    // System.out.println("cas:" + Arrays.toString(casillas.get(i).getPos()));
+                }
                 if (Arrays.equals(casillas.get(i).getPos(), a.get(j).getPos())) {
                     casillas.set(i, a.get(j));
+                    // System.out.println(a.get(j).getId());
                 }
             }
         }
     }
+
 }

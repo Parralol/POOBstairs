@@ -28,6 +28,9 @@ public class Escalera extends Casilla {
         this.id = id;
     }
 
+    /**
+     * define la accion de la escalera
+     */
     public int[] action() {
         return null;
     }

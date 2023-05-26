@@ -17,10 +17,17 @@ public class Cnormal extends Casilla {
         super(pos);
     }
 
+    /**
+     * define la accion de una casilla normal
+     */
     public int[] action() {
-        return null;
+        int[] res = { 1, -1 };
+        return res;
     }
 
+    /**
+     * retorna el id de la casilla
+     */
     public int getId() {
         return -1;
     }
