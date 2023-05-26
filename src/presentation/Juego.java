@@ -25,7 +25,7 @@ public class Juego extends JFrame implements ActionListener {
     // objetos para la pantalla de juego
     private JButton botonDado, replay;
     private JLabel l1, l2, l3, l4;
-    private JLabel[] playerList = new JLabel[Jugadores.numero];
+    private JLabel[] playerList = new JLabel[Jugadores.numero * 3];
 
     /**
      * Crea las escaleras en el tablero.
@@ -69,9 +69,22 @@ public class Juego extends JFrame implements ActionListener {
         int y = 20;
         for (int i = 0; i < num; i++) {
             playerList[i] = new JLabel(juego.getJugadores().get(i).getName());
-            playerList[i].setBounds(20, y, 80, 20);
+            playerList[i].setBounds(20, y + 5, 80, 20);
+
+            playerList[i + 1] = new JLabel("Max casillas recorridas:" + juego.getJugadores().get(i).getMaxCas());
+            playerList[i + 1].setBounds(20, y + 20, 200, 20);
+
+            playerList[i + 2] = new JLabel("Max escaleras recorridas:" + juego.getJugadores().get(i).getNumEsc());
+            playerList[i + 2].setBounds(20, y + 30, 200, 20);
+
+            playerList[i + 3] = new JLabel("Max serpientes recorridas:" + juego.getJugadores().get(i).getNumSer());
+            playerList[i + 3].setBounds(20, y + 40, 200, 20);
+
             add(playerList[i]);
-            y += 30;
+            add(playerList[i + 1]);
+            add(playerList[i + 2]);
+            add(playerList[i + 3]);
+            y += 50;
         }
 
         botonDado = new JButton();
@@ -92,7 +105,7 @@ public class Juego extends JFrame implements ActionListener {
         l2 = new JLabel();
         l2.setBounds(470, 5, 100, 20);
         l3 = new JLabel("Turno de Jugador");
-        l3.setBounds(140, 20, 120, 20);
+        l3.setBounds(140, 10, 120, 20);
         l4 = new JLabel();
         l4.setBounds(210, 60, 180, 20);
 
@@ -105,7 +118,6 @@ public class Juego extends JFrame implements ActionListener {
         add(l3);
         add(l4);
 
-
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle screenBounds = ge.getMaximumWindowBounds();
 
@@ -116,10 +128,10 @@ public class Juego extends JFrame implements ActionListener {
 
         setBounds(posX, posY, width, height);
         setIconImage(ico.getImage());
-        //setSize(600, 200);
+        // setSize(600, 200);
         setLayout(null);
         setVisible(true);
-        //setLocation(650, 300);
+        // setLocation(650, 300);
         closeAction();
     }
 

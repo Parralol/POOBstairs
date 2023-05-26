@@ -66,9 +66,13 @@ public class POOBStairs {
             pos[1] += numero;
         }
         try {
+            checkCasi(pos);
+            pos = isMovModified(pos);
+            // System.out.println(jugadores.get(turno - 1).getName());
             pos = tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
-            System.out.println(pos.toString());
             jugadores.get(turno - 1).movFicha(pos);
+            jugadores.get(turno - 1).increaseMaxCas(pos[0], pos[1]);
+
         } catch (POOBStairsException e) {
             throw new POOBStairsException(getNombreJugadorEnTurno() + " " + POOBStairsException.GANADOR);
 
@@ -81,7 +85,7 @@ public class POOBStairs {
     /**
      * Obtiene el nombre del jugador en turno
      * 
-     * @return
+     * @return nombre
      */
     public String getNombreJugadorEnTurno() {
         return jugadores.get(turno - 1).getName();
@@ -90,7 +94,7 @@ public class POOBStairs {
     /**
      * returna TRUE si es humano, de lo contrario false
      * 
-     * @return
+     * @return boolean
      */
     public boolean JugadorEnTurnoEsHumano() {
         return jugadores.get(turno - 1).isItHuman();
@@ -99,7 +103,7 @@ public class POOBStairs {
     /**
      * retorna el turno actual
      * 
-     * @return
+     * @return turno
      */
     public int getTurnoActual() {
         return turno;
@@ -108,7 +112,7 @@ public class POOBStairs {
     /**
      * retorna el numero de jugadas totales en la partida
      * 
-     * @return
+     * @return numero de jugadas
      */
     public int getNumeroJugadas() {
         return njugadas;
@@ -117,7 +121,7 @@ public class POOBStairs {
     /**
      * lanza el dado
      * 
-     * @return
+     * @return int
      */
     public int rollDice() {
         dado.rollDiceRandom();
@@ -127,7 +131,7 @@ public class POOBStairs {
     /**
      * obtiene al jugador en el turno pasado
      * 
-     * @return
+     * @return Jugador
      */
     public Jugador getJugadorEnTurnoPasado() {
         return jugadores.get(turno - 2);
@@ -136,7 +140,7 @@ public class POOBStairs {
     /**
      * Retorna todos los turnos en total
      * 
-     * @return
+     * @return int
      */
     public int getAllTurns() {
         return turno = jugadores.size();
@@ -147,7 +151,7 @@ public class POOBStairs {
      * 
      * @param x
      * @param y
-     * @return
+     * @return Ficha
      */
     public Ficha getFichas(int x, int y) {
         Ficha res = null;
@@ -164,7 +168,7 @@ public class POOBStairs {
      * 
      * @param x
      * @param y
-     * @return
+     * @return Casilla
      */
     public Casilla getCasillas(int x, int y) {
         return tablero.getCasilla(x, y);
@@ -184,7 +188,7 @@ public class POOBStairs {
     /**
      * retorna un ArrayList<Jugador> de todos los jugadores
      * 
-     * @return
+     * @return jugadores
      */
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
@@ -200,6 +204,51 @@ public class POOBStairs {
             turno = 1;
         else
             turno++;
+    }
+
+    /**
+     * revisa si la casilla es especial
+     * 
+     * @param pos
+     */
+    private void checkCasi(int[] pos) {
+        if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+                jugadores.get(turno - 1).getPosFicha()[1]) instanceof Serpiente) {
+            jugadores.get(turno - 1).increaseSerp();
+        } else if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+                jugadores.get(turno - 1).getPosFicha()[1]) instanceof Escalera) {
+            jugadores.get(turno - 1).increaseEsc();
+        } else if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+                jugadores.get(turno - 1).getPosFicha()[1]).action() == null) {
+            jugadores.get(turno - 1).increaseCasEsp();
+        }
+    }
+
+    /**
+     * verifica si el movimiento se altera
+     * 
+     * @param pos
+     * @return pos
+     */
+    private int[] isMovModified(int[] pos) {
+        if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+                jugadores.get(turno - 1).getPosFicha()[1]) instanceof Mortal) {
+            int[] xd = { 0, 0 };
+            pos = xd;
+        }
+
+        if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+                jugadores.get(turno - 1).getPosFicha()[1]) instanceof Saltarina_n) {
+            int[] xd = { pos[0], pos[1] + 4 };
+            pos = xd;
+        }
+        if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+                jugadores.get(turno - 1).getPosFicha()[1]) instanceof Saltarina_inv) {
+            int[] xd = { pos[0], pos[1] - 3 };
+            pos = xd;
+        }
+
+        return pos;
     }
 
 }

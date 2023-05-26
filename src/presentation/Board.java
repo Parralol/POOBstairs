@@ -58,13 +58,12 @@ public class Board extends javax.swing.JFrame {
      */
     public void prepareElements() {
         /**
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width / 2, screenSize.height / 2);
-        setLocationRelativeTo(null);
-        **/
+         * Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+         * setSize(screenSize.width / 2, screenSize.height / 2);
+         * setLocationRelativeTo(null);
+         **/
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle screenBounds = ge.getMaximumWindowBounds();
-
 
         int x = screenBounds.x;
         int y = screenBounds.y;

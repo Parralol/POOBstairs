@@ -38,6 +38,12 @@ public abstract class Jugador {
     }
 
     // METODOS PARA ALTERAR DATOS
+
+    /**
+     * Mueve la ficha del jugador
+     * 
+     * @param pos
+     */
     public void movFicha(int[] pos) {
         ficha.changePos(pos);
     }
@@ -63,6 +69,12 @@ public abstract class Jugador {
         ficha = new Ficha(color, ficha.getPos());
     }
 
+    /**
+     * incrementa la casilla maxima a la que ha llegado
+     * 
+     * @param x
+     * @param y
+     */
     public void increaseMaxCas(int x, int y) {
         if (x > ficha.getPos()[0] && y > ficha.getPos()[1]) {
             int a = Integer.parseInt(x + "" + y);
