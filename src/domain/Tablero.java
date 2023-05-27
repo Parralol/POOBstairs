@@ -127,32 +127,32 @@ public class Tablero {
                     // Casillas
                     if (!pos.equals(inic) || !pos.equals(fin)) {
                         // casillas.add(new Cnormal(pos));
-                        if (p <= 130) {
-                            if (p <= 100) {
+                        if (p <= 170) {
+                            if (p <= 140) {
                                 casillas.add(new Cnormal(pos));
                             }
-                            if (p >= 101 && p <= 105) {
+                            if (p >= 141 && p <= 145) {
                                 // saltarina n
                                 casillas.add(new Saltarina_n(pos));
                                 // especial.add(new Saltarina_n(pos));
                             }
-                            if (p > 105 && p <= 110) {
+                            if (p > 145 && p <= 150) {
                                 // saltarina inversa n
                                 casillas.add(new Saltarina_inv(pos));
                             }
-                            if (p > 110 && p <= 115) {
+                            if (p > 150 && p <= 155) {
                                 // Mortal
                                 casillas.add(new Mortal(pos));
                             }
-                            if (p > 115 && p <= 120) {
+                            if (p > 155 && p <= 160) {
                                 // avance
                                 casillas.add(new Avance(pos));
                             }
-                            if (p > 120 && p <= 125) {
+                            if (p > 160 && p <= 165) {
                                 // retroceso
                                 casillas.add(new Retroceso(pos));
                             }
-                            if (p > 125 && p <= 130) {
+                            if (p > 165 && p <= 170) {
                                 // preguntona
                                 casillas.add(new Preguntona(pos));
                             }
@@ -160,7 +160,7 @@ public class Tablero {
                         } else { // serpientes y escaleras
                             int[] posx = generateRandom(pos[0], pos[1]);
                             // System.out.println(Arrays.toString(posx));
-                            if (p >= 131 && p <= 170 && pos[0] < 10) {
+                            if (p >= 170 && p <= 180 && pos[0] < 10) {
                                 casillas.add(new Cnormal(pos));
                                 Serpiente xd = new Serpiente(pos);
                                 xd.setId(id);
