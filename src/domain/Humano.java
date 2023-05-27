@@ -8,6 +8,7 @@ package domain;
  */
 public class Humano extends Jugador {
 
+  
     /**
      * constructor para la clase Humano
      * 
@@ -15,5 +16,8 @@ public class Humano extends Jugador {
      */
     public Humano(int turno) {
         super(true, turno);
+        
     }
+
+    
 }

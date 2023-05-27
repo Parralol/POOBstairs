@@ -1,5 +1,6 @@
 package presentation;
 
+import domain.Casilla;
 import domain.Cnormal;
 import domain.Escalera;
 import domain.POOBStairs;
@@ -17,6 +18,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The type POOBStairs gui.
@@ -123,7 +125,6 @@ public class Board extends javax.swing.JFrame {
         Border border = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5));
         int numerator = boardSquares.length * boardSquares[0].length;
-
         for (int i = 0; i < boardSquares[0].length; i++) {
             for (int j = 0; j < boardSquares.length; j++) {
                 // Color colorAleatorio = colores.get(random.nextInt(colores.size()));
@@ -158,22 +159,28 @@ public class Board extends javax.swing.JFrame {
                     }
                     label.setIcon(image);
                 }
+                
+                
                 if (juego.getCasillas(i, j) != null) {
-
+                    
                     if (juego.getCasillas(i, j) instanceof Escalera) {
                         prueba = "\n Escalera" + " - " + juego.getCasillas(i, j).getId();
+                        //System.out.println(prueba);
                     } else if (juego.getCasillas(i, j) instanceof Serpiente) {
                         prueba = "\n Serpiente" + " - " + juego.getCasillas(i, j).getId();
+                        //System.out.println(prueba);
                     } else if (juego.getCasillas(i, j) instanceof Cnormal) {
-                        tipoCasilla.setText(juego.getCasillas(i, j).getClass().getSimpleName());
+                        prueba = ("->" + juego.getCasillas(i, j).getClass().getSimpleName());
                     }
-                }
+                }//if(juego.getCasillas(i, j) != null){
+                    //System.out.println("oh"+ "X:" + i + "Y:" + j);
+                //}
                 label.setBorder(border);
                 tipoCasilla.setBorder(border);
                 if (i % 2 == 0) {
                     label.setText(String.valueOf(i * boardSquares.length + j + 1) + prueba);
                 } else {
-                    label.setText(String.valueOf(i * boardSquares.length + (boardSquares[0].length - j)));
+                    label.setText(String.valueOf(i * boardSquares.length + (boardSquares[0].length - j) + prueba));
                 }
                 boardSquares[j][i] = label;
                 boardSquares2[j][i] = tipoCasilla;

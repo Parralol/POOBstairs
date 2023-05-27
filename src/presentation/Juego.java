@@ -115,7 +115,7 @@ public class Juego extends JFrame implements ActionListener {
         l2 = new JLabel();
         l2.setBounds(470, 5, 100, 20);
         l3 = new JLabel("Comienza el juego\n Buena suerte y diviertete.");
-        l3.setBounds(140, 20, 120, 50);
+        l3.setBounds(50, 1, 250, 50);
         l4 = new JLabel();
         l4.setBounds(210, 60, 180, 20);
 
@@ -168,7 +168,7 @@ public class Juego extends JFrame implements ActionListener {
     public int checkTurn() {
         int turnoActual = turn % Jugadores.numero;
         if (turnoActual < Jugadores.numero - 1) {
-            l3.setText("Turno de " + juego.getJugadores().get(turnoActual).getName());
+            l3.setText("Turno de " + juego.getNombreJugadorEnTurno());
             // Es el turno de un jugador
         } else {
             l3.setText("Turno de la máquina");
@@ -180,7 +180,7 @@ public class Juego extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == botonDado) {
-            l3.setText("Turno de " + juego.getJugadores().get(turn % Jugadores.numero).getName());
+            l3.setText("Turno de " + juego.getNombreJugadorEnTurno());
             jugar();
 
             try {
@@ -234,7 +234,7 @@ public class Juego extends JFrame implements ActionListener {
     private void moverMaquina() {
         if (checkTurn() == 0) {
             int b = juego.rollDice();
-            // System.out.println(b);
+            //System.out.println(b);
             try {
                 this.juego.jugar(b);
             } catch (POOBStairsException e) {
@@ -249,7 +249,11 @@ public class Juego extends JFrame implements ActionListener {
         int b = juego.rollDice();
         // System.out.println(b);
         try {
-            this.juego.jugar(b);
+            int m = juego.shouldMultiply();
+            if(m != 1){
+                JOptionPane.showMessageDialog(null, "Obtienes Multiplicador!!!, Valor:" + m);
+            }
+            this.juego.jugar(b * m);
         } catch (POOBStairsException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

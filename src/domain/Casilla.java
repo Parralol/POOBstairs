@@ -1,14 +1,14 @@
 package domain;
 
 import java.awt.Color;
-
+import java.io.*;
 /**
  * Clase Casilla
  *
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public abstract class Casilla {
+public abstract class Casilla implements Serializable{
     private int[] pos;
     private Color color;
     private Ficha ficha;

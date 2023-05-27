@@ -98,8 +98,12 @@ public class Tablero {
         for (Casilla a : casillas) {
             if (Arrays.equals(a.getPos(), guard)) {
                 res = a;
+                break;
+                //System.out.println(Arrays.toString(a.getPos()) + "--->" + Arrays.toString(guard));
+                //System.out.println("paso" +" --->" + a.getClass().getSimpleName() + "---> " + a.getId());
             }
         }
+        //System.out.println(res.getClass().getSimpleName() + "---> ID"+ res.getId() + "----->" + Arrays.toString(res.getPos())) ;
         return res;
 
     }
@@ -115,7 +119,7 @@ public class Tablero {
         int[] inic = { 0, 0 };
         int[] fin = { 9, 9 };
         for (int i = 0; i <= 10; i++) {
-            for (int j = 0; j <= 10; j++) {
+            for (int j = 0; j <= 9; j++) {
                 int[] pos = { i, j };
                 if (validateCas(pos)) {
                     int p = x.nextInt(200);
@@ -187,7 +191,7 @@ public class Tablero {
             }
         }
         fuss(serpEsc);
-        // System.out.println(casillas.size());
+        //System.out.println(casillas.size());
     }
 
     /**
@@ -342,9 +346,10 @@ public class Tablero {
                 }
                 if (Arrays.equals(casillas.get(i).getPos(), a.get(j).getPos())) {
                     casillas.set(i, a.get(j));
-                    // System.out.println(a.get(j).getId());
+                    //System.out.println(a.get(j).getId() + " --> POS"+ Arrays.toString(a.get(j).getPos()));
                 }
             }
         }
     }
+    
 }

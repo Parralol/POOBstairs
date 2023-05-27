@@ -10,6 +10,7 @@ import java.awt.Color;
  */
 public abstract class Jugador {
 
+    private boolean multi;
     protected String nombre;
     private int turno;
     protected Color color;
@@ -35,6 +36,7 @@ public abstract class Jugador {
         ficha = new Ficha(color, pos);
         this.humano = humano;
         this.turno = turno;
+        multi = false;
     }
 
     // METODOS PARA ALTERAR DATOS
@@ -160,6 +162,16 @@ public abstract class Jugador {
         return ficha.getPos();
     }
 
+    public int getSimplePos(){
+        int[] pos = getPosFicha();
+        int b= 0; 
+        if (pos[1] != 10) {
+            b = Integer.parseInt(pos[0] + "" + pos[1]);
+        } else {
+            b = Integer.parseInt(pos[0] + "" + 0);
+        }
+        return b;
+    }
     /**
      * retorna la ficha del jugador
      * 
@@ -203,5 +215,12 @@ public abstract class Jugador {
      */
     public int getMaxCas() {
         return casMax;
+    }
+
+    public void usoMulti(){
+        multi = true;
+    }
+    public boolean multiUsado(){
+        return multi;
     }
 }

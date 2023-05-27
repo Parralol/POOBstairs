@@ -6,7 +6,7 @@ package domain;
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public class Cnormal extends Casilla {
+public class Cnormal extends Casilla  {
 
     /**
      * Constructor para la casilla tipo normal

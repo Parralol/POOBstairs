@@ -12,6 +12,7 @@ public class POOBStairs {
     private Dice dado;
     private ArrayList<Jugador> jugadores;
     private Tablero tablero;
+    private Multiplicador multi;
     private int turno;
     private int njugadas;
 
@@ -55,7 +56,7 @@ public class POOBStairs {
      */
     public void jugar(int numero) throws POOBStairsException {
         // System.out.println(numero);
-        // System.out.println(turno - 1);
+        //System.out.println(turno - 1);
         int[] pos = jugadores.get(turno - 1).getPosFicha();
         if (pos[1] + numero > 10) {
             int xd = pos[1] + numero;
@@ -72,7 +73,7 @@ public class POOBStairs {
             pos = tablero.jugar(jugadores.get(turno - 1).getFicha(), pos);
             jugadores.get(turno - 1).movFicha(pos);
             jugadores.get(turno - 1).increaseMaxCas(pos[0], pos[1]);
-
+            
         } catch (POOBStairsException e) {
             throw new POOBStairsException(getNombreJugadorEnTurno() + " " + POOBStairsException.GANADOR);
 
@@ -80,6 +81,15 @@ public class POOBStairs {
         increaseTurno();
     }
 
+    public int shouldMultiply(){
+        int res = 1;
+        if(getJugadorEnTurnoPasado().getSimplePos() - 99 <=10  && jugadores.get(turno - 1).multiUsado()){
+                jugadores.get(turno - 1).usoMulti();
+                res =  multi.returnMult();
+                
+        }
+        return res;
+    }
     // METODOS PARA RETORNAR DATOS
 
     /**
@@ -134,7 +144,11 @@ public class POOBStairs {
      * @return Jugador
      */
     public Jugador getJugadorEnTurnoPasado() {
-        return jugadores.get(turno - 2);
+        if(turno == 1){
+            return jugadores.get(turno - 1 );
+        }else{
+            return jugadores.get(turno - 2 );
+        }
     }
 
     /**
@@ -175,6 +189,16 @@ public class POOBStairs {
     }
 
     /**
+     * retorna una casilla en especifico
+     * 
+     * @param x
+     * @param y
+     * @return Casilla
+     */
+    public ArrayList<Casilla> getAllCasillas() {
+        return tablero.getCasillas();
+    }
+    /**
      * cambia el turno del juego
      */
     public void changeTurn() {
@@ -212,17 +236,18 @@ public class POOBStairs {
      * @param pos
      */
     private void checkCasi(int[] pos) {
+        if(tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0], jugadores.get(turno - 1).getPosFicha()[1])!= null){
         if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
                 jugadores.get(turno - 1).getPosFicha()[1]) instanceof Serpiente) {
             jugadores.get(turno - 1).increaseSerp();
         } else if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
                 jugadores.get(turno - 1).getPosFicha()[1]) instanceof Escalera) {
             jugadores.get(turno - 1).increaseEsc();
-        } else if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
-                jugadores.get(turno - 1).getPosFicha()[1]).action() == null) {
+        }if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0], jugadores.get(turno - 1).getPosFicha()[1]).action() == null) {
             jugadores.get(turno - 1).increaseCasEsp();
         }
     }
+}
 
     /**
      * verifica si el movimiento se altera
