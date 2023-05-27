@@ -124,31 +124,31 @@ public class Tablero {
                     if (!pos.equals(inic) || !pos.equals(fin)) {
                         // casillas.add(new Cnormal(pos));
                         if (p <= 130) {
-                            if (p <= 70) {
+                            if (p <= 100) {
                                 casillas.add(new Cnormal(pos));
                             }
-                            if (p >= 70 && p <= 80) {
+                            if (p >= 101 && p <= 105) {
                                 // saltarina n
                                 casillas.add(new Saltarina_n(pos));
                                 // especial.add(new Saltarina_n(pos));
                             }
-                            if (p >= 80 && p <= 90) {
+                            if (p > 105 && p <= 110) {
                                 // saltarina inversa n
                                 casillas.add(new Saltarina_inv(pos));
                             }
-                            if (p >= 90 && p <= 100) {
+                            if (p > 110 && p <= 115) {
                                 // Mortal
                                 casillas.add(new Mortal(pos));
                             }
-                            if (p >= 100 && p <= 110) {
+                            if (p > 115 && p <= 120) {
                                 // avance
                                 casillas.add(new Avance(pos));
                             }
-                            if (p >= 110 && p <= 120) {
+                            if (p > 120 && p <= 125) {
                                 // retroceso
                                 casillas.add(new Retroceso(pos));
                             }
-                            if (p >= 120 && p <= 130) {
+                            if (p > 125 && p <= 130) {
                                 // preguntona
                                 casillas.add(new Preguntona(pos));
                             }
@@ -275,7 +275,10 @@ public class Tablero {
                     xd = a.getPos();
                     r.changePos(xd);
                     a.setFicha(r);
+
                     // System.out.println(Arrays.toString(xd) + "---> ser id:" + a.getId());
+                } else {
+                    xd = b.getPos();
                 }
             }
             if (b instanceof Escalera) {
@@ -284,6 +287,8 @@ public class Tablero {
                     r.changePos(xd);
                     a.setFicha(r);
                     // System.out.println(Arrays.toString(xd) + "---> esc id:" + a.getId());
+                } else {
+                    xd = b.getPos();
                 }
             }
         }
@@ -342,5 +347,4 @@ public class Tablero {
             }
         }
     }
-
 }

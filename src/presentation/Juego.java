@@ -166,9 +166,15 @@ public class Juego extends JFrame implements ActionListener {
     }
 
     public int checkTurn() {
-        int chance = (turn + 1) % num;
-        l3.setText("Turn of player " + (chance + 1)); // Displays which player has to roll the dice.
-        return turn % num;
+        int turnoActual = turn % Jugadores.numero;
+        if (turnoActual < Jugadores.numero - 1) {
+            l3.setText("Turno de " + juego.getJugadores().get(turnoActual).getName());
+            // Es el turno de un jugador
+        } else {
+            l3.setText("Turno de la máquina");
+            // Es el turno de la máquina
+        }
+        return turnoActual;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -210,12 +216,33 @@ public class Juego extends JFrame implements ActionListener {
                 ex.printStackTrace();
             }
             turn++;
+
+            if (turn % Jugadores.numero == 0) {
+                moverMaquina();
+            }
         }
 
 
         b.dispose();
         b = null;
         b = new Board(juego);
+    }
+
+    /**
+     * Mueve la maquina en el tablero
+     */
+    private void moverMaquina() {
+        if (checkTurn() == 0) {
+            int b = juego.rollDice();
+            // System.out.println(b);
+            try {
+                this.juego.jugar(b);
+            } catch (POOBStairsException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+
+
     }
 
     private void jugar() {

@@ -37,7 +37,7 @@ public class Board extends javax.swing.JFrame {
     private JFileChooser choose;
     private JFileChooser chooseSave;
     private ArrayList<Color> colores = new ArrayList<Color>();
-    ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
+    ImageIcon ico = new ImageIcon("src/resources/Ficha-Roja.png");
 
     /**
      * Instantiates a new Conecta 4 gui.
