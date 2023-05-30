@@ -3,6 +3,11 @@ package presentation;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import domain.POOBStairs;
+import domain.POOBStairsException;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -85,7 +90,22 @@ public class PantallaInicio extends JFrame {
 
         btnCargarJuego.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "En construcción...");
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileFilter(new FileNameExtensionFilter("Extension archivo .dat", ".dat"));
+                int respuesta = fileChooser.showOpenDialog(null);
+        
+                if (respuesta == JFileChooser.APPROVE_OPTION) {
+                    POOBStairs xd = new POOBStairs();
+                    try {
+                        dispose();
+                        xd.open(fileChooser.getSelectedFile());
+                        new Juego(xd);
+                        
+                    } catch (POOBStairsException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                }
             }
         });
 

@@ -1,6 +1,7 @@
 package domain;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Clase Jugador
@@ -8,7 +9,7 @@ import java.awt.Color;
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public abstract class Jugador {
+public abstract class Jugador implements Serializable{
 
     private boolean multi;
     /**

@@ -1,5 +1,6 @@
 package domain;
 
+
 /**
  * Clase Escalera
  *

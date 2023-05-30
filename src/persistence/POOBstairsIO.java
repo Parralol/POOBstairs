@@ -2,6 +2,9 @@ package persistence;
 
 import java.io.*;
 
+import domain.POOBStairs;
+import domain.POOBStairsException;
+
 /**
  * The type Poo bstairs io.
  */
@@ -13,26 +16,24 @@ public class POOBstairsIO {
      * @param filename the filename
      * @param object   the object
      */
-    public static void saveClass(String filename, Object object) {
-        try {
-            // Create a file output stream to write the serialized object to a file
-            FileOutputStream fos = new FileOutputStream(filename);
+    public static void save(File file ,POOBStairs a) throws POOBStairsException {
+        try{
+            ObjectOutputStream out = new ObjectOutputStream( new FileOutputStream( file ) );
+            out.writeObject(a);
+            out.close();
 
-            // Create an object output stream to write the serialized object to the file
-            // output stream
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+        }
+        catch( Exception e){
+            throw new POOBStairsException("Ocurrio un error al guardar "+file.getName());
+        }
+    }
 
-            // Write the serialized object to the file
-            oos.writeObject(object);
-
-            // Close the object output stream and file output stream
-            oos.close();
-            fos.close();
-
-            System.out.println("Object saved to " + filename);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void saveO1( File file, POOBStairs a) throws POOBStairsException {
+        if ( file.getName().endsWith(".dat")){
+            save(file,a);
+        }
+        else{
+            throw new POOBStairsException(POOBStairsException.EXTENSION_ARCHIVO_NO_VALIDO);
         }
     }
 
@@ -42,28 +43,27 @@ public class POOBstairsIO {
      * @param filename the filename
      * @return the object
      */
-    public static Object loadClass(String filename) {
-        Object object = null;
-        try {
-            // Create a file input stream to read the serialized object from a file
-            FileInputStream fis = new FileInputStream(filename);
+    public static POOBStairs abrir( File file ) throws POOBStairsException {
+        try{
+            ObjectInputStream in = new ObjectInputStream( new FileInputStream(file));
+            POOBStairs a = (POOBStairs)in.readObject();
+            in.close();
+            return a;
 
-            // Create an object input stream to read the serialized object from the file
-            // input stream
-            ObjectInputStream ois = new ObjectInputStream(fis);
-
-            // Read the serialized object from the file
-            object = ois.readObject();
-
-            // Close the object input stream and file input stream
-            ois.close();
-            fis.close();
-
-            System.out.println("Object loaded from " + filename);
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        }catch( Exception e){
+            System.out.println(e);
+            throw new POOBStairsException("Ocurrio un error al Abrir "+file.getName());
         }
-        return object;
     }
+
+
+    public static POOBStairs abrirO1( File file ) throws POOBStairsException {
+        if ( file.getName().endsWith(".dat")){
+            return abrir( file );
+        }
+        else{
+            throw new POOBStairsException(POOBStairsException.EXTENSION_ARCHIVO_NO_VALIDO);
+        }
+    }
+
 }

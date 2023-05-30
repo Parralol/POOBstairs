@@ -2,6 +2,7 @@ package domain;
 
 import java.awt.Color;
 
+
 /**
  * Clase Maquina
  *

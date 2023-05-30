@@ -3,10 +3,14 @@ package presentation;
 import domain.Cnormal;
 import domain.Escalera;
 import domain.POOBStairs;
+import domain.POOBStairsException;
 import domain.Serpiente;
+import persistence.POOBstairsIO;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -301,7 +305,10 @@ public class Board extends javax.swing.JFrame {
     private void saveAction() {
         chooseSave = new JFileChooser(new File("c:\\"));
         chooseSave.setDialogTitle("Save a File");
+        chooseSave.setFileFilter( new FileNameExtensionFilter("Extension .dat","dat"));
         chooseSave.showSaveDialog(null);
+        juego.Save(chooseSave.getSelectedFile());;
+
     }
 
     /**

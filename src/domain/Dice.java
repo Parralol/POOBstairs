@@ -1,12 +1,14 @@
 package domain;
 
+import java.io.Serializable;
+
 /**
  * Clase Dice
  *
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public class Dice {
+public class Dice implements Serializable{
     private int numDice;
 
     /**

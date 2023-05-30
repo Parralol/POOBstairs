@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -8,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Santiago Parra / Juan Vizcaino
  * @version v2.3
  */
-public class Modificadores {
+public class Modificadores implements Serializable{
 
     private String[] tipo = { "Cambio", "Bonifica", "Penaliza" };
 

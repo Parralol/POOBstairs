@@ -1,5 +1,7 @@
 package domain;
 
+
+
 /**
  * Clase POOBStairsException.
  *
@@ -28,6 +30,10 @@ public class POOBStairsException extends Exception {
      * The Ganador.
      */
     static String GANADOR = "Ha ganado!";
+
+    static String NO_PUEDEN_TENER_EL_MISMO_NOMBRE = "Jugadores deben tener distintos nombres";
+
+    public static String EXTENSION_ARCHIVO_NO_VALIDO = "DEBE POSEER EXTENSION .dat";
 
     /**
      * Instantiates a new Poob stairs exception.

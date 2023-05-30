@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.Arrays;
 
 import org.junit.*;
@@ -14,7 +15,7 @@ import org.junit.*;
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public class POOBStairsTest {
+public class POOBStairsTest implements Serializable{
     private Jugador j1;
     private Jugador j2;
     private Jugador j3;
@@ -118,11 +119,20 @@ public class POOBStairsTest {
     }
 
     @Test
-
     public void shouldCreateAllCasillas(){
         tablero = new Tablero(0.1, 0.2, 0.3, 10);
         tablero = new Tablero(0.1, 0.2, 0.3, 30);
        
+    }
+
+    @Test
+    public void shouldNotAllowSameNames(){
+
+    }
+
+    @Test
+    public void shouldNotAllowEmptyNames(){
+
     }
     /**
      * Tears down the test fixture.

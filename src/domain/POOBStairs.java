@@ -2,13 +2,16 @@ package domain;
 
 import java.util.ArrayList;
 
+import persistence.POOBstairsIO;
+
+import java.io.*;
 /**
  * clase POOBStairs.
  *
  * @author Santiago Parra / Juan Vizcaino
  * @version v3.7
  */
-public class POOBStairs {
+public class POOBStairs  implements Serializable{
     private Dice dado;
     private ArrayList<Jugador> jugadores;
     private Tablero tablero;
@@ -36,22 +39,69 @@ public class POOBStairs {
      * @throws POOBStairsException the poob stairs exception
      */
     public void addJugador(Jugador a) throws POOBStairsException {
-        boolean can = true;
+        boolean canC = true;
+        boolean canN = true;
         for (Jugador b : jugadores) {
-            if (a.getColor() == b.getColor()) {
-                can = false;
+            if (a.getColor() == b.getColor() ) {
+                canC = false;
+            }if(a.getName() == b.getName()){
+                canN = false;
             }
         }
         if (a.getName() == null) {
             throw new POOBStairsException(POOBStairsException.JUGADOR_DEBE_TENER_NOMBRE);
         }
-        if (can) {
+        if (canC && canN) {
             jugadores.add(a);
         } else {
-            throw new POOBStairsException(POOBStairsException.NO_PUEDE_TENER_MISMO_COLOR);
+            if(!canC){
+                throw new POOBStairsException(POOBStairsException.NO_PUEDE_TENER_MISMO_COLOR);
+            }if(!canN){
+                throw new POOBStairsException(POOBStairsException.NO_PUEDEN_TENER_EL_MISMO_NOMBRE);
+            }
         }
     }
 
+    public void Save(File filename){
+        try{
+            POOBstairsIO.saveO1(filename, this);
+        }catch(Exception e){
+
+        }
+    }
+
+    public void open(File filename) throws POOBStairsException{
+        POOBstairsIO.abrirO1(filename);
+    }
+
+    public void setTablero(POOBStairs a){
+        this.tablero = a.getTablero();
+        this.jugadores = a.getJugadores();
+        this.dado = a.getDado();
+        this.njugadas = a.getNumeroJugadas();
+        this.turno = a.getTurno();
+        this.multi = a.getMulti();
+    }
+
+    public Tablero getTablero(){
+        return tablero;
+    }
+
+    public Dice getDado() {
+        return dado;
+    }
+
+    public Multiplicador getMulti() {
+        return multi;
+    }
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public int getNjugadas() {
+        return njugadas;
+    }
     /**
      * metodo para moverse dado el numero del dado
      *

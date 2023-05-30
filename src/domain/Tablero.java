@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -10,7 +11,7 @@ import java.util.Random;
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public class Tablero {
+public class Tablero implements Serializable{
     private double pesc;
     private double pserp;
     private double pesp;

@@ -1,12 +1,13 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.Random;
 
 
 /**
  * Clase Multiplicador
  */
-public class Multiplicador {
+public class Multiplicador implements Serializable{
     private Random rand;
 
     /**
