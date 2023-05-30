@@ -142,15 +142,15 @@ public class Tablero {
 
                 
                         //System.out.println(Double.compare((double)p, (double)p * pesp));
-                        if (Double.compare((double)p, (double)p * pesp) < 0)   {
+                        if (Double.compare((double)p, (double)p * pesp) > 0)   {
                             //System.out.println("especial");
                             genereateEspecial(p, pos);
                             //casillas.add(new Cnormal(pos));
-                        }else if(Double.compare((double)p, (double)p * pserp) < 0){ 
+                        }else if(Double.compare((double)p, (double)p * pserp) > 0){ 
                             //System.out.println("serpiente");
                             // System.out.println(Arrays.toString(posx));
                             id = generateSerp(id, pos, posx);
-                        }else if(Double.compare((double)p, (double)p * pesc) < 0){
+                        }else if(Double.compare((double)p, (double)p * pesc) > 0){
                             //System.out.println("escalera");
                             id = generateEsc(id, pos, posx);
                         }else{
