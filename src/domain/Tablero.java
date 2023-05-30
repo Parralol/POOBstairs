@@ -128,8 +128,6 @@ public class Tablero {
         // ArrayList<Casilla> especial = new ArrayList<Casilla>();
         int[] inic = { 0, 0 };
         int[] fin = { size-1, size-1 };
-        System.out.println(size + "   :TAMAÑO CASILLAS");
-
         for (int i = 0; i <= size; i++) {
             for (int j = 0; j <= size; j++) {
                 int[] pos = { i, j };
@@ -143,15 +141,15 @@ public class Tablero {
 
                 
                         //System.out.println(Double.compare((double)p, (double)p * pesp));
-                        if (Double.compare((double)p, (double)p * pesp) < 0)   {
+                        if (Double.compare((double)p, (double)p * pesp) > 0)   {
                             //System.out.println("especial");
                             genereateEspecial(p, pos);
                             //casillas.add(new Cnormal(pos));
-                        }else if(Double.compare((double)p, (double)p * pserp) < 0){ 
+                        }else if(Double.compare((double)p, (double)p * pserp) > 0){ 
                             //System.out.println("serpiente");
                             // System.out.println(Arrays.toString(posx));
                             id = generateSerp(id, pos, posx);
-                        }else if(Double.compare((double)p, (double)p * pesc) < 0){
+                        }else if(Double.compare((double)p, (double)p * pesc) > 0){
                             //System.out.println("escalera");
                             id = generateEsc(id, pos, posx);
                         }else{
@@ -199,6 +197,7 @@ public class Tablero {
         for (Casilla a : casillas) {
             if (Arrays.equals(pos, a.getPos())) {
                 res = false;
+                break;
             }
         }
         return res;
@@ -215,6 +214,7 @@ public class Tablero {
         for (Casilla a : serpEsc) {
             if (Arrays.equals(pos, a.getPos())) {
                 res = false;
+                break;
             }
         }
         return res;
