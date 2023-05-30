@@ -127,12 +127,28 @@ public class POOBStairsTest implements Serializable{
 
     @Test
     public void shouldNotAllowSameNames(){
-
+        try {
+            Jugador j = new Humano(1);
+            j.setName("Parralol");
+            j.setColor(Color.lightGray);
+            prueba.addJugador(j);
+        } catch (POOBStairsException e) {
+            // TODO Auto-generated catch block
+           assertTrue(e.getMessage(), true);
+        }
+        
     }
 
     @Test
     public void shouldNotAllowEmptyNames(){
-
+        Jugador j = new Humano(1);
+        j.setColor(Color.lightGray);
+        try {
+            prueba.addJugador(j);
+        } catch (POOBStairsException e) {
+            // TODO Auto-generated catch block
+            assertTrue(e.getMessage(), true);
+        }
     }
     /**
      * Tears down the test fixture.

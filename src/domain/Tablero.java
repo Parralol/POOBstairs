@@ -263,7 +263,7 @@ public class Tablero implements Serializable{
                     xd = a.getPos();
                     r.changePos(xd);
                     a.setFicha(r);
-
+                    break;
                     // System.out.println(Arrays.toString(xd) + "---> ser id:" + a.getId());
                 } else {
                     xd = b.getPos();
@@ -274,6 +274,7 @@ public class Tablero implements Serializable{
                     xd = a.getPos();
                     r.changePos(xd);
                     a.setFicha(r);
+                    break;
                     // System.out.println(Arrays.toString(xd) + "---> esc id:" + a.getId());
                 } else {
                     xd = b.getPos();
@@ -282,7 +283,7 @@ public class Tablero implements Serializable{
         }
         // System.out.println(Arrays.toString(xd));
         if (b instanceof Serpiente || b instanceof Escalera) {
-            int[] res = { b.getPos()[0], b.getPos()[1] + 5 };
+            int[] res = { b.getPos()[0], b.getPos()[1] };
             xd = res;
         }
         return xd;

@@ -48,7 +48,7 @@ public class POOBStairs  implements Serializable{
                 canN = false;
             }
         }
-        if (a.getName() == null) {
+        if (a.getName() == null || a.getName() == "") {
             throw new POOBStairsException(POOBStairsException.JUGADOR_DEBE_TENER_NOMBRE);
         }
         if (canC && canN) {
