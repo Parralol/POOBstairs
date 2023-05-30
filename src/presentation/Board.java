@@ -1,6 +1,5 @@
 package presentation;
 
-import domain.Casilla;
 import domain.Cnormal;
 import domain.Escalera;
 import domain.POOBStairs;
@@ -9,7 +8,6 @@ import domain.Serpiente;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -18,7 +16,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * The type POOBStairs gui.
@@ -26,7 +23,11 @@ import java.util.Arrays;
 public class Board extends javax.swing.JFrame {
 
     private POOBStairs juego;
-    private static final int size = 10;
+    private int size;
+
+    {
+        size = Config.getSize();
+    }
 
     // ATRIBUTOS GRAFICOS
     private JMenuBar menuB;
@@ -110,7 +111,7 @@ public class Board extends javax.swing.JFrame {
 
         JLabel[][] boardSquares = new JLabel[size][size];
         JLabel[][] boardSquares2 = new JLabel[size][size];
-        gameBoard = new JPanel(new GridLayout(10, 10));
+        gameBoard = new JPanel(new GridLayout(boardSquares[0].length, boardSquares[1].length));
         gameBoard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         gameBoard.isFontSet();
         colores.add(new Color(125, 91, 166)); //
