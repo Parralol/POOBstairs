@@ -15,7 +15,7 @@ public class Config {
     JPanel serpientes;
     JPanel modificadores;
     JLabel seleccionarTamano;
-    private static int size = 0;
+    private static int size = 10;
     JComboBox<String> tamanoTablero;
 
     JLabel mensajeEscaleras;

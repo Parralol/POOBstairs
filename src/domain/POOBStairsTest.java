@@ -20,6 +20,7 @@ public class POOBStairsTest {
     private Jugador j3;
     private Jugador j4;
 
+    private Tablero tablero;
     private POOBStairs prueba;
 
     /**
@@ -108,7 +109,7 @@ public class POOBStairsTest {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
 
-                if (prueba.getCasillas(j, i).getClass().getSimpleName() == "Escalera") {
+                if (prueba.getCasillas(j, i) instanceof Escalera) {
                     assertTrue(prueba.getCasillas(j, i).getClass().getName(), false);
                 }
             }
@@ -116,6 +117,13 @@ public class POOBStairsTest {
         assertFalse(true);
     }
 
+    @Test
+
+    public void shouldCreateAllCasillas(){
+        tablero = new Tablero(0.1, 0.2, 0.3, 10);
+        tablero = new Tablero(0.1, 0.2, 0.3, 30);
+       
+    }
     /**
      * Tears down the test fixture.
      * Called after every test case method.
@@ -123,5 +131,6 @@ public class POOBStairsTest {
     @After
     public void tearDown() {
     }
+
 
 }

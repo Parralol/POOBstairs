@@ -22,13 +22,14 @@ public class Tablero {
      * Constructor para tablero
      */
     public Tablero(double pesc, double pserp, double pesp, int size) {
-        System.out.println(pesc);
-        System.out.println(pserp);
-        System.out.println(pesp);
+        //System.out.println(pesc);
+        //System.out.println(pserp);
+        //System.out.println(pesp);
         this.pesc = pesc;
         this.pesp = pesp;
         this.pserp= pserp;
         this.size = size;
+        System.out.println(this.size);
         casillas = new ArrayList<Casilla>();
         serpEsc = new ArrayList<Casilla>();
         generateCasillasNormal();
@@ -62,7 +63,7 @@ public class Tablero {
 
         // System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
         // System.out.println(casillas.size() + "longitud casillas");
-        if (b == 99) {
+        if (b == (size*size)- size) {
             // System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
             // System.out.println(casillas.size() + "longitud casillas");
             throw new POOBStairsException(POOBStairsException.GANADOR);
@@ -129,31 +130,35 @@ public class Tablero {
         Random x = new Random();
         // ArrayList<Casilla> especial = new ArrayList<Casilla>();
         int[] inic = { 0, 0 };
-        int[] fin = { size-1, size-1 };
+        int[] fin = { size, size-1 };
         for (int i = 0; i <= size; i++) {
+            System.out.print(i);
             for (int j = 0; j <= size-1; j++) {
+                System.out.println(j + "J");
                 int[] pos = { i, j };
+                
                 //System.out.println(i);
                 if (validateCas(pos)) {
                     int p = x.nextInt(101);
                     // System.out.println(p);
                     // Casillas
                     if (!pos.equals(inic) || !pos.equals(fin)) {
-                        int[] posx = generateRandom(pos[0], pos[1]);
-
+                        
                 
                         //System.out.println(Double.compare((double)p, (double)p * pesp));
                         if (Double.compare((double)p, pesp*100) <= 0)   {
-                            System.out.println("especial");
+                            //System.out.println("especial");
                             genereateEspecial(p, pos);
                             //casillas.add(new Cnormal(pos));
                         }else if(Double.compare((double)p, pserp*100 ) <= 0){ 
                             //System.out.println("serpiente");
                             // System.out.println(Arrays.toString(posx));
+                            int[] posx = generateRandom(pos[0], pos[1]);
                             id = generateSerp(id, pos, posx);
                            // System.out.println(id + "---" + "serp");
                         }else if(Double.compare((double)p, pesc*100 + pserp*100) <= 0){
                             //System.out.println("escalera");
+                            int[] posx = generateRandom(pos[0], pos[1]);
                             id = generateEsc(id, pos, posx);
                             //System.out.println(id + "---" + "esc");
                         }else{
@@ -177,10 +182,11 @@ public class Tablero {
      */
     private int[] generateRandom(int x, int y) {
         Random xd = new Random();
+        int tam = this.size;
         while (true) {
             int f = x + (xd.nextInt(5) * (xd.nextBoolean() ? 1 : -1));
             int l = y + (xd.nextInt(5) * (xd.nextBoolean() ? 1 : -1));
-            if (f - 1 <= 9 && f - 1 > 0 && l - 1 <= 9 && l - 1 > 0) {
+            if (f - 1 <= (tam -1)  && f - 1 > 0 && l - 1 <= (tam-1) && l - 1 > 0) {
                 int[] res = { f - 1, l - 1 };
                 if (validateCasEsp(res)) {
                     return res;
@@ -197,6 +203,7 @@ public class Tablero {
      * @return
      */
     private boolean validateCas(int[] pos) {
+        //System.out.println(casillas.size());
         boolean res = true;
         for (Casilla a : casillas) {
             if (Arrays.equals(pos, a.getPos())) {
@@ -311,7 +318,7 @@ public class Tablero {
      * @param a
      */
     private void fussion(ArrayList<Casilla> a) {
-        for (int i = 0; i < casillas.size() - 10; i++) {
+        for (int i = 0; i < casillas.size() - size; i++) {
             for (int j = 0; j < a.size(); j++) {
                 if (i == 0) {
                     // System.out.println(a.get(j).getId() + "---> POS" +

@@ -53,7 +53,6 @@ public class Board extends javax.swing.JFrame {
      */
     public Board(POOBStairs juego) {
         this.juego = juego;
-        System.out.println(getSize());
         setIconImage(ico.getImage());
         setTitle("POOBStairs");
         prepareElements();
