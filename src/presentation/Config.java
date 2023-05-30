@@ -21,9 +21,9 @@ public class Config {
     JLabel mensajeEscaleras;
     JLabel mensajeSerpientes;
     JLabel mensajeModificadores;
-    JTextField numeroEscaleras;
-    JTextField numeroSerpientes;
-    JTextField probabilidadModificadores;
+    JComboBox<Integer> porcEscaleras = new JComboBox<Integer>();
+    JComboBox<Integer> porcSerpientes = new JComboBox<Integer>();
+    JComboBox<Integer> probabilidadModificadores = new JComboBox<Integer>();
     JButton atras;
     JButton continuar;
     ImageIcon ico = new ImageIcon("src/resources/Ficha-Roja.png");
@@ -81,18 +81,24 @@ public class Config {
         tamano.add(seleccionarTamano);
         tamano.add(tamanoTablero);
 
-        mensajeEscaleras = new JLabel("Numero de escaleras");
-        numeroEscaleras = new JTextField(10);
+        mensajeEscaleras = new JLabel("Probabilidad de escaleras");
+        for (int i = 10; i <= 60; i+= 10) {
+             porcEscaleras.addItem(i);
+        }
         escaleras.add(mensajeEscaleras);
-        escaleras.add(numeroEscaleras);
+        escaleras.add(porcEscaleras);
 
-        mensajeSerpientes = new JLabel("Numero de serpientes");
-        numeroSerpientes = new JTextField(10);
+        mensajeSerpientes = new JLabel("Probabilidad de serpientes");
+        for (int i = 10; i <= 60; i+= 10) {
+            porcSerpientes.addItem(i);
+        }
         serpientes.add(mensajeSerpientes);
-        serpientes.add(numeroSerpientes);
+        serpientes.add(porcSerpientes);
 
         mensajeModificadores = new JLabel("Probabilidad de modificadores");
-        probabilidadModificadores = new JTextField(10);
+        for (int i = 10; i <= 60; i+= 10) {
+            probabilidadModificadores.addItem(i);
+        }
         modificadores.add(mensajeModificadores);
         modificadores.add(probabilidadModificadores);
 
@@ -144,18 +150,24 @@ public class Config {
         tamano.add(seleccionarTamano);
         tamano.add(tamanoTablero);
 
-        mensajeEscaleras = new JLabel("Numero de escaleras");
-        numeroEscaleras = new JTextField(10);
+        mensajeEscaleras = new JLabel("Porcentaje de escaleras");
+        for (int i = 10; i <= 60; i+= 10) {
+            porcEscaleras.addItem(i);
+        }
         escaleras.add(mensajeEscaleras);
-        escaleras.add(numeroEscaleras);
+        escaleras.add(porcEscaleras);
 
-        mensajeSerpientes = new JLabel("Numero de serpientes");
-        numeroSerpientes = new JTextField(10);
+        mensajeSerpientes = new JLabel("Porcentaje de serpientes");
+        for (int i = 10; i <= 60; i+= 10) {
+            porcSerpientes.addItem(i);
+        }
         serpientes.add(mensajeSerpientes);
-        serpientes.add(numeroSerpientes);
+        serpientes.add(porcSerpientes);
 
         mensajeModificadores = new JLabel("Probabilidad de modificadores");
-        probabilidadModificadores = new JTextField(10);
+        for (int i = 10; i <= 60; i+= 10) {
+            probabilidadModificadores.addItem(i);
+        }
         modificadores.add(mensajeModificadores);
         modificadores.add(probabilidadModificadores);
 
