@@ -200,7 +200,7 @@ public class Config {
             
             int pesc = (int) porcEscaleras.getSelectedItem();
             int pserp = (int) porcSerpientes.getSelectedItem();
-            int pesp = (int) probabilidadModificadores.getSelectedItem() /100;
+            int pesp = (int) probabilidadModificadores.getSelectedItem() ;
             juego.createTablero(pesc, pserp, pesp, getSize());
             frame.dispose();
             new Juego(juego);

@@ -23,6 +23,8 @@ public class Tablero {
      */
     public Tablero(double pesc, double pserp, double pesp, int size) {
         System.out.println(pesc);
+        System.out.println(pserp);
+        System.out.println(pesp);
         this.pesc = pesc;
         this.pesp = pesp;
         this.pserp= pserp;
@@ -128,7 +130,7 @@ public class Tablero {
         int[] inic = { 0, 0 };
         int[] fin = { size-1, size-1 };
         for (int i = 0; i <= size; i++) {
-            for (int j = 0; j <= size; j++) {
+            for (int j = 0; j <= size-1; j++) {
                 int[] pos = { i, j };
                 //System.out.println(i);
                 if (validateCas(pos)) {
@@ -140,17 +142,19 @@ public class Tablero {
 
                 
                         //System.out.println(Double.compare((double)p, (double)p * pesp));
-                        if (Double.compare((double)p, (double)p * pesp) > 0)   {
-                            //System.out.println("especial");
+                        if (Double.compare((double)p, pesp*100) <= 0)   {
+                            System.out.println("especial");
                             genereateEspecial(p, pos);
                             //casillas.add(new Cnormal(pos));
-                        }else if(Double.compare((double)p, (double)p * pserp) > 0){ 
+                        }else if(Double.compare((double)p, pserp*100 ) <= 0){ 
                             //System.out.println("serpiente");
                             // System.out.println(Arrays.toString(posx));
                             id = generateSerp(id, pos, posx);
-                        }else if(Double.compare((double)p, (double)p * pesc) > 0){
+                           // System.out.println(id + "---" + "serp");
+                        }else if(Double.compare((double)p, pesc*100 + pserp*100) <= 0){
                             //System.out.println("escalera");
                             id = generateEsc(id, pos, posx);
+                            //System.out.println(id + "---" + "esc");
                         }else{
                             //System.out.println("nromal");
                             casillas.add(new Cnormal(pos));
@@ -345,7 +349,7 @@ public class Tablero {
             // retroceso
             casillas.add(new Retroceso(pos));
         }
-        if (p > 80 && p <= 100) {
+        if (p > 80 && p <= 101) {
             // preguntona
             casillas.add(new Preguntona(pos));
         }

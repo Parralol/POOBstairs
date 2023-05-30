@@ -89,6 +89,7 @@ public abstract class Jugador {
      */
     public void increaseSerp() {
         numSerpientes++;
+        System.out.println(numSerpientes);
     }
 
     /**
