@@ -50,12 +50,13 @@ public class Jugadores extends JFrame implements ActionListener {
                     } catch (Exception r) {
                         JOptionPane.showMessageDialog(null, r.getMessage());
                     }
+
                 } else {
                     modoJuego.setSelectedIndex(0);
                     return;
                 }
                 dispose();
-                new Juego(juego);
+                new Config(1);
             } else {
                 String str = modoJuego.getSelectedItem().toString();
                 numero = 2;
@@ -77,9 +78,41 @@ public class Jugadores extends JFrame implements ActionListener {
                     }
                 }
                 dispose();
-                new Juego(juego);
+                new Config(0);
             }
         }
+
+
+
+        if (e.getSource() == modoJuego) {
+            String str = modoJuego.getSelectedItem().toString();
+            numero = Integer.parseInt(str);
+
+            for (int i = 0; i < numero; i++) {
+                Jugador xd = new Humano(i);
+                xd.setColor(colores[i]);
+
+
+                String nombre = JOptionPane.showInputDialog(this, "Ingrese el nombre del Jugador " + (i + 1));
+                if (nombre != null) {
+                    xd.setName(nombre);
+                    try {
+                        juego.addJugador(xd);
+                    } catch (Exception r) {
+                        JOptionPane.showMessageDialog(null, r.getMessage());
+                    }
+                } else {
+
+                    modoJuego.setSelectedIndex(0);
+                    return;
+                }
+            }
+
+            dispose();
+            new Juego(juego);
+        }
+
+    }
 
         /**
          *
@@ -113,4 +146,4 @@ public class Jugadores extends JFrame implements ActionListener {
         }
          **/
     }
-}
+
