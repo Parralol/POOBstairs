@@ -30,7 +30,7 @@ public class Tablero implements Serializable{
         this.pesp = pesp;
         this.pserp= pserp;
         this.size = size;
-        System.out.println(this.size);
+        //System.out.println(this.size);
         casillas = new ArrayList<Casilla>();
         serpEsc = new ArrayList<Casilla>();
         generateCasillasNormal();
@@ -133,9 +133,9 @@ public class Tablero implements Serializable{
         int[] inic = { 0, 0 };
         int[] fin = { size, size-1 };
         for (int i = 0; i <= size; i++) {
-            System.out.print(i);
+            //System.out.print(i);
             for (int j = 0; j <= size-1; j++) {
-                System.out.println(j + "J");
+                ///System.out.println(j + "J");
                 int[] pos = { i, j };
                 
                 //System.out.println(i);
@@ -171,7 +171,7 @@ public class Tablero implements Serializable{
                 }
             }
         fuss(serpEsc);
-        System.out.println(casillas.size() +" -->" + "tamaño casillas");
+        //System.out.println(casillas.size() +" -->" + "tamaño casillas");
     }
 
     /**
