@@ -22,11 +22,13 @@ public class POOBStairs {
     public POOBStairs() {
         jugadores = new ArrayList<Jugador>();
         dado = new Dice(0);
-        tablero = new Tablero();
         turno = 1;
         njugadas = 0;
     }
 
+    public void createTablero(int pesc, int pserp, int pesp, int size){
+        tablero = new Tablero((double) pesc /100 ,(double) pserp/100,(double) pesp /100, size);
+    }
     /**
      * agrega un jugador a tablero
      * 

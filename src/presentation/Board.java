@@ -29,6 +29,7 @@ public class Board extends javax.swing.JFrame {
         size = Config.getSize();
     }
 
+    
     // ATRIBUTOS GRAFICOS
     private JMenuBar menuB;
     private JMenu opciones;
@@ -47,6 +48,7 @@ public class Board extends javax.swing.JFrame {
      */
     public Board(POOBStairs juego) {
         this.juego = juego;
+        System.out.println(getSize());
         setIconImage(ico.getImage());
         setTitle("POOBStairs");
         prepareElements();

@@ -56,7 +56,7 @@ public class Jugadores extends JFrame implements ActionListener {
                     return;
                 }
                 dispose();
-                new Config(1);
+                new Config(1, juego);
             } else {
                 String str = modoJuego.getSelectedItem().toString();
                 numero = 2;
@@ -78,7 +78,7 @@ public class Jugadores extends JFrame implements ActionListener {
                     }
                 }
                 dispose();
-                new Config(0);
+                new Config(0, juego);
             }
         }
 
@@ -110,7 +110,7 @@ public class Jugadores extends JFrame implements ActionListener {
             }
 
             dispose();
-            new Juego(juego);
+            //new Juego(juego);
         }
 
     }

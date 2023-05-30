@@ -15,9 +15,8 @@ public class Config {
     JPanel serpientes;
     JPanel modificadores;
     JLabel seleccionarTamano;
-    private static int size = 0;
+    private static int size = 10;
     JComboBox<String> tamanoTablero;
-
     JLabel mensajeEscaleras;
     JLabel mensajeSerpientes;
     JLabel mensajeModificadores;
@@ -28,12 +27,14 @@ public class Config {
     JButton continuar;
     ImageIcon ico = new ImageIcon("src/resources/Ficha-Roja.png");
 
+    POOBStairs juego;
 
     /**
      * Constructor de la clase Config
      * @param n
      */
-    public Config(int n) {
+    public Config(int n, POOBStairs juego) {
+        this.juego = juego;
         frame = new JFrame();
         if (n == 0) {
             prepareElementsJVJ();
@@ -196,8 +197,13 @@ public class Config {
             new Jugadores();
         });
         continuar.addActionListener(e -> {
+            
+            int pesc = (int) porcEscaleras.getSelectedItem();
+            int pserp = (int) porcSerpientes.getSelectedItem();
+            int pesp = (int) probabilidadModificadores.getSelectedItem() /100;
+            juego.createTablero(pesc, pserp, pesp, getSize());
             frame.dispose();
-            new Juego(new POOBStairs());
+            new Juego(juego);
         });
     }
 

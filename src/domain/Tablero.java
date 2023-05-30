@@ -14,13 +14,19 @@ public class Tablero {
     private double pesc;
     private double pserp;
     private double pesp;
+    private int size;
     private ArrayList<Casilla> casillas;
     private ArrayList<Casilla> serpEsc;
 
     /**
      * Constructor para tablero
      */
-    public Tablero() {
+    public Tablero(double pesc, double pserp, double pesp, int size) {
+        System.out.println(pesc);
+        this.pesc = pesc;
+        this.pesp = pesp;
+        this.pserp= pserp;
+        this.size = size;
         casillas = new ArrayList<Casilla>();
         serpEsc = new ArrayList<Casilla>();
         generateCasillasNormal();
@@ -120,34 +126,43 @@ public class Tablero {
         Random x = new Random();
         // ArrayList<Casilla> especial = new ArrayList<Casilla>();
         int[] inic = { 0, 0 };
-        int[] fin = { 9, 9 };
-        for (int i = 0; i <= 10; i++) {
-            for (int j = 0; j <= 9; j++) {
+        int[] fin = { size-1, size-1 };
+        System.out.println(size + "   :TAMAÑO CASILLAS");
+
+        for (int i = 0; i <= size; i++) {
+            for (int j = 0; j <= size; j++) {
                 int[] pos = { i, j };
+                //System.out.println(i);
                 if (validateCas(pos)) {
                     int p = x.nextInt(101);
                     // System.out.println(p);
                     // Casillas
                     if (!pos.equals(inic) || !pos.equals(fin)) {
-                        // casillas.add(new Cnormal(pos));
                         int[] posx = generateRandom(pos[0], pos[1]);
-                        if (p  <= p * pesp) {
-                                genereateEspecial(p, pos);
-                                //casillas.add(new Cnormal(pos));
-                        }else if(p  <= p * pserp){ 
+
+                
+                        //System.out.println(Double.compare((double)p, (double)p * pesp));
+                        if (Double.compare((double)p, (double)p * pesp) < 0)   {
+                            //System.out.println("especial");
+                            genereateEspecial(p, pos);
+                            //casillas.add(new Cnormal(pos));
+                        }else if(Double.compare((double)p, (double)p * pserp) < 0){ 
+                            //System.out.println("serpiente");
                             // System.out.println(Arrays.toString(posx));
                             id = generateSerp(id, pos, posx);
-                        }else if(p  <= p * pesc){
+                        }else if(Double.compare((double)p, (double)p * pesc) < 0){
+                            //System.out.println("escalera");
                             id = generateEsc(id, pos, posx);
-
+                        }else{
+                            //System.out.println("nromal");
+                            casillas.add(new Cnormal(pos));
                             }
-
                         }
                     }
                 }
             }
         fuss(serpEsc);
-        //System.out.println(casillas.size());
+        System.out.println(casillas.size() +" -->" + "tamaño casillas");
     }
 
     /**
