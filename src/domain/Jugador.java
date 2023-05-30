@@ -11,10 +11,19 @@ import java.awt.Color;
 public abstract class Jugador {
 
     private boolean multi;
+    /**
+     * The Nombre.
+     */
     protected String nombre;
     private int turno;
+    /**
+     * The Color.
+     */
     protected Color color;
     private boolean humano;
+    /**
+     * The Ficha.
+     */
     protected Ficha ficha;
     private int numEscaleras;
     private int numSerpientes;
@@ -23,9 +32,9 @@ public abstract class Jugador {
 
     /**
      * constructor para la clase abstracta Jugador
-     * 
-     * @param humano
-     * @param turno
+     *
+     * @param humano the humano
+     * @param turno  the turno
      */
     public Jugador(boolean humano, int turno) {
         numEscaleras = 0;
@@ -43,8 +52,8 @@ public abstract class Jugador {
 
     /**
      * Mueve la ficha del jugador
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public void movFicha(int[] pos) {
         ficha.changePos(pos);
@@ -54,8 +63,8 @@ public abstract class Jugador {
 
     /**
      * define el nombre del jugador
-     * 
-     * @param nombre
+     *
+     * @param nombre the nombre
      */
     public void setName(String nombre) {
         this.nombre = nombre;
@@ -63,8 +72,8 @@ public abstract class Jugador {
 
     /**
      * define el color del jugador
-     * 
-     * @param color
+     *
+     * @param color the color
      */
     public void setColor(Color color) {
         this.color = color;
@@ -73,9 +82,9 @@ public abstract class Jugador {
 
     /**
      * incrementa la casilla maxima a la que ha llegado
-     * 
-     * @param x
-     * @param y
+     *
+     * @param x the x
+     * @param y the y
      */
     public void increaseMaxCas(int x, int y) {
         if (x > ficha.getPos()[0] && y > ficha.getPos()[1]) {
@@ -108,8 +117,8 @@ public abstract class Jugador {
 
     /**
      * retorna el turno del jugador
-     * 
-     * @return
+     *
+     * @return turno turno
      */
     public int getTurno() {
         return turno;
@@ -117,8 +126,8 @@ public abstract class Jugador {
 
     /**
      * retorna el color del jugador como un valor de Java awt
-     * 
-     * @return
+     *
+     * @return color color
      */
     public Color getColor() {
         return color;
@@ -126,8 +135,8 @@ public abstract class Jugador {
 
     /**
      * retorna un valor booleano, si es true es humano, si es false es maquina.
-     * 
-     * @return
+     *
+     * @return boolean boolean
      */
     public boolean isItHuman() {
         return humano;
@@ -135,8 +144,8 @@ public abstract class Jugador {
 
     /**
      * metodo para retornar el nombre del jugador
-     * 
-     * @return
+     *
+     * @return name name
      */
     public String getName() {
         return nombre;
@@ -146,8 +155,8 @@ public abstract class Jugador {
 
     /**
      * retorna el color de la ficha
-     * 
-     * @return
+     *
+     * @return color ficha
      */
     public Color getColorFicha() {
         return ficha.getColor();
@@ -155,13 +164,18 @@ public abstract class Jugador {
 
     /**
      * retorna la posicion de la ficha
-     * 
-     * @return
+     *
+     * @return int [ ]
      */
     public int[] getPosFicha() {
         return ficha.getPos();
     }
 
+    /**
+     * Get simple pos int.
+     *
+     * @return the int
+     */
     public int getSimplePos(){
         int[] pos = getPosFicha();
         int b= 0; 
@@ -172,10 +186,11 @@ public abstract class Jugador {
         }
         return b;
     }
+
     /**
      * retorna la ficha del jugador
-     * 
-     * @return
+     *
+     * @return ficha ficha
      */
     public Ficha getFicha() {
         return ficha;
@@ -183,8 +198,8 @@ public abstract class Jugador {
 
     /**
      * retorna el numero de casillas tipo escaleras en las que el jugador ha caido
-     * 
-     * @return
+     *
+     * @return num esc
      */
     public int getNumEsc() {
         return numEscaleras;
@@ -192,8 +207,8 @@ public abstract class Jugador {
 
     /**
      * retorna el numero de casillas tipo Serpiente en las que el jugador ha caido
-     * 
-     * @return
+     *
+     * @return num ser
      */
     public int getNumSer() {
         return numSerpientes;
@@ -201,8 +216,8 @@ public abstract class Jugador {
 
     /**
      * retorna el numero de casillas tipo especiales en las que el jugador ha caido
-     * 
-     * @return
+     *
+     * @return num cas esp
      */
     public int getNumCasEsp() {
         return numCasEsp;
@@ -210,16 +225,25 @@ public abstract class Jugador {
 
     /**
      * retorna el numero de casillas en las que el jugador ha caido
-     * 
-     * @return
+     *
+     * @return max cas
      */
     public int getMaxCas() {
         return casMax;
     }
 
+    /**
+     * Uso multi.
+     */
     public void usoMulti(){
         multi = true;
     }
+
+    /**
+     * Multi usado boolean.
+     *
+     * @return the boolean
+     */
     public boolean multiUsado(){
         return multi;
     }

@@ -2,8 +2,17 @@ package persistence;
 
 import java.io.*;
 
+/**
+ * The type Poo bstairs io.
+ */
 public class POOBstairsIO {
 
+    /**
+     * Save class.
+     *
+     * @param filename the filename
+     * @param object   the object
+     */
     public static void saveClass(String filename, Object object) {
         try {
             // Create a file output stream to write the serialized object to a file
@@ -27,6 +36,12 @@ public class POOBstairsIO {
         }
     }
 
+    /**
+     * Load class object.
+     *
+     * @param filename the filename
+     * @return the object
+     */
     public static Object loadClass(String filename) {
         Object object = null;
         try {

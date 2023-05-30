@@ -2,6 +2,7 @@ package domain;
 
 import java.awt.Color;
 import java.io.*;
+
 /**
  * Clase Casilla
  *
@@ -15,10 +16,9 @@ public abstract class Casilla implements Serializable{
 
     /**
      * Constructor para la clase casilla
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
-
     public Casilla(int[] pos) {
         color = Color.WHITE;
         this.pos = pos;
@@ -26,8 +26,8 @@ public abstract class Casilla implements Serializable{
 
     /**
      * retorna el color de la casilla
-     * 
-     * @return
+     *
+     * @return color color
      */
     public Color getColor() {
         return color;
@@ -35,8 +35,8 @@ public abstract class Casilla implements Serializable{
 
     /**
      * retorna la posicion de la casilla
-     * 
-     * @return
+     *
+     * @return int [ ]
      */
     public int[] getPos() {
         action();
@@ -45,8 +45,8 @@ public abstract class Casilla implements Serializable{
 
     /**
      * retorna la ficha almacenada en la casilla
-     * 
-     * @return
+     *
+     * @return ficha ficha
      */
     public Ficha getFicha() {
         return ficha;
@@ -54,8 +54,8 @@ public abstract class Casilla implements Serializable{
 
     /**
      * coloca la ficha
-     * 
-     * @param ficha
+     *
+     * @param ficha the ficha
      */
     public void setFicha(Ficha ficha) {
         this.ficha = ficha;
@@ -70,15 +70,15 @@ public abstract class Casilla implements Serializable{
 
     /**
      * define una accion y retorna un int[] en caso de ser necesario
-     * 
-     * @return
+     *
+     * @return int [ ]
      */
     public abstract int[] action();
 
     /**
      * retorna el id de la casilla, si es normal o otro tipo retornara -1
-     * 
-     * @return
+     *
+     * @return id id
      */
     public abstract int getId();
 

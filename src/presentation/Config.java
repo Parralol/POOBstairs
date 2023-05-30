@@ -15,8 +15,9 @@ public class Config {
     JPanel serpientes;
     JPanel modificadores;
     JLabel seleccionarTamano;
-    private static int size = 10;
+    private static int size = 0;
     JComboBox<String> tamanoTablero;
+
     JLabel mensajeEscaleras;
     JLabel mensajeSerpientes;
     JLabel mensajeModificadores;
@@ -197,7 +198,7 @@ public class Config {
             new Jugadores();
         });
         continuar.addActionListener(e -> {
-            
+
             int pesc = (int) porcEscaleras.getSelectedItem();
             int pserp = (int) porcSerpientes.getSelectedItem();
             int pesp = (int) probabilidadModificadores.getSelectedItem() /100;

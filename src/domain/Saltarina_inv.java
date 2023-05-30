@@ -10,8 +10,8 @@ public class Saltarina_inv extends Cnormal {
 
     /**
      * Constructor para la clase Saltarina_inv
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public Saltarina_inv(int[] pos) {
         super(pos);

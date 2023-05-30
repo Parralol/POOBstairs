@@ -9,8 +9,8 @@ package domain;
 public class Retroceso extends Cnormal {
     /**
      * constructor para clase retroceso
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public Retroceso(int[] pos) {
         super(pos);

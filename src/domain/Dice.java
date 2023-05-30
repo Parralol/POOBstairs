@@ -11,8 +11,8 @@ public class Dice {
 
     /**
      * Constructor de la clase Dice
-     * 
-     * @param num
+     *
+     * @param num the num
      */
     public Dice(int num) {
         this.numDice = num;
@@ -32,7 +32,7 @@ public class Dice {
 
     /**
      * Delvuelve el valor del dado
-     * 
+     *
      * @return valor dado (int)
      */
     public int getNumOfTheDice() {

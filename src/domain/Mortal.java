@@ -10,8 +10,8 @@ public class Mortal extends Cnormal {
 
     /**
      * constructor para la clase Mortal
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public Mortal(int[] pos) {
         super(pos);

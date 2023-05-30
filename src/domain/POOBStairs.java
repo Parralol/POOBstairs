@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * clase POOBStairs.
  *
  * @author Santiago Parra / Juan Vizcaino
- * @version v1.0
+ * @version v3.7
  */
 public class POOBStairs {
     private Dice dado;
@@ -31,8 +31,9 @@ public class POOBStairs {
     }
     /**
      * agrega un jugador a tablero
-     * 
-     * @param a
+     *
+     * @param a the a
+     * @throws POOBStairsException the poob stairs exception
      */
     public void addJugador(Jugador a) throws POOBStairsException {
         boolean can = true;
@@ -53,8 +54,9 @@ public class POOBStairs {
 
     /**
      * metodo para moverse dado el numero del dado
-     * 
-     * @param numero
+     *
+     * @param numero the numero
+     * @throws POOBStairsException the poob stairs exception
      */
     public void jugar(int numero) throws POOBStairsException {
         // System.out.println(numero);
@@ -83,6 +85,11 @@ public class POOBStairs {
         increaseTurno();
     }
 
+    /**
+     * Should multiply int.
+     *
+     * @return the int
+     */
     public int shouldMultiply(){
         int res = 1;
         if(getJugadorEnTurnoPasado().getSimplePos() - 99 <=10  && jugadores.get(turno - 1).multiUsado()){
@@ -96,8 +103,8 @@ public class POOBStairs {
 
     /**
      * Obtiene el nombre del jugador en turno
-     * 
-     * @return nombre
+     *
+     * @return nombre nombre jugador en turno
      */
     public String getNombreJugadorEnTurno() {
         return jugadores.get(turno - 1).getName();
@@ -105,8 +112,8 @@ public class POOBStairs {
 
     /**
      * returna TRUE si es humano, de lo contrario false
-     * 
-     * @return boolean
+     *
+     * @return boolean boolean
      */
     public boolean JugadorEnTurnoEsHumano() {
         return jugadores.get(turno - 1).isItHuman();
@@ -114,8 +121,8 @@ public class POOBStairs {
 
     /**
      * retorna el turno actual
-     * 
-     * @return turno
+     *
+     * @return turno turno actual
      */
     public int getTurnoActual() {
         return turno;
@@ -123,7 +130,7 @@ public class POOBStairs {
 
     /**
      * retorna el numero de jugadas totales en la partida
-     * 
+     *
      * @return numero de jugadas
      */
     public int getNumeroJugadas() {
@@ -132,8 +139,8 @@ public class POOBStairs {
 
     /**
      * lanza el dado
-     * 
-     * @return int
+     *
+     * @return int int
      */
     public int rollDice() {
         dado.rollDiceRandom();
@@ -142,8 +149,8 @@ public class POOBStairs {
 
     /**
      * obtiene al jugador en el turno pasado
-     * 
-     * @return Jugador
+     *
+     * @return Jugador jugador en turno pasado
      */
     public Jugador getJugadorEnTurnoPasado() {
         if(turno == 1){
@@ -155,8 +162,8 @@ public class POOBStairs {
 
     /**
      * Retorna todos los turnos en total
-     * 
-     * @return int
+     *
+     * @return int all turns
      */
     public int getAllTurns() {
         return turno = jugadores.size();
@@ -164,10 +171,10 @@ public class POOBStairs {
 
     /**
      * Retorna la ficha del juego
-     * 
-     * @param x
-     * @param y
-     * @return Ficha
+     *
+     * @param x the x
+     * @param y the y
+     * @return Ficha fichas
      */
     public Ficha getFichas(int x, int y) {
         Ficha res = null;
@@ -181,10 +188,10 @@ public class POOBStairs {
 
     /**
      * retorna una casilla en especifico
-     * 
-     * @param x
-     * @param y
-     * @return Casilla
+     *
+     * @param x the x
+     * @param y the y
+     * @return Casilla casillas
      */
     public Casilla getCasillas(int x, int y) {
         return tablero.getCasilla(x, y);
@@ -192,14 +199,15 @@ public class POOBStairs {
 
     /**
      * retorna una casilla en especifico
-     * 
+     *
      * @param x
      * @param y
-     * @return Casilla
+     * @return Casilla all casillas
      */
     public ArrayList<Casilla> getAllCasillas() {
         return tablero.getCasillas();
     }
+
     /**
      * cambia el turno del juego
      */
@@ -213,8 +221,8 @@ public class POOBStairs {
 
     /**
      * retorna un ArrayList<Jugador> de todos los jugadores
-     * 
-     * @return jugadores
+     *
+     * @return jugadores jugadores
      */
     public ArrayList<Jugador> getJugadores() {
         return jugadores;

@@ -7,13 +7,16 @@ package domain;
  * @version v1.0
  */
 public class Serpiente extends Casilla {
+    /**
+     * The Id.
+     */
     public int id;
     private String[] posible = { "Normal", "Debil", "Super", "Dual" };
 
     /**
      * constructor para la casilla tipo serpiente
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public Serpiente(int[] pos) {
         super(pos);
@@ -25,8 +28,8 @@ public class Serpiente extends Casilla {
 
     /**
      * define el id de la casilla
-     * 
-     * @param id
+     *
+     * @param id the id
      */
     public void setId(int id) {
         this.id = id;

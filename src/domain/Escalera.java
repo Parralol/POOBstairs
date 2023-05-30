@@ -12,8 +12,8 @@ public class Escalera extends Casilla {
 
     /**
      * Constructor para la casilla tipo escalera
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public Escalera(int[] pos) {
         super(pos);
@@ -21,8 +21,8 @@ public class Escalera extends Casilla {
 
     /**
      * define el Id de la casilla
-     * 
-     * @param id
+     *
+     * @param id the id
      */
     public void setId(int id) {
         this.id = id;

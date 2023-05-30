@@ -41,10 +41,15 @@ public class Board extends javax.swing.JFrame {
     private JFileChooser choose;
     private JFileChooser chooseSave;
     private ArrayList<Color> colores = new ArrayList<Color>();
+    /**
+     * The Ico.
+     */
     ImageIcon ico = new ImageIcon("src/resources/Ficha-Roja.png");
 
     /**
      * Instantiates a new Conecta 4 gui.
+     *
+     * @param juego the juego
      */
     public Board(POOBStairs juego) {
         this.juego = juego;

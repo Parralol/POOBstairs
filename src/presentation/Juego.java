@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * The type Juego.
+ */
 public class Juego extends JFrame implements ActionListener {
     private Board b;
     private POOBStairs juego;
@@ -43,6 +46,9 @@ public class Juego extends JFrame implements ActionListener {
         }
     };
 
+    /**
+     * The Serpientes.
+     */
     final Map<Integer, Integer> serpientes = new HashMap<Integer, Integer>() {
         {
 
@@ -56,8 +62,16 @@ public class Juego extends JFrame implements ActionListener {
         }
     };
 
+    /**
+     * The Ico.
+     */
     ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
 
+    /**
+     * Instantiates a new Juego.
+     *
+     * @param juego the juego
+     */
     Juego(POOBStairs juego) {
 
 
@@ -165,6 +179,11 @@ public class Juego extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Check turn int.
+     *
+     * @return the int
+     */
     public int checkTurn() {
         int turnoActual = turn % Jugadores.numero;
         if (turnoActual < Jugadores.numero - 1) {

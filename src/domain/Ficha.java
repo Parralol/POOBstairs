@@ -9,14 +9,20 @@ import java.awt.Color;
  * @version v1.0
  */
 public class Ficha {
+    /**
+     * The Color.
+     */
     public Color color;
+    /**
+     * The Pos.
+     */
     public int[] pos;
 
     /**
      * constructor para ficha
-     * 
-     * @param color
-     * @param pos
+     *
+     * @param color the color
+     * @param pos   the pos
      */
     public Ficha(Color color, int[] pos) {
         this.color = color;
@@ -25,8 +31,8 @@ public class Ficha {
 
     /**
      * Cambia la posicion de la ficha
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public void changePos(int[] pos) {
         this.pos = pos;
@@ -34,8 +40,8 @@ public class Ficha {
 
     /**
      * obtiene la posicion de la pos
-     * 
-     * @return
+     *
+     * @return int [ ]
      */
     public int[] getPos() {
         return pos;
@@ -43,8 +49,8 @@ public class Ficha {
 
     /**
      * retorna el color de la ficha
-     * 
-     * @return
+     *
+     * @return color color
      */
     public Color getColor() {
         return color;
