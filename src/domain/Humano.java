@@ -8,11 +8,11 @@ package domain;
  */
 public class Humano extends Jugador {
 
-  
+
     /**
      * constructor para la clase Humano
-     * 
-     * @param turno
+     *
+     * @param turno the turno
      */
     public Humano(int turno) {
         super(true, turno);

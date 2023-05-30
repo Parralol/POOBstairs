@@ -22,6 +22,9 @@ public class POOBStairsTest {
 
     private POOBStairs prueba;
 
+    /**
+     * Instantiates a new Poob stairs test.
+     */
     /*
      * constructor para la clase de testeo
      */
@@ -45,7 +48,7 @@ public class POOBStairsTest {
 
     /**
      * Sets up the test fixture.
-     *
+     * <p>
      * Called before every test case method.
      */
     @Before
@@ -97,6 +100,9 @@ public class POOBStairsTest {
         }
     }
 
+    /**
+     * Should create escay ser.
+     */
     @Test
     public void shouldCreateEscaySer() {
         for (int i = 0; i < 10; i++) {
@@ -114,7 +120,6 @@ public class POOBStairsTest {
      * Tears down the test fixture.
      * Called after every test case method.
      */
-
     @After
     public void tearDown() {
     }

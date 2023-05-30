@@ -10,8 +10,8 @@ public class Cnormal extends Casilla  {
 
     /**
      * Constructor para la casilla tipo normal
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public Cnormal(int[] pos) {
         super(pos);

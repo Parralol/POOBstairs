@@ -10,8 +10,8 @@ public class Preguntona extends Cnormal {
 
     /**
      * constructor para la calse Preguntona
-     * 
-     * @param pos
+     *
+     * @param pos the pos
      */
     public Preguntona(int[] pos) {
         super(pos);

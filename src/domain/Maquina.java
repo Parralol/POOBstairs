@@ -6,14 +6,14 @@ import java.awt.Color;
  * Clase Maquina
  *
  * @author Santiago Parra / Juan Vizcaino
- * @version v1.0
+ * @version v2.3
  */
 public class Maquina extends Jugador {
 
     /**
      * constructor para la clase maquina
-     * 
-     * @param turno
+     *
+     * @param turno the turno
      */
     public Maquina(int turno) {
         super(false, turno);

@@ -9,10 +9,22 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The type Pantalla inicio.
+ */
 public class PantallaInicio extends JFrame {
+    /**
+     * The Ico.
+     */
     ImageIcon ico = new ImageIcon("Ficha-Roja.png");
+    /**
+     * The Background image.
+     */
     Image backgroundImage;
 
+    /**
+     * Instantiates a new Pantalla inicio.
+     */
     public PantallaInicio() {
         try {
             backgroundImage = ImageIO.read(new File("src/resources/Sponge1.png")).getScaledInstance(300, 300, Image.SCALE_DEFAULT);

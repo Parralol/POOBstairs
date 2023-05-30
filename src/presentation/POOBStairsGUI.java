@@ -1,5 +1,8 @@
 package presentation;
 
+/**
+ * The type Poob stairs gui.
+ */
 public class POOBStairsGUI {
     /**
      * The entry point of application.

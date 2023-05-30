@@ -39,10 +39,11 @@ public class Tablero {
 
     /**
      * Realiza una jugada dado el turno y la posicion donde debe moverse
-     * 
-     * @param ficha
-     * @param pos
-     * @throws POOBStairsException
+     *
+     * @param ficha the ficha
+     * @param pos   the pos
+     * @return the int [ ]
+     * @throws POOBStairsException the poob stairs exception
      */
     public int[] jugar(Ficha ficha, int[] pos) throws POOBStairsException {
         int b = 0;
@@ -89,8 +90,8 @@ public class Tablero {
 
     /**
      * Obtiene todas las casillas
-     * 
-     * @return
+     *
+     * @return casillas casillas
      */
     public ArrayList<Casilla> getCasillas() {
         return casillas;
@@ -98,10 +99,10 @@ public class Tablero {
 
     /**
      * retorna una casilla en especifico dada su coordenada x,y
-     * 
-     * @param x
-     * @param y
-     * @return Casilla
+     *
+     * @param x the x
+     * @param y the y
+     * @return Casilla casilla
      */
     public Casilla getCasilla(int x, int y) {
         Casilla res = null;

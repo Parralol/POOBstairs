@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Clase Modificadores
  *
  * @author Santiago Parra / Juan Vizcaino
- * @version v1.0
+ * @version v2.3
  */
 public class Modificadores {
 
@@ -14,8 +14,8 @@ public class Modificadores {
 
     /**
      * retorna un modificador de forma aleatoria
-     * 
-     * @return
+     *
+     * @return modificadores modificadores
      */
     public String getModificadores() {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 2 + 1);

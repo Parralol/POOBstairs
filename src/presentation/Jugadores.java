@@ -9,7 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * The type Jugadores.
+ */
 public class Jugadores extends JFrame implements ActionListener {
+    /**
+     * The Numero.
+     */
     static int numero;
     private POOBStairs juego;
     private static Color[] colores = { Color.YELLOW, Color.BLUE, Color.PINK, Color.RED };
@@ -18,6 +24,9 @@ public class Jugadores extends JFrame implements ActionListener {
     private final String[] nums;
     private ImageIcon ico = new ImageIcon("C:/Users/USER/Downloads/POOBStairs media/Ficha-Roja.png");
 
+    /**
+     * Instantiates a new Jugadores.
+     */
     Jugadores() {
         this.setTitle("Jugadores");
         setIconImage(ico.getImage());
