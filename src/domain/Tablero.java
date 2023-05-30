@@ -337,6 +337,12 @@ public class Tablero implements Serializable{
         }
     }
     
+    /**
+     * genera casillas especiales
+     * 
+     * @param p
+     * @param pos
+     */
     private void genereateEspecial(int p, int[] pos){
         if (p >= 0 && p <= 25) {
             // saltarina n
@@ -365,6 +371,13 @@ public class Tablero implements Serializable{
         }
     }
 
+    /**
+     * Genera las serpientes
+     * @param id
+     * @param pos
+     * @param posx
+     * @return
+     */
     private int generateSerp(int id, int[] pos, int[] posx){
         casillas.add(new Cnormal(pos));
         Serpiente xd = new Serpiente(pos);
@@ -377,6 +390,13 @@ public class Tablero implements Serializable{
         return id;
     }
 
+    /**
+     * genera escaleras
+     * @param id
+     * @param pos
+     * @param posx
+     * @return
+     */
     private int generateEsc(int id, int[] pos, int[] posx){
         if (pos[0] < 10) {
             casillas.add(new Cnormal(pos));

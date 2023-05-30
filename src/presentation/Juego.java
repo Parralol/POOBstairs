@@ -239,6 +239,7 @@ public class Juego extends JFrame implements ActionListener {
             if (turn % Jugadores.numero == 0) {
                 moverMaquina();
             }
+            repaint();
         }
 
 
@@ -273,6 +274,7 @@ public class Juego extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Obtienes Multiplicador!!!, Valor:" + m);
             }
             this.juego.jugar(b * m);
+            l1.repaint();
         } catch (POOBStairsException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

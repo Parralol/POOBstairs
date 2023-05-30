@@ -62,6 +62,10 @@ public class POOBStairs  implements Serializable{
         }
     }
 
+    /**
+     * guarda la clase
+     * @param filename
+     */
     public void Save(File filename){
         try{
             POOBstairsIO.saveO1(filename, this);
@@ -70,10 +74,19 @@ public class POOBStairs  implements Serializable{
         }
     }
 
+    /**
+     * carga la clase
+     * @param filename
+     * @throws POOBStairsException
+     */
     public void open(File filename) throws POOBStairsException{
         POOBstairsIO.abrirO1(filename);
     }
 
+    /**
+     * asigna valores al tablero
+     * @param a
+     */
     public void setTablero(POOBStairs a){
         this.tablero = a.getTablero();
         this.jugadores = a.getJugadores();
@@ -83,22 +96,43 @@ public class POOBStairs  implements Serializable{
         this.multi = a.getMulti();
     }
 
+    /**
+     * retorna el tablero
+     * @return Tablero
+     */
     public Tablero getTablero(){
         return tablero;
     }
 
+    /**
+     * retorna el dado
+     * @return Dice
+     */
     public Dice getDado() {
         return dado;
     }
 
+    /**
+     * retorna el multiplicador
+     * @return multi
+     */
     public Multiplicador getMulti() {
         return multi;
     }
 
+    /**
+     * retorna el turno
+     * 
+     * @return turno
+     */
     public int getTurno() {
         return turno;
     }
 
+    /**
+     * retorna el numero de jugadas en el tablero
+     * @return
+     */
     public int getNjugadas() {
         return njugadas;
     }

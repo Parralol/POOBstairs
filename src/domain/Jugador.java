@@ -88,10 +88,12 @@ public abstract class Jugador implements Serializable{
      * @param y the y
      */
     public void increaseMaxCas(int x, int y) {
-        if (x > ficha.getPos()[0] && y > ficha.getPos()[1]) {
+        //System.out.println(x + "---" + y);
+        if (x >= ficha.getPos()[0] && y >= ficha.getPos()[1]) {
             int a = Integer.parseInt(x + "" + y);
             casMax = a;
         }
+        //System.out.println(casMax);
     }
 
     /**
@@ -99,7 +101,7 @@ public abstract class Jugador implements Serializable{
      */
     public void increaseSerp() {
         numSerpientes++;
-        System.out.println(numSerpientes);
+        //System.out.println(numSerpientes);
     }
 
     /**

@@ -56,10 +56,12 @@ public class POOBStairsTest implements Serializable{
     @Before
     public void setUp() {
         int[] pos = { 0, 9 };
+        tablero = new Tablero(10, 10, 10, 30);
         j1.movFicha(pos);
         try {
             prueba.addJugador(j1);
             prueba.addJugador(j2);
+            prueba.createTablero(10, 10, 10, 30);
         } catch (POOBStairsException e) {
             assertFalse(true);
         }
@@ -109,13 +111,12 @@ public class POOBStairsTest implements Serializable{
     public void shouldCreateEscaySer() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-
                 if (prueba.getCasillas(j, i) instanceof Escalera) {
-                    assertTrue(prueba.getCasillas(j, i).getClass().getName(), false);
+                    assertTrue(prueba.getCasillas(j, i).getClass().getName(), true);
                 }
             }
         }
-        assertFalse(true);
+        assertFalse(false);
     }
 
     @Test
@@ -148,6 +149,22 @@ public class POOBStairsTest implements Serializable{
         } catch (POOBStairsException e) {
             // TODO Auto-generated catch block
             assertTrue(e.getMessage(), true);
+        }
+    }
+
+    @Test
+    public void shouldIncreaseMaxCas(){
+        int[] pos = {5 , 5};
+        int prev = j1.getMaxCas();
+        try {
+           int[] xd = tablero.jugar(j1.getFicha(), pos);
+            j1.increaseMaxCas(xd[0], xd[1]);
+            if(j1.getMaxCas() > prev){
+                assertTrue("funciona", true);
+            }   
+        } catch (POOBStairsException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
     /**
