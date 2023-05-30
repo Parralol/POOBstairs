@@ -86,6 +86,7 @@ public class Jugadores extends JFrame implements ActionListener {
 
         if (e.getSource() == modoJuego) {
             String str = modoJuego.getSelectedItem().toString();
+            System.out.println(str);
             numero = Integer.parseInt(str);
 
             for (int i = 0; i < numero; i++) {

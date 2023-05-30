@@ -11,6 +11,9 @@ import java.util.Random;
  * @version v1.0
  */
 public class Tablero {
+    private double pesc;
+    private double pserp;
+    private double pesp;
     private ArrayList<Casilla> casillas;
     private ArrayList<Casilla> serpEsc;
 
@@ -122,66 +125,20 @@ public class Tablero {
             for (int j = 0; j <= 9; j++) {
                 int[] pos = { i, j };
                 if (validateCas(pos)) {
-                    int p = x.nextInt(200);
+                    int p = x.nextInt(101);
                     // System.out.println(p);
                     // Casillas
                     if (!pos.equals(inic) || !pos.equals(fin)) {
                         // casillas.add(new Cnormal(pos));
-                        if (p <= 170) {
-                            if (p <= 140) {
-                                casillas.add(new Cnormal(pos));
-                            }
-                            if (p >= 141 && p <= 145) {
-                                // saltarina n
-                                casillas.add(new Saltarina_n(pos));
-                                // especial.add(new Saltarina_n(pos));
-                            }
-                            if (p > 145 && p <= 150) {
-                                // saltarina inversa n
-                                casillas.add(new Saltarina_inv(pos));
-                            }
-                            if (p > 150 && p <= 155) {
-                                // Mortal
-                                casillas.add(new Mortal(pos));
-                            }
-                            if (p > 155 && p <= 160) {
-                                // avance
-                                casillas.add(new Avance(pos));
-                            }
-                            if (p > 160 && p <= 165) {
-                                // retroceso
-                                casillas.add(new Retroceso(pos));
-                            }
-                            if (p > 165 && p <= 170) {
-                                // preguntona
-                                casillas.add(new Preguntona(pos));
-                            }
-
-                        } else { // serpientes y escaleras
-                            int[] posx = generateRandom(pos[0], pos[1]);
+                        int[] posx = generateRandom(pos[0], pos[1]);
+                        if (p  <= p * pesp) {
+                                genereateEspecial(p, pos);
+                                //casillas.add(new Cnormal(pos));
+                        }else if(p  <= p * pserp){ 
                             // System.out.println(Arrays.toString(posx));
-                            if (p >= 170 && p <= 180 && pos[0] < 10) {
-                                casillas.add(new Cnormal(pos));
-                                Serpiente xd = new Serpiente(pos);
-                                xd.setId(id);
-                                Serpiente xd2 = new Serpiente(posx);
-                                xd2.setId(id);
-                                serpEsc.add(xd2);
-                                serpEsc.add(xd);
-                                id++;
-                            } else {
-                                if (pos[0] < 10) {
-                                    casillas.add(new Cnormal(pos));
-                                    Escalera xd = new Escalera(pos);
-                                    Escalera xd2 = new Escalera(posx);
-                                    xd.setId(id);
-                                    xd2.setId(id);
-                                    serpEsc.add(xd);
-                                    serpEsc.add(xd2);
-                                    id++;
-                                } else {
-                                    casillas.add(new Cnormal(pos));
-                                }
+                            id = generateSerp(id, pos, posx);
+                        }else if(p  <= p * pesc){
+                            id = generateEsc(id, pos, posx);
 
                             }
 
@@ -189,7 +146,6 @@ public class Tablero {
                     }
                 }
             }
-        }
         fuss(serpEsc);
         //System.out.println(casillas.size());
     }
@@ -352,4 +308,60 @@ public class Tablero {
         }
     }
     
+    private void genereateEspecial(int p, int[] pos){
+        if (p >= 0 && p <= 25) {
+            // saltarina n
+            casillas.add(new Saltarina_n(pos));
+            // especial.add(new Saltarina_n(pos));
+        }
+        if (p > 25 && p <= 50) {
+            // saltarina inversa n
+            casillas.add(new Saltarina_inv(pos));
+        }
+        if (p > 50 && p <= 55) {
+            // Mortal
+            casillas.add(new Mortal(pos));
+        }
+        if (p > 55 && p <= 70) {
+            // avance
+            casillas.add(new Avance(pos));
+        }
+        if (p > 70 && p <= 80) {
+            // retroceso
+            casillas.add(new Retroceso(pos));
+        }
+        if (p > 80 && p <= 100) {
+            // preguntona
+            casillas.add(new Preguntona(pos));
+        }
+    }
+
+    private int generateSerp(int id, int[] pos, int[] posx){
+        casillas.add(new Cnormal(pos));
+        Serpiente xd = new Serpiente(pos);
+        xd.setId(id);
+        Serpiente xd2 = new Serpiente(posx);
+        xd2.setId(id);
+        serpEsc.add(xd2);
+        serpEsc.add(xd);
+        id++;
+        return id;
+    }
+
+    private int generateEsc(int id, int[] pos, int[] posx){
+        if (pos[0] < 10) {
+            casillas.add(new Cnormal(pos));
+            Escalera xd = new Escalera(pos);
+            Escalera xd2 = new Escalera(posx);
+            xd.setId(id);
+            xd2.setId(id);
+            serpEsc.add(xd);
+            serpEsc.add(xd2);
+            id++;
+            return id;
+        } else {
+            casillas.add(new Cnormal(pos));
+            return id;
+        }
+    }
 }
