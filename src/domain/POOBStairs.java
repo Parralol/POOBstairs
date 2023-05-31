@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 import persistence.POOBstairsIO;
 
@@ -18,6 +19,7 @@ public class POOBStairs  implements Serializable{
     private Multiplicador multi;
     private int turno;
     private int njugadas;
+    private Modificadores modificadores;
 
     /**
      * constructor para la clase POOBStairs
@@ -349,25 +351,46 @@ public class POOBStairs  implements Serializable{
      * @param pos
      * @return pos
      */
-    private int[] isMovModified(int[] pos) {
+    private int[] isMovModified(int[] pos) throws POOBStairsException{
         if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
                 jugadores.get(turno - 1).getPosFicha()[1]) instanceof Mortal) {
             int[] xd = { 0, 0 };
             pos = xd;
+            throw new POOBStairsException("Caiste en una Casilla mortal");
         }
 
         if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
                 jugadores.get(turno - 1).getPosFicha()[1]) instanceof Saltarina_n) {
-            int[] xd = { pos[0], pos[1] + 4 };
+                    int randomNum = ThreadLocalRandom.current().nextInt(0, 4 + 1);
+            int[] xd = { pos[0], pos[1] + randomNum };
             pos = xd;
+            throw new POOBStairsException("Caiste en una Casilla Saltarina, avanzas:  " + randomNum);
         }
         if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
                 jugadores.get(turno - 1).getPosFicha()[1]) instanceof Saltarina_inv) {
-            int[] xd = { pos[0], pos[1] - 3 };
+                    int randomNum = ThreadLocalRandom.current().nextInt(0, 4 + 1);
+                    if( pos[1] - randomNum < 0){
+                        pos[0] = pos[0] -1;
+                    }
+            int[] xd = { pos[0], pos[1] - randomNum };
             pos = xd;
+            throw new POOBStairsException("Caiste en una Casilla Saltarina Inversa, retrocedes:  " + randomNum);
         }
 
+
+        if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+        jugadores.get(turno - 1).getPosFicha()[1]) instanceof Avance) {
+            pos = tablero.getClosestEsc(pos);
+            throw new POOBStairsException("Caiste en una Casilla Avance  " );
+        }
+
+        if (tablero.getCasilla(jugadores.get(turno - 1).getPosFicha()[0],
+        jugadores.get(turno - 1).getPosFicha()[1]) instanceof Retroceso) {
+            pos = tablero.getClosestSerp(pos);
+            throw new POOBStairsException("Caiste en una Casilla retroceso  " );
+        }
         return pos;
     }
+       
+    }
 
-}

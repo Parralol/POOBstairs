@@ -413,4 +413,41 @@ public class Tablero implements Serializable{
             return id;
         }
     }
+
+    /**
+     * obtiene la escalera mas cercana
+     * 
+     * @param pos
+     * @return int[]
+     */
+    public int[] getClosestEsc(int[] pos){
+        
+        for(int i = pos[0] ;i <= size ; i++){
+            for(int j = pos[1] ;i <= size ; i++){
+                if(getCasilla(i, j) instanceof Escalera){
+                    int[] res = {i,j};
+                    pos = res;
+                    break;
+                }
+            }
+        }
+        return pos;
+    }
+
+    /**
+     * obtiene la serpiente mas cercana
+     * 
+     * @param pos
+     * @return int[]
+     */
+    public int[] getClosestSerp(int[] pos){
+        for(int i = pos[0] ;i <= 0 ; i--){
+            for(int j = pos[1] ;i <= 0 ; i--){
+                int[] res = {i,j};
+                    pos = res;
+                    break;
+            }
+        }
+        return pos;
+    }
 }
