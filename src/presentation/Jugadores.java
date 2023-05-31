@@ -51,6 +51,7 @@ public class Jugadores extends JFrame implements ActionListener {
         String modo = Objects.requireNonNull(modoJuego.getSelectedItem()).toString();
         if (modo != null) {
             if (modo.equals("Jugador vs Maquina")) {
+                numero = 2;
                 Jugador maquina = new Maquina(1);
                 int cMaq = 0;
                 Jugador xd = new Humano(0);

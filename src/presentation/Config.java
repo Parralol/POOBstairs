@@ -147,6 +147,7 @@ public class Config {
         escaleras = new JPanel();
         serpientes = new JPanel();
         modificadores = new JPanel();
+        mod2= new JPanel();
 
         seleccionarTamano = new JLabel("Selecciona el tamaño del tablero");
         tamanoTablero = new JComboBox<>(new String[]{"Tablero pequeño", "Tablero mediano", "Tablero grande"});
