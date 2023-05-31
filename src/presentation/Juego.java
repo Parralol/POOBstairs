@@ -21,8 +21,6 @@ import java.util.Random;
 public class Juego extends JFrame implements ActionListener {
     private Board b;
     private POOBStairs juego;
-
-    private int num;
     private static int turn = 0;
     private static int[] playerPos = new int[Jugadores.numero];
     // objetos para la pantalla de juego
@@ -237,8 +235,10 @@ public class Juego extends JFrame implements ActionListener {
             turn++;
 
             if (turn % Jugadores.numero == 0) {
+                //refreshxd();
                 moverMaquina();
             }
+            revalidate();
             repaint();
         }
 
@@ -265,6 +265,37 @@ public class Juego extends JFrame implements ActionListener {
 
     }
 
+    private void refreshxd(){
+        int y = 20;
+        int num = Jugadores.numero;
+        playerList = new JLabel[Jugadores.numero * 3];
+        for(Component c : getComponents()){
+            if(c instanceof JLabel){
+                remove(c);
+            }
+            
+        }
+        for (int i = 0; i < num; i++) {
+            playerList[i] = new JLabel(juego.getJugadores().get(i).getName());
+            playerList[i].setBounds(20, y + 5, 80, 20);
+
+            playerList[i + 1] = new JLabel("Max casillas recorridas:" + juego.getJugadores().get(i).getMaxCas());
+            playerList[i + 1].setBounds(20, y + 20, 200, 20);
+
+            playerList[i + 2] = new JLabel("Max escaleras recorridas:" + juego.getJugadores().get(i).getNumEsc());
+            playerList[i + 2].setBounds(20, y + 30, 200, 20);
+
+            playerList[i + 3] = new JLabel("Max serpientes recorridas:" + juego.getJugadores().get(i).getNumSer());
+            playerList[i + 3].setBounds(20, y + 40, 200, 20);
+
+            add(playerList[i]);
+            add(playerList[i + 1]);
+            add(playerList[i + 2]);
+            add(playerList[i + 3]);
+            y += 50;
+        }
+       
+    }
     private void jugar() {
         int b = juego.rollDice();
         // System.out.println(b);

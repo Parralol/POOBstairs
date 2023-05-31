@@ -10,6 +10,7 @@ package domain;
 public class Escalera extends Casilla {
     private int id;
     private String[] posible = { "Normal", "Debil", "Super", "Dual" };
+    private String actual;
 
     /**
      * Constructor para la casilla tipo escalera
@@ -33,6 +34,9 @@ public class Escalera extends Casilla {
      * define la accion de la escalera
      */
     public int[] action() {
+        if(actual == null){
+            
+        }
         return null;
     }
 

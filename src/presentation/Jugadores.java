@@ -48,7 +48,6 @@ public class Jugadores extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         Object[] color = {"Amarillo", "Azul" ,"Rosado", "Rojo"};
-        JComboBox combobox = new JComboBox<>(color);
         String modo = Objects.requireNonNull(modoJuego.getSelectedItem()).toString();
         if (modo != null) {
             if (modo.equals("Jugador vs Maquina")) {
@@ -86,9 +85,7 @@ public class Jugadores extends JFrame implements ActionListener {
                 dispose();
                 new Config(1, juego);
             } else {
-                String str = modoJuego.getSelectedItem().toString();
                 numero = 2;
-
                 for (int i = 0; i < numero; i++) {
                     Jugador xd = new Humano(i);
                     xd.setColor(colores[i]);
@@ -99,7 +96,6 @@ public class Jugadores extends JFrame implements ActionListener {
                     if (nombre != null) {
                         xd.setName(nombre);
                         xd.setColor(color(res));
-                        System.out.println(color(res));
                         try {
                             juego.addJugador(xd);
                         } catch (Exception r) {

@@ -423,7 +423,7 @@ public class Tablero implements Serializable{
     public int[] getClosestEsc(int[] pos){
         
         for(int i = pos[0] ;i <= size ; i++){
-            for(int j = pos[1] ;i <= size ; i++){
+            for(int j = pos[1] ;j <= size ; j++){
                 if(getCasilla(i, j) instanceof Escalera){
                     int[] res = {i,j};
                     pos = res;
@@ -442,7 +442,7 @@ public class Tablero implements Serializable{
      */
     public int[] getClosestSerp(int[] pos){
         for(int i = pos[0] ;i <= 0 ; i--){
-            for(int j = pos[1] ;i <= 0 ; i--){
+            for(int j = pos[1] ;j <= 0 ; j--){
                 int[] res = {i,j};
                     pos = res;
                     break;

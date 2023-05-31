@@ -98,7 +98,7 @@ public class PantallaInicio extends JFrame {
                     POOBStairs xd = new POOBStairs();
                     try {
                         dispose();
-                        xd.open(fileChooser.getSelectedFile());
+                        xd = xd.open(fileChooser.getSelectedFile());
                         new Juego(xd);
                         
                     } catch (POOBStairsException e1) {

@@ -3,9 +3,7 @@ package presentation;
 import domain.Cnormal;
 import domain.Escalera;
 import domain.POOBStairs;
-import domain.POOBStairsException;
 import domain.Serpiente;
-import persistence.POOBstairsIO;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -135,7 +133,6 @@ public class Board extends javax.swing.JFrame {
         // Random random = new Random();
         Border border = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        int numerator = boardSquares.length * boardSquares[0].length;
         for (int i = 0; i < boardSquares[0].length; i++) {
             for (int j = 0; j < boardSquares.length; j++) {
                 // Color colorAleatorio = colores.get(random.nextInt(colores.size()));
@@ -144,8 +141,6 @@ public class Board extends javax.swing.JFrame {
                 JLabel label = new JLabel();
                 JLabel tipoCasilla = new JLabel();
                 String prueba = "";
-
-                ImageIcon ladderT = null;
 
                 label.setHorizontalAlignment(SwingConstants.RIGHT);
                 label.setVerticalAlignment(SwingConstants.TOP);

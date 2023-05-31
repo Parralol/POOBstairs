@@ -81,8 +81,8 @@ public class POOBStairs  implements Serializable{
      * @param filename
      * @throws POOBStairsException
      */
-    public void open(File filename) throws POOBStairsException{
-        POOBstairsIO.abrirO1(filename);
+    public POOBStairs open(File filename) throws POOBStairsException{
+        return POOBstairsIO.abrirO1(filename);
     }
 
     /**
@@ -165,7 +165,11 @@ public class POOBStairs  implements Serializable{
             jugadores.get(turno - 1).increaseMaxCas(pos[0], pos[1]);
             
         } catch (POOBStairsException e) {
-            throw new POOBStairsException(getNombreJugadorEnTurno() + " " + POOBStairsException.GANADOR);
+            if(e.getMessage().equals(POOBStairsException.GANADOR)){
+                throw new POOBStairsException(getNombreJugadorEnTurno() + " " + POOBStairsException.GANADOR);
+            }else{
+                throw new POOBStairsException(e.getMessage());
+            }
 
         }
         increaseTurno();
