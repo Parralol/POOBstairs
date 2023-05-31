@@ -277,16 +277,16 @@ public class Juego extends JFrame implements ActionListener {
             if(m != 1){
                 JOptionPane.showMessageDialog(null, "Obtienes Multiplicador!!!, Valor:" + m);
             }
-            if(res != 1){
+            if(res == 1){
                 JOptionPane.showMessageDialog(null, "Obtienes Cambio de posicion!!!");
             }
-            if(res != 2){
+            if(res == 2){
                 JOptionPane.showMessageDialog(null, "Obtienes Bonificacion!!!");
             }
-            if(res != 3){
+            if(res == 3){
                 JOptionPane.showMessageDialog(null, "Obtienes Penalizacion" );
             }
-            if(res >1){
+            if(res >1 && res <=3){
                 int asf =  JOptionPane.showConfirmDialog(null,
                                    "¿aceptas este modificador?", "porfavor elige",
                                    JOptionPane.YES_NO_OPTION);

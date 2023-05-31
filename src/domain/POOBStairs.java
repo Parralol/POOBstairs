@@ -52,8 +52,10 @@ public class POOBStairs  implements Serializable{
         Random x = new Random();
         int p = x.nextInt(101);
         int res = 0;
-        if (Double.compare((double)p, probMod*100) <= 0)   {
+        boolean val = new Random().nextInt((int) Math.round(probMod*100))==0;
+        if (val){
            String mod =  modificadores.getModificadores();
+           System.out.println(mod);
             if(mod.equals("Cambio")){
                 res = 1;
             }if(mod.equals("Bonifica")){

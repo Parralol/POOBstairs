@@ -58,9 +58,9 @@ public class Tablero implements Serializable{
         if (b == (size*size)- size) {
             throw new POOBStairsException(POOBStairsException.GANADOR);
         }
-        if (b > (size*size)- size) {
-            int res = b - (size*size)- size;
-            b = (size*size)- size- res;
+        if (b > 100) {
+            int res = b - 100;
+            b = 100- res;
             char[] xd = String.valueOf(b).toCharArray();
             int un = Character.getNumericValue(xd[0]);
             int dos = Character.getNumericValue(xd[1]);
