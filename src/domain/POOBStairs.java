@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import persistence.POOBstairsIO;
@@ -20,6 +21,7 @@ public class POOBStairs  implements Serializable{
     private int turno;
     private int njugadas;
     private Modificadores modificadores;
+    private double probMod;
 
     /**
      * constructor para la clase POOBStairs
@@ -29,11 +31,76 @@ public class POOBStairs  implements Serializable{
         dado = new Dice(0);
         turno = 1;
         njugadas = 0;
+        probMod = 0.0;
+        modificadores = new Modificadores();
     }
 
+    /**
+     * coloca la probabilidad de que una modificacion aparezca
+     * @param a
+     */
+    public void setProbMod(int a){
+        probMod = (double) a;
+    }
+
+    /**
+     * activates a modification
+     * @return
+     * @throws POOBStairsException
+     */
+    public int actvMod() throws POOBStairsException{
+        Random x = new Random();
+        int p = x.nextInt(101);
+        int res = 0;
+        if (Double.compare((double)p, probMod*100) <= 0)   {
+           String mod =  modificadores.getModificadores();
+            if(mod.equals("Cambio")){
+                res = 1;
+            }if(mod.equals("Bonifica")){
+                res = 2;
+            }if(mod.equals("Penaliza")){
+                res = 3;
+            }
+        }
+
+        return res;
+    }
+
+    public int actvmod2(boolean conf, int a) throws POOBStairsException{
+        int res = 0;
+        if(a == 1){
+            swapPos();
+        }if(a==2 && conf){
+            res++;
+        }if(a == 3 && conf){
+            res--;
+        }
+        return res;
+    }
+
+    public void actvmod3(int a)throws POOBStairsException{
+        if(a == 1){
+            throw new POOBStairsException("Modificador cambio de posiciones activado");
+        }if(a==2 ){
+            throw new POOBStairsException("Modificador Bonificacion activado");
+        }if(a == 3){
+            throw new POOBStairsException("Modificador Penalizacion activado");
+        }
+
+    }
+
+    /**
+     * crea al tablero
+     * 
+     * @param pesc
+     * @param pserp
+     * @param pesp
+     * @param size
+     */
     public void createTablero(int pesc, int pserp, int pesp, int size){
         tablero = new Tablero((double) pesc /100 ,(double) pserp/100,(double) pesp /100, size);
     }
+
     /**
      * agrega un jugador a tablero
      *
@@ -348,6 +415,22 @@ public class POOBStairs  implements Serializable{
         }
     }
 }
+
+
+/**
+ * intercambia posiciones de los jugadores
+ * 
+ * @throws POOBStairsException
+ */
+    private void swapPos() throws POOBStairsException{
+       int[] xd = jugadores.get(0).getPosFicha();
+       int[] dx = jugadores.get(1).getPosFicha();
+       jugadores.get(0).movFicha(dx);
+       jugadores.get(1).movFicha(xd);
+       tablero.jugar( jugadores.get(0).getFicha(), dx);
+       tablero.jugar( jugadores.get(1).getFicha(), xd);
+    }
+
 
     /**
      * verifica si el movimiento se altera

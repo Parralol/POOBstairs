@@ -167,6 +167,16 @@ public class POOBStairsTest implements Serializable{
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void shouldActivateMod(){
+        prueba.setProbMod(100);
+        try{
+         prueba.actvMod();
+        }catch(POOBStairsException e){
+            assertFalse(false);
+        }
+    }
     /**
      * Tears down the test fixture.
      * Called after every test case method.

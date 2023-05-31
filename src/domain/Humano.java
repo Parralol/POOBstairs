@@ -7,7 +7,7 @@ package domain;
  * @author Santiago Parra / Juan Vizcaino
  * @version v1.0
  */
-public class Humano extends Jugador {
+public class Humano extends Jugador{
 
 
     /**

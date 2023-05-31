@@ -23,14 +23,10 @@ public class Tablero implements Serializable{
      * Constructor para tablero
      */
     public Tablero(double pesc, double pserp, double pesp, int size) {
-        //System.out.println(pesc);
-        //System.out.println(pserp);
-        //System.out.println(pesp);
         this.pesc = pesc;
         this.pesp = pesp;
         this.pserp= pserp;
         this.size = size;
-        //System.out.println(this.size);
         casillas = new ArrayList<Casilla>();
         serpEsc = new ArrayList<Casilla>();
         generateCasillasNormal();
@@ -49,29 +45,22 @@ public class Tablero implements Serializable{
      */
     public int[] jugar(Ficha ficha, int[] pos) throws POOBStairsException {
         int b = 0;
-        // printId();
         for (Casilla a : casillas) {
             if (a.getColor() == ficha.getColor()) {
                 a.removeFicha();
             }
         }
-
         if (pos[1] != 10) {
             b = Integer.parseInt(pos[0] + "" + pos[1]);
         } else {
             b = Integer.parseInt(pos[0] + "" + 0);
         }
-
-        // System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
-        // System.out.println(casillas.size() + "longitud casillas");
         if (b == (size*size)- size) {
-            // System.out.println(b + "---" + ficha.getColor() + pos[0] + "/" + pos[1]);
-            // System.out.println(casillas.size() + "longitud casillas");
             throw new POOBStairsException(POOBStairsException.GANADOR);
         }
-        if (b > 100) {
-            int res = b - 100;
-            b = 100 - res;
+        if (b > (size*size)- size) {
+            int res = b - (size*size)- size;
+            b = (size*size)- size- res;
             char[] xd = String.valueOf(b).toCharArray();
             int un = Character.getNumericValue(xd[0]);
             int dos = Character.getNumericValue(xd[1]);
@@ -80,7 +69,6 @@ public class Tablero implements Serializable{
         }
         if (isItSerOrEsc(casillas.get(b))) {
             pos = playSerOrEsc(casillas.get(b), b, ficha);
-            // System.out.println(Arrays.toString(pos));
             return pos;
         } else {
             ficha.changePos(pos);
@@ -113,11 +101,8 @@ public class Tablero implements Serializable{
             if (Arrays.equals(a.getPos(), guard)) {
                 res = a;
                 break;
-                //System.out.println(Arrays.toString(a.getPos()) + "--->" + Arrays.toString(guard));
-                //System.out.println("paso" +" --->" + a.getClass().getSimpleName() + "---> " + a.getId());
             }
         }
-        //System.out.println(res.getClass().getSimpleName() + "---> ID"+ res.getId() + "----->" + Arrays.toString(res.getPos())) ;
         return res;
 
     }
@@ -129,41 +114,24 @@ public class Tablero implements Serializable{
     private void generateCasillasNormal() {
         int id = 0;
         Random x = new Random();
-        // ArrayList<Casilla> especial = new ArrayList<Casilla>();
         int[] inic = { 0, 0 };
         int[] fin = { size, size-1 };
         for (int i = 0; i <= size; i++) {
-            //System.out.print(i);
+            
             for (int j = 0; j <= size-1; j++) {
-                ///System.out.println(j + "J");
                 int[] pos = { i, j };
-                
-                //System.out.println(i);
                 if (validateCas(pos)) {
                     int p = x.nextInt(101);
-                    // System.out.println(p);
-                    // Casillas
                     if (!pos.equals(inic) || !pos.equals(fin)) {
-                        
-                
-                        //System.out.println(Double.compare((double)p, (double)p * pesp));
                         if (Double.compare((double)p, pesp*100) <= 0)   {
-                            //System.out.println("especial");
                             genereateEspecial(p, pos);
-                            //casillas.add(new Cnormal(pos));
                         }else if(Double.compare((double)p, pserp*100 ) <= 0){ 
-                            //System.out.println("serpiente");
-                            // System.out.println(Arrays.toString(posx));
                             int[] posx = generateRandom(pos[0], pos[1]);
                             id = generateSerp(id, pos, posx);
-                           // System.out.println(id + "---" + "serp");
                         }else if(Double.compare((double)p, pesc*100 + pserp*100) <= 0){
-                            //System.out.println("escalera");
                             int[] posx = generateRandom(pos[0], pos[1]);
                             id = generateEsc(id, pos, posx);
-                            //System.out.println(id + "---" + "esc");
                         }else{
-                            //System.out.println("nromal");
                             casillas.add(new Cnormal(pos));
                             }
                         }
@@ -171,7 +139,6 @@ public class Tablero implements Serializable{
                 }
             }
         fuss(serpEsc);
-        //System.out.println(casillas.size() +" -->" + "tamaño casillas");
     }
 
     /**
@@ -204,7 +171,6 @@ public class Tablero implements Serializable{
      * @return
      */
     private boolean validateCas(int[] pos) {
-        //System.out.println(casillas.size());
         boolean res = true;
         for (Casilla a : casillas) {
             if (Arrays.equals(pos, a.getPos())) {
@@ -256,7 +222,6 @@ public class Tablero implements Serializable{
     private int[] playSerOrEsc(Casilla b, int prev, Ficha r) {
         int[] xd = null;
         int id = b.getId();
-        // System.out.println("esc" + " -- " + b.getId());
         for (Casilla a : casillas) {
             if (b instanceof Serpiente) {
                 if (id == a.getId() && prev > convert(a.getPos())) {
@@ -264,7 +229,6 @@ public class Tablero implements Serializable{
                     r.changePos(xd);
                     a.setFicha(r);
                     break;
-                    // System.out.println(Arrays.toString(xd) + "---> ser id:" + a.getId());
                 } else {
                     xd = b.getPos();
                 }
@@ -275,13 +239,11 @@ public class Tablero implements Serializable{
                     r.changePos(xd);
                     a.setFicha(r);
                     break;
-                    // System.out.println(Arrays.toString(xd) + "---> esc id:" + a.getId());
                 } else {
                     xd = b.getPos();
                 }
             }
         }
-        // System.out.println(Arrays.toString(xd));
         if (b instanceof Serpiente || b instanceof Escalera) {
             int[] res = { b.getPos()[0], b.getPos()[1] };
             xd = res;
@@ -322,16 +284,8 @@ public class Tablero implements Serializable{
     private void fussion(ArrayList<Casilla> a) {
         for (int i = 0; i < casillas.size() - size; i++) {
             for (int j = 0; j < a.size(); j++) {
-                if (i == 0) {
-                    // System.out.println(a.get(j).getId() + "---> POS" +
-                    // Arrays.toString(a.get(j).getPos()));
-                }
-                if (j == 0) {
-                    // System.out.println("cas:" + Arrays.toString(casillas.get(i).getPos()));
-                }
                 if (Arrays.equals(casillas.get(i).getPos(), a.get(j).getPos())) {
                     casillas.set(i, a.get(j));
-                    //System.out.println(a.get(j).getId() + " --> POS"+ Arrays.toString(a.get(j).getPos()));
                 }
             }
         }
@@ -347,7 +301,6 @@ public class Tablero implements Serializable{
         if (p >= 0 && p <= 25) {
             // saltarina n
             casillas.add(new Saltarina_n(pos));
-            // especial.add(new Saltarina_n(pos));
         }
         if (p > 25 && p <= 50) {
             // saltarina inversa n
@@ -443,9 +396,11 @@ public class Tablero implements Serializable{
     public int[] getClosestSerp(int[] pos){
         for(int i = pos[0] ;i <= 0 ; i--){
             for(int j = pos[1] ;j <= 0 ; j--){
-                int[] res = {i,j};
+                if(getCasilla(i, j) instanceof Serpiente){
+                    int[] res = {i,j};
                     pos = res;
                     break;
+                }
             }
         }
         return pos;

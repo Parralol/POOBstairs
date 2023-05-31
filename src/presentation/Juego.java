@@ -265,46 +265,37 @@ public class Juego extends JFrame implements ActionListener {
 
     }
 
-    private void refreshxd(){
-        int y = 20;
-        int num = Jugadores.numero;
-        playerList = new JLabel[Jugadores.numero * 3];
-        for(Component c : getComponents()){
-            if(c instanceof JLabel){
-                remove(c);
-            }
-            
-        }
-        for (int i = 0; i < num; i++) {
-            playerList[i] = new JLabel(juego.getJugadores().get(i).getName());
-            playerList[i].setBounds(20, y + 5, 80, 20);
 
-            playerList[i + 1] = new JLabel("Max casillas recorridas:" + juego.getJugadores().get(i).getMaxCas());
-            playerList[i + 1].setBounds(20, y + 20, 200, 20);
-
-            playerList[i + 2] = new JLabel("Max escaleras recorridas:" + juego.getJugadores().get(i).getNumEsc());
-            playerList[i + 2].setBounds(20, y + 30, 200, 20);
-
-            playerList[i + 3] = new JLabel("Max serpientes recorridas:" + juego.getJugadores().get(i).getNumSer());
-            playerList[i + 3].setBounds(20, y + 40, 200, 20);
-
-            add(playerList[i]);
-            add(playerList[i + 1]);
-            add(playerList[i + 2]);
-            add(playerList[i + 3]);
-            y += 50;
-        }
-       
-    }
     private void jugar() {
+
         int b = juego.rollDice();
+        boolean guard = false;
         // System.out.println(b);
         try {
+            int res = juego.actvMod();
             int m = juego.shouldMultiply();
             if(m != 1){
                 JOptionPane.showMessageDialog(null, "Obtienes Multiplicador!!!, Valor:" + m);
             }
-            this.juego.jugar(b * m);
+            if(res != 1){
+                JOptionPane.showMessageDialog(null, "Obtienes Cambio de posicion!!!");
+            }
+            if(res != 2){
+                JOptionPane.showMessageDialog(null, "Obtienes Bonificacion!!!");
+            }
+            if(res != 3){
+                JOptionPane.showMessageDialog(null, "Obtienes Penalizacion" );
+            }
+            if(res >1){
+                int asf =  JOptionPane.showConfirmDialog(null,
+                                   "¿aceptas este modificador?", "porfavor elige",
+                                   JOptionPane.YES_NO_OPTION);
+                  if(asf == 1){
+                    guard = true;
+                  }
+              }
+             int ayuda = juego.actvmod2(guard, res);
+            this.juego.jugar((b * m) + ayuda);
             l1.repaint();
         } catch (POOBStairsException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());

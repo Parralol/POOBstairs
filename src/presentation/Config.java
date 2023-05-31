@@ -14,6 +14,7 @@ public class Config {
     JPanel escaleras;
     JPanel serpientes;
     JPanel modificadores;
+    JPanel mod2;
     JLabel seleccionarTamano;
     private static int size = 10;
     JComboBox<String> tamanoTablero;
@@ -21,9 +22,11 @@ public class Config {
     JLabel mensajeEscaleras;
     JLabel mensajeSerpientes;
     JLabel mensajeModificadores;
+    JLabel mensajeMod2;
     JComboBox<Integer> porcEscaleras = new JComboBox<Integer>();
     JComboBox<Integer> porcSerpientes = new JComboBox<Integer>();
     JComboBox<Integer> probabilidadModificadores = new JComboBox<Integer>();
+    JComboBox<Integer> probabilidadMod2 = new JComboBox<Integer>();
     JButton atras;
     JButton continuar;
     ImageIcon ico = new ImageIcon("src/resources/Ficha-Roja.png");
@@ -60,11 +63,13 @@ public class Config {
      */
     public void prepareElementsJVJ(){
         frame = new JFrame();
-        frame.setSize(350, 250);
+        frame.setSize(350, 300);
         tamano = new JPanel();
         escaleras = new JPanel();
         serpientes = new JPanel();
         modificadores = new JPanel();
+        mod2= new JPanel();
+
 
         seleccionarTamano = new JLabel("Selecciona el tamaño del tablero");
         tamanoTablero = new JComboBox<>(new String[]{"Tablero pequeño", "Tablero mediano", "Tablero grande"});
@@ -97,12 +102,19 @@ public class Config {
         serpientes.add(mensajeSerpientes);
         serpientes.add(porcSerpientes);
 
-        mensajeModificadores = new JLabel("Probabilidad de modificadores");
+        mensajeModificadores = new JLabel("Probabilidad de Casillas");
         for (int i = 10; i <= 60; i+= 10) {
             probabilidadModificadores.addItem(i);
         }
         modificadores.add(mensajeModificadores);
         modificadores.add(probabilidadModificadores);
+
+        mensajeMod2 = new JLabel("Probabilidad de Modificadores");
+        for (int i = 10; i <= 60; i+= 10) {
+            probabilidadMod2.addItem(i);
+        }
+        mod2.add(mensajeMod2);
+        mod2.add(probabilidadMod2);
 
 
 
@@ -113,6 +125,7 @@ public class Config {
         frame.add(escaleras);
         frame.add(serpientes);
         frame.add(modificadores);
+        frame.add(mod2);
 
         frame.add(atras);
         frame.add(continuar);
@@ -172,6 +185,14 @@ public class Config {
         }
         modificadores.add(mensajeModificadores);
         modificadores.add(probabilidadModificadores);
+        mensajeMod2 = new JLabel("Probabilidad de Modificadores");
+        for (int i = 0; i <= 60; i+= 10) {
+            probabilidadMod2.addItem(i);
+        }
+        mod2.add(mensajeMod2);
+        mod2.add(probabilidadMod2);
+
+
 
         atras = new JButton("Atras");
         continuar = new JButton("Continuar");
@@ -180,6 +201,7 @@ public class Config {
         frame.add(escaleras);
         frame.add(serpientes);
         frame.add(modificadores);
+        frame.add(mod2);
 
         frame.add(atras);
         frame.add(continuar);
@@ -202,7 +224,9 @@ public class Config {
             int pesc = (int) porcEscaleras.getSelectedItem();
             int pserp = (int) porcSerpientes.getSelectedItem();
             int pesp = (int) probabilidadModificadores.getSelectedItem() ;
+            int prob = (int) probabilidadMod2.getSelectedItem();
             juego.createTablero(pesc, pserp, pesp, getSize());
+            juego.setProbMod(prob);
             frame.dispose();
             new Juego(juego);
         });

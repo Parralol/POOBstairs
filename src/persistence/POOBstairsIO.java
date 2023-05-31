@@ -48,6 +48,8 @@ public class POOBstairsIO {
             ObjectInputStream in = new ObjectInputStream( new FileInputStream(file));
             POOBStairs a = (POOBStairs)in.readObject();
             in.close();
+            System.out.println(a.getAllCasillas().size());
+            
             return a;
 
         }catch( Exception e){
