@@ -217,7 +217,7 @@ public class POOBStairs  implements Serializable{
         // System.out.println(numero);
         //System.out.println(turno - 1);
         int[] pos = jugadores.get(turno - 1).getPosFicha();
-        if (pos[1] + numero > 10) {
+        if (pos[1] + numero > tablero.getSize()) {
             int xd = pos[1] + numero;
             int guarda = xd % 10;
             pos[0] = pos[0] + 1;

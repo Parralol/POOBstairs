@@ -18,15 +18,18 @@ public class Tablero implements Serializable{
     private int size;
     private ArrayList<Casilla> casillas;
     private ArrayList<Casilla> serpEsc;
+    private boolean tabMay;
 
     /**
      * Constructor para tablero
      */
     public Tablero(double pesc, double pserp, double pesp, int size) {
+        tabMay = size > 10 ? true: false;
         this.pesc = pesc;
         this.pesp = pesp;
         this.pserp= pserp;
         this.size = size;
+        if(size>10) tabMay = true;
         casillas = new ArrayList<Casilla>();
         serpEsc = new ArrayList<Casilla>();
         generateCasillasNormal();
@@ -50,25 +53,34 @@ public class Tablero implements Serializable{
                 a.removeFicha();
             }
         }
+        if(!tabMay){
         if (pos[1] != 10) {
             b = Integer.parseInt(pos[0] + "" + pos[1]);
-        } else {
+        }else {
             b = Integer.parseInt(pos[0] + "" + 0);
         }
+        if(tabMay){
+            if (pos[1] != 10) {
+                b = Integer.parseInt(pos[0] + "" + pos[1]);
+            }else {
+                b = Integer.parseInt(pos[0] + "" + 0);
+            }
+        }
+    }
         if (b == (size*size)- size) {
             throw new POOBStairsException(POOBStairsException.GANADOR);
         }
-        if (b > 100) {
-            int res = b - 100;
-            b = 100- res;
+        if (b > casillas.size()) {
+            int res = b - (size*size) - size;
+            b = (size*size) - size- res;
             char[] xd = String.valueOf(b).toCharArray();
             int un = Character.getNumericValue(xd[0]);
             int dos = Character.getNumericValue(xd[1]);
             int[] ay = { un, dos };
             pos = ay;
         }
-        if (isItSerOrEsc(casillas.get(b))) {
-            pos = playSerOrEsc(casillas.get(b), b, ficha);
+        if (isItSerOrEsc(casillas.get(Math.abs(b)))) {
+            pos = playSerOrEsc(casillas.get(Math.abs(b)), Math.abs(b), ficha);
             return pos;
         } else {
             ficha.changePos(pos);
@@ -105,6 +117,53 @@ public class Tablero implements Serializable{
         }
         return res;
 
+    }
+
+    /**
+     * retorna el tamaño del tablero
+     * 
+     * @return size
+     */
+    public int getSize(){
+        return size;
+    }
+    /**
+     * obtiene la escalera mas cercana
+     * 
+     * @param pos
+     * @return int[]
+     */
+    public int[] getClosestEsc(int[] pos){
+        
+        for(int i = pos[0] ;i <= size ; i++){
+            for(int j = pos[1] ;j <= size ; j++){
+                if(getCasilla(i, j) instanceof Escalera){
+                    int[] res = {i,j};
+                    pos = res;
+                    break;
+                }
+            }
+        }
+        return pos;
+    }
+
+    /**
+     * obtiene la serpiente mas cercana
+     * 
+     * @param pos
+     * @return int[]
+     */
+    public int[] getClosestSerp(int[] pos){
+        for(int i = pos[0] ;i <= 0 ; i--){
+            for(int j = pos[1] ;j <= 0 ; j--){
+                if(getCasilla(i, j) instanceof Serpiente){
+                    int[] res = {i,j};
+                    pos = res;
+                    break;
+                }
+            }
+        }
+        return pos;
     }
     // METODOS PRIVADOS
 
@@ -367,42 +426,5 @@ public class Tablero implements Serializable{
         }
     }
 
-    /**
-     * obtiene la escalera mas cercana
-     * 
-     * @param pos
-     * @return int[]
-     */
-    public int[] getClosestEsc(int[] pos){
-        
-        for(int i = pos[0] ;i <= size ; i++){
-            for(int j = pos[1] ;j <= size ; j++){
-                if(getCasilla(i, j) instanceof Escalera){
-                    int[] res = {i,j};
-                    pos = res;
-                    break;
-                }
-            }
-        }
-        return pos;
-    }
-
-    /**
-     * obtiene la serpiente mas cercana
-     * 
-     * @param pos
-     * @return int[]
-     */
-    public int[] getClosestSerp(int[] pos){
-        for(int i = pos[0] ;i <= 0 ; i--){
-            for(int j = pos[1] ;j <= 0 ; j--){
-                if(getCasilla(i, j) instanceof Serpiente){
-                    int[] res = {i,j};
-                    pos = res;
-                    break;
-                }
-            }
-        }
-        return pos;
-    }
+    
 }
